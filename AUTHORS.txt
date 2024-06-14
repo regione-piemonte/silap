@@ -1,9 +1,13 @@
-# This is the list of [silapdb] authors for copyright purposes.
+# This is the list of SILAP authors for copyright purposes.
 
 Annalisa Bianco
-Antonino Motisi
 Luisa Farinasso
+Agostino Moronese
+Alessio Oppedisano
+Andrea Borando
+Antonino Motisi
 Marco Sacchi
+Oscar Bruschi
 
 # This does not necessarily list everyone who has contributed code, since in
 # some cases, their employer may be the copyright holder.  To see the full list 
