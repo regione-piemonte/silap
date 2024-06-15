@@ -19,8 +19,9 @@ Questa componente si basa su:
 Fondamentale avere a disposzione un ambiente (Virtual Machine o "container") in cui è installato un JDK ver.11, preferibilmente Adopt OpenJDK.
 Da un punto di vista generale, nella fase iniziale occorre adattare i file di properties alla propria configurazione.
 Una delle cose principali da configurare è il datasource con i riferimenti del DB che si intende utilizzare (JNDI name).\
-Per quanto riguarda le properties da configurare il punto "centrale" è costituito dal file
-src/main/resources/application.properties
+Per quanto riguarda le properties da configurare il punto "centrale" è costituito dal file:
+
+ src/main/resources/application.properties
 
 Entrando più in dettaglio, nel seguito si riportano le principali properties da configurare :
 
@@ -40,18 +41,18 @@ Entrando più in dettaglio, nel seguito si riportano le principali properties da
 - quarkus.transaction-manager.default-transaction-timeout = <numero secondi>
 
 - SCHEDULER
--- colmirbff.inviaPromemoriaPagamentoRunnable.schedule.start=<schedulazione nel formato crontab linux/unix>
--- colmirbff.inviaPromemoriaPagamentoRunnable.schedule.ip=
+  - colmirbff.inviaPromemoriaPagamentoRunnable.schedule.start=<schedulazione nel formato crontab linux/unix>
+  - colmirbff.inviaPromemoriaPagamentoRunnable.schedule.ip=
 
 - MAIL
--- mail.smtp.auth=< true | false >
--- mail.smtp.starttls.enable=< true | false >
--- mail.smtp.host=
--- mail.smtp.port=< di default 25>
--- mail.username=aaa@bbb.it
--- mail.password=
--- mail.from=ccc.ddd@eee.it
--- mail.from.name=
+  - mail.smtp.auth=< true | false >
+  - mail.smtp.starttls.enable=< true | false >
+  - mail.smtp.host=
+  - mail.smtp.port=< di default 25>
+  - mail.username=aaa@bbb.it
+  - mail.password=
+  - mail.from=ccc.ddd@eee.it
+  - mail.from.name=
 	
 
 # Getting Started
@@ -120,7 +121,7 @@ Per il versionamento del software si usa la tecnica Semantic Versioning (http://
 # Copyrights
 
 © Copyright Regione Piemonte – 2024\
-© Copyright CSI-Piemonte – 2024\
+© Copyright CSI-Piemonte – 2024
 
 Questo stesso elenco dei titolari del software è anche riportato in Copyrights.txt .
 
