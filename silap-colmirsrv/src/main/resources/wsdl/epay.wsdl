@@ -1,0 +1,490 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.csi.it/epay/epaywso/epaywso2entisrv" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="EPaywso2EntiService" targetNamespace="http://www.csi.it/epay/epaywso/epaywso2entisrv">
+<wsp:Policy wsu:Id="CustomBinding_IEPaywso2EntiService_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:TransportToken>
+<wsp:Policy>
+<sp:HttpsToken RequireClientCertificate="false"/>
+</wsp:Policy>
+</sp:TransportToken>
+<sp:AlgorithmSuite>
+<wsp:Policy>
+<sp:Basic256/>
+</wsp:Policy>
+</sp:AlgorithmSuite>
+<sp:Layout>
+<wsp:Policy>
+<sp:Strict/>
+</wsp:Policy>
+</sp:Layout>
+<sp:IncludeTimestamp/>
+</wsp:Policy>
+</sp:TransportBinding>
+<sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+<wsp:Policy>
+<sp:WssUsernameToken10/>
+</wsp:Policy>
+</sp:UsernameToken>
+</wsp:Policy>
+</sp:SignedSupportingTokens>
+<sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy/>
+</sp:Wss11>
+<sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:MustSupportIssuedTokens/>
+<sp:RequireClientEntropy/>
+<sp:RequireServerEntropy/>
+</wsp:Policy>
+</sp:Trust10>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.csi.it/epay/epaywso/epaywso2enti/types" elementFormDefault="qualified" targetNamespace="http://www.csi.it/epay/epaywso/epaywso2enti/types">
+<xs:import namespace="http://www.csi.it/epay/epaywso/types"/>
+<xs:element name="TrasmettiRichiesteDiRevocaRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Testata" type="tns:TestataRichiesteDiRevocaType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CorpoRichiesteDiRevoca" type="tns:CorpoRichiesteDiRevocaType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="TestataRichiesteDiRevocaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdMessaggio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CFEnteCreditore" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceVersamento" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="NumeroPagamenti" type="xs:integer"/>
+<xs:element minOccurs="1" maxOccurs="1" name="ImportoTotalePagamenti" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CorpoRichiesteDiRevocaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="RichiestaDiRevocaResponse" type="tns:RichiestaDiRevocaResponseType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ElencoRichiesteDiRevoca" type="tns:ArrayOfRichiestaDiRevocaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RichiestaDiRevocaResponseType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdentificativoDominio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ApplicationId" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IdentificativoMessaggioEsito" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DataOraMessaggioEsito" type="xs:dateTime"/>
+<xs:element minOccurs="0" maxOccurs="1" name="RiferimentoMessaggioRevoca" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="RiferimentoDataOraRevoca" type="xs:dateTime"/>
+<xs:element xmlns:q1="http://www.csi.it/epay/epaywso/types" minOccurs="0" maxOccurs="1" name="IstitutoAttestante" type="q1:SoggettoType"/>
+<xs:element minOccurs="1" maxOccurs="1" name="ImportoPagato" type="xs:decimal"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUV" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceContestoPagamento" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="InvioOkRispostaRevoca" type="xs:boolean"/>
+<xs:element minOccurs="0" maxOccurs="1" name="XML" type="xs:base64Binary"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DatiSingoloEsitoRevoca" type="tns:DatiEsitoSingolaRevocaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DatiEsitoSingolaRevocaType">
+<xs:sequence>
+<xs:element minOccurs="1" maxOccurs="1" name="SingoloImportoRevocato" type="xs:decimal"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUR" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CausaleEsito" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DatiAggiuntiviEsito" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfRichiestaDiRevocaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="RichiestaDiRevoca" type="tns:RichiestaDiRevocaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RichiestaDiRevocaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdentificativoDominio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ApplicationId" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IdentificativoMessaggioRevoca" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DataOraMessaggioRevoca" type="xs:dateTime"/>
+<xs:element xmlns:q2="http://www.csi.it/epay/epaywso/types" minOccurs="0" maxOccurs="1" name="IstitutoAttestante" type="q2:SoggettoType"/>
+<xs:element minOccurs="1" maxOccurs="1" name="ImportoPagato" type="xs:decimal"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUV" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceContestoPagamento" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="TipoRevoca" type="xs:integer"/>
+<xs:element minOccurs="0" maxOccurs="1" name="XML" type="xs:base64Binary"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ListaDatiSingolaRevoca" type="tns:ArrayOfDatiSingolaRevocaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfDatiSingolaRevocaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="DatiSingolaRevoca" type="tns:DatiSingolaRevocaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DatiSingolaRevocaType">
+<xs:sequence>
+<xs:element minOccurs="1" maxOccurs="1" name="SingoloImportoRevocato" type="xs:decimal"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUR" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Causale" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DatiAggiuntivi" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TrasmettiRTRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Testata" type="tns:TestataRTType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CorpoRT" type="tns:CorpoRTType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="TestataRTType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdMessaggio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CFEnteCreditore" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceVersamento" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="NumeroRT" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CorpoRTType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ElencoRT" type="tns:ArrayOfRTType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfRTType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="RT" type="tns:RTType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RTType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="XML" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TrasmettiNotifichePagamentoRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Testata" type="tns:TestataNotifichePagamentoType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CorpoNotifichePagamento" type="tns:CorpoNotifichePagamentoType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="TestataNotifichePagamentoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdMessaggio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CFEnteCreditore" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceVersamento" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="PagamentiSpontanei" type="xs:boolean"/>
+<xs:element minOccurs="0" maxOccurs="1" name="NumeroPagamenti" type="xs:integer"/>
+<xs:element minOccurs="1" maxOccurs="1" name="ImportoTotalePagamenti" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CorpoNotifichePagamentoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ElencoNotifichePagamento" type="tns:ArrayOfNotificaPagamentoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfNotificaPagamentoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="NotificaPagamento" type="tns:NotificaPagamentoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NotificaPagamentoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdPosizioneDebitoria" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="AnnoDiRiferimento" type="xs:integer"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUV" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="ImportoPagato" type="xs:decimal"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DataScadenza" type="xs:date"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DescrizioneCausaleVersamento" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DataEsitoPagamento" type="xs:date"/>
+<xs:element xmlns:q3="http://www.csi.it/epay/epaywso/types" minOccurs="0" maxOccurs="1" name="SoggettoDebitore" type="q3:SoggettoType"/>
+<xs:element xmlns:q4="http://www.csi.it/epay/epaywso/types" minOccurs="0" maxOccurs="1" name="SoggettoVersante" type="q4:SoggettoType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DatiTransazionePSP" type="tns:DatiTransazionePSPType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DatiSpecificiRiscossione" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Note" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceAvviso" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DatiTransazionePSPType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdPSP" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="RagioneSocialePSP" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="TipoVersamento" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IdFlussoRendicontazionePSP" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DataOraAvvioTransazione" type="xs:dateTime"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUR" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DataOraAutorizzazione" type="xs:dateTime"/>
+<xs:element minOccurs="0" maxOccurs="1" name="TipoSicurezza" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ImportoTransato" type="xs:decimal"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ImportoCommissioni" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TrasmettiAvvisiScadutiRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Testata" type="tns:TestataAvvisiScadutiType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CorpoAvvisiScaduti" type="tns:CorpoAvvisiScadutiType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="TestataAvvisiScadutiType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdMessaggio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CFEnteCreditore" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceVersamento" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="NumeroAvvisiScaduti" type="xs:integer"/>
+<xs:element minOccurs="1" maxOccurs="1" name="ImportoTotaleAvvisiScaduti" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CorpoAvvisiScadutiType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ElencoAvvisiScaduti" type="tns:ArrayOfAvvisoScadutoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfAvvisoScadutoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="AvvisoScaduto" type="tns:AvvisoScadutoType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AvvisoScadutoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IUV" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DataScadenza" type="xs:date"/>
+<xs:element minOccurs="1" maxOccurs="1" name="Importo" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EsitoInserimentoListaDiCaricoRequest">
+<xs:complexType>
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q5="http://www.csi.it/epay/epaywso/types" base="q5:ResponseType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="TestataEsito" type="tns:TestataEsitoType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="EsitoInserimento" type="q5:EsitoInserimentoType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="TestataEsitoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdMessaggio" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CFEnteCreditore" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceVersamento" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EsitoAggiornaPosizioniDebitorieRequest">
+<xs:complexType>
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q6="http://www.csi.it/epay/epaywso/types" base="q6:ResponseType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="TestataEsito" type="tns:TestataEsitoType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="EsitoAggiornamento" type="q6:EsitoAggiornamentoType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.csi.it/epay/epaywso/types" elementFormDefault="qualified" targetNamespace="http://www.csi.it/epay/epaywso/types">
+<xs:complexType name="SoggettoType">
+<xs:sequence>
+<xs:choice minOccurs="1" maxOccurs="1">
+<xs:element minOccurs="0" maxOccurs="1" name="PersonaFisica" type="tns:PersonaFisicaType"/>
+<xs:element minOccurs="0" maxOccurs="1" name="PersonaGiuridica" type="tns:PersonaGiuridicaType"/>
+</xs:choice>
+<xs:element minOccurs="0" maxOccurs="1" name="IdentificativoUnivocoFiscale" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Indirizzo" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Civico" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CAP" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Localita" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Provincia" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Nazione" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="EMail" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PersonaFisicaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Cognome" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Nome" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PersonaGiuridicaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="RagioneSociale" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TrasmettiNotifichePagamentoResponse" type="tns:TrasmettiNotifichePagamentoResponseType"/>
+<xs:element name="EPaywsoServiceResponse" type="tns:ResponseType"/>
+<xs:complexType name="TrasmettiNotifichePagamentoResponseType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ResultType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ResultType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResultType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="Codice" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Messaggio" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EsitoInserimentoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ElencoPosizioniDebitorieInserite" type="tns:ArrayOfPosizioneDebitoriaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfPosizioneDebitoriaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PosizioneDebitoriaInserita" type="tns:PosizioneDebitoriaType"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PosizioneDebitoriaType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IdPosizioneDebitoria" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IUV" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceAvviso" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CodiceEsito" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="DescrizioneEsito" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EsitoAggiornamentoType">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ElencoPosizioniDebitorieAggiornate" type="tns:ArrayOfPosizioneDebitoriaType1"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ArrayOfPosizioneDebitoriaType1">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PosizioneDebitoriaAggiornata" type="tns:PosizioneDebitoriaType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="TrasmettiRichiesteDiRevocaRequest1">
+<wsdl:part xmlns:q1="http://www.csi.it/epay/epaywso/epaywso2enti/types" name="TrasmettiRichiesteDiRevocaRequest" element="q1:TrasmettiRichiesteDiRevocaRequest"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiRichiesteDiRevocaResponse">
+<wsdl:part xmlns:q2="http://www.csi.it/epay/epaywso/types" name="EPaywsoServiceResponse" element="q2:EPaywsoServiceResponse"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiRTRequest1">
+<wsdl:part xmlns:q3="http://www.csi.it/epay/epaywso/epaywso2enti/types" name="TrasmettiRTRequest" element="q3:TrasmettiRTRequest"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiRTResponse">
+<wsdl:part xmlns:q4="http://www.csi.it/epay/epaywso/types" name="EPaywsoServiceResponse" element="q4:EPaywsoServiceResponse"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiNotifichePagamentoRequest1">
+<wsdl:part xmlns:q5="http://www.csi.it/epay/epaywso/epaywso2enti/types" name="TrasmettiNotifichePagamentoRequest" element="q5:TrasmettiNotifichePagamentoRequest"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiNotifichePagamentoResponse">
+<wsdl:part xmlns:q6="http://www.csi.it/epay/epaywso/types" name="TrasmettiNotifichePagamentoResponse" element="q6:TrasmettiNotifichePagamentoResponse"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiAvvisiScadutiRequest1">
+<wsdl:part xmlns:q7="http://www.csi.it/epay/epaywso/epaywso2enti/types" name="TrasmettiAvvisiScadutiRequest" element="q7:TrasmettiAvvisiScadutiRequest"/>
+</wsdl:message>
+<wsdl:message name="TrasmettiAvvisiScadutiResponse">
+<wsdl:part xmlns:q8="http://www.csi.it/epay/epaywso/types" name="EPaywsoServiceResponse" element="q8:EPaywsoServiceResponse"/>
+</wsdl:message>
+<wsdl:message name="EsitoInserimentoListaDiCaricoRequest1">
+<wsdl:part xmlns:q9="http://www.csi.it/epay/epaywso/epaywso2enti/types" name="EsitoInserimentoListaDiCaricoRequest" element="q9:EsitoInserimentoListaDiCaricoRequest"/>
+</wsdl:message>
+<wsdl:message name="EsitoInserimentoListaDiCaricoResponse">
+<wsdl:part xmlns:q10="http://www.csi.it/epay/epaywso/types" name="EPaywsoServiceResponse" element="q10:EPaywsoServiceResponse"/>
+</wsdl:message>
+<wsdl:message name="EsitoAggiornaPosizioniDebitorieRequest1">
+<wsdl:part xmlns:q11="http://www.csi.it/epay/epaywso/epaywso2enti/types" name="EsitoAggiornaPosizioniDebitorieRequest" element="q11:EsitoAggiornaPosizioniDebitorieRequest"/>
+</wsdl:message>
+<wsdl:message name="EsitoAggiornaPosizioniDebitorieResponse">
+<wsdl:part xmlns:q12="http://www.csi.it/epay/epaywso/types" name="EPaywsoServiceResponse" element="q12:EPaywsoServiceResponse"/>
+</wsdl:message>
+<wsdl:portType name="IEPaywso2EntiService">
+<wsdl:operation name="TrasmettiRichiesteDiRevoca">
+<wsdl:input wsaw:Action="http://www.csi.it/epay/epaywso/service/TrasmettiRichiesteDiRevoca" name="TrasmettiRichiesteDiRevocaRequest1" message="tns:TrasmettiRichiesteDiRevocaRequest1"/>
+<wsdl:output wsaw:Action="http://www.csi.it/epay/epaywso/epaywso2entisrv/IEPaywso2EntiService/TrasmettiRichiesteDiRevocaResponse" name="TrasmettiRichiesteDiRevocaResponse" message="tns:TrasmettiRichiesteDiRevocaResponse"/>
+</wsdl:operation>
+<wsdl:operation name="TrasmettiRT">
+<wsdl:input wsaw:Action="http://www.csi.it/epay/epaywso/service/TrasmettiRT" name="TrasmettiRTRequest1" message="tns:TrasmettiRTRequest1"/>
+<wsdl:output wsaw:Action="http://www.csi.it/epay/epaywso/epaywso2entisrv/IEPaywso2EntiService/TrasmettiRTResponse" name="TrasmettiRTResponse" message="tns:TrasmettiRTResponse"/>
+</wsdl:operation>
+<wsdl:operation name="TrasmettiNotifichePagamento">
+<wsdl:input wsaw:Action="http://www.csi.it/epay/epaywso/service/TrasmettiNotifichePagamento" name="TrasmettiNotifichePagamentoRequest1" message="tns:TrasmettiNotifichePagamentoRequest1"/>
+<wsdl:output wsaw:Action="http://www.csi.it/epay/epaywso/epaywso2entisrv/IEPaywso2EntiService/TrasmettiNotifichePagamentoResponse" name="TrasmettiNotifichePagamentoResponse" message="tns:TrasmettiNotifichePagamentoResponse"/>
+</wsdl:operation>
+<wsdl:operation name="TrasmettiAvvisiScaduti">
+<wsdl:input wsaw:Action="http://www.csi.it/epay/epaywso/service/TrasmettiAvvisiScaduti" name="TrasmettiAvvisiScadutiRequest1" message="tns:TrasmettiAvvisiScadutiRequest1"/>
+<wsdl:output wsaw:Action="http://www.csi.it/epay/epaywso/epaywso2entisrv/IEPaywso2EntiService/TrasmettiAvvisiScadutiResponse" name="TrasmettiAvvisiScadutiResponse" message="tns:TrasmettiAvvisiScadutiResponse"/>
+</wsdl:operation>
+<wsdl:operation name="EsitoInserimentoListaDiCarico">
+<wsdl:input wsaw:Action="http://www.csi.it/epay/epaywso/service/EsitoInserimentoListaDiCarico" name="EsitoInserimentoListaDiCaricoRequest1" message="tns:EsitoInserimentoListaDiCaricoRequest1"/>
+<wsdl:output wsaw:Action="http://www.csi.it/epay/epaywso/epaywso2entisrv/IEPaywso2EntiService/EsitoInserimentoListaDiCaricoResponse" name="EsitoInserimentoListaDiCaricoResponse" message="tns:EsitoInserimentoListaDiCaricoResponse"/>
+</wsdl:operation>
+<wsdl:operation name="EsitoAggiornaPosizioniDebitorie">
+<wsdl:input wsaw:Action="http://www.csi.it/epay/epaywso/service/EsitoAggiornaPosizioniDebitorie" name="EsitoAggiornaPosizioniDebitorieRequest1" message="tns:EsitoAggiornaPosizioniDebitorieRequest1"/>
+<wsdl:output wsaw:Action="http://www.csi.it/epay/epaywso/epaywso2entisrv/IEPaywso2EntiService/EsitoAggiornaPosizioniDebitorieResponse" name="EsitoAggiornaPosizioniDebitorieResponse" message="tns:EsitoAggiornaPosizioniDebitorieResponse"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="CustomBinding_IEPaywso2EntiService" type="tns:IEPaywso2EntiService">
+<wsp:PolicyReference URI="#CustomBinding_IEPaywso2EntiService_policy"/>
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="TrasmettiRichiesteDiRevoca">
+<soap:operation soapAction="http://www.csi.it/epay/epaywso/service/TrasmettiRichiesteDiRevoca" style="document"/>
+<wsdl:input name="TrasmettiRichiesteDiRevocaRequest1">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="TrasmettiRichiesteDiRevocaResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="TrasmettiRT">
+<soap:operation soapAction="http://www.csi.it/epay/epaywso/service/TrasmettiRT" style="document"/>
+<wsdl:input name="TrasmettiRTRequest1">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="TrasmettiRTResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="TrasmettiNotifichePagamento">
+<soap:operation soapAction="http://www.csi.it/epay/epaywso/service/TrasmettiNotifichePagamento" style="document"/>
+<wsdl:input name="TrasmettiNotifichePagamentoRequest1">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="TrasmettiNotifichePagamentoResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="TrasmettiAvvisiScaduti">
+<soap:operation soapAction="http://www.csi.it/epay/epaywso/service/TrasmettiAvvisiScaduti" style="document"/>
+<wsdl:input name="TrasmettiAvvisiScadutiRequest1">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="TrasmettiAvvisiScadutiResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EsitoInserimentoListaDiCarico">
+<soap:operation soapAction="http://www.csi.it/epay/epaywso/service/EsitoInserimentoListaDiCarico" style="document"/>
+<wsdl:input name="EsitoInserimentoListaDiCaricoRequest1">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="EsitoInserimentoListaDiCaricoResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EsitoAggiornaPosizioniDebitorie">
+<soap:operation soapAction="http://www.csi.it/epay/epaywso/service/EsitoAggiornaPosizioniDebitorie" style="document"/>
+<wsdl:input name="EsitoAggiornaPosizioniDebitorieRequest1">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="EsitoAggiornaPosizioniDebitorieResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="EPaywso2EntiService">
+<wsdl:port name="CustomBinding_IEPaywso2EntiService" binding="tns:CustomBinding_IEPaywso2EntiService">
+<soap:address location="https://www.pa-online.it/GisMasterWesN/PiemontePay/EPaywso2EntiService.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
