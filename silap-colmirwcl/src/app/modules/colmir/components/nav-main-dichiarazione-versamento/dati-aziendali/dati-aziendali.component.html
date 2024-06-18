@@ -1,0 +1,154 @@
+<div class="container">
+    <colmirwcl-accordion-info [messaggio]="messaggioAccordionInfo"></colmirwcl-accordion-info>
+    <h2 *ngIf="INS_MODE">
+        <i style="color: #005ca9;" class="fas fa-edit mr-2"></i>{{"DATI_AZIENDALI.TITLE_INS" | translate}}
+    </h2>
+    <h2 *ngIf="EDIT_MODE">
+        <i style="color: #005ca9;" class="fas fa-edit mr-2"></i>{{"DATI_AZIENDALI.TITLE_EDIT" | translate}}
+    </h2>
+    <h2 *ngIf="VIEW_MODE">
+        <i style="color: #005ca9;" class="fas fa-eye mr-2"></i>{{"DATI_AZIENDALI.TITLE_VIS" | translate}}
+    </h2>
+    <div *ngIf="form" class="card">
+        <div class="card-body">
+            <p class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span class="oblg">*</span>
+                {{'APP.GENERICO.OBBLIGO' | translate}}</p>
+            <form [formGroup]="form" (ngSubmit)="onClickConferma()">
+                <div class="row">
+                    <div class="mb-3 col-sm-12 col-md-4">
+                        <label for="codFiscaleDatiAziendali">{{'DATI_AZIENDALI.LABEL.CF' | translate}}<span class="oblg"
+                                title="campo obbligatorio">*</span></label>
+                        <input type="text" class="form-control" formControlName="codFiscale"
+                            oninput="this.value = this.value.toUpperCase().trim()" id="codFiscaleDatiAziendali"
+                            maxlength="16">
+                        <div *ngIf="f?.codFiscale?.invalid" class="text-danger">
+                            <p *ngIf="f?.codFiscale?.errors?.minlength">Inserire almeno 11 caratteri</p>
+                        </div>
+                        <!-- <div *ngIf="f?.codFiscale?.value !== aziendaCorrente?.codFiscale" class="text-danger">
+                            <p>Ricercare il nuovo codFiscale</p>
+                        </div> -->
+                    </div>
+                    <div *ngIf="INS_MODE && !AZIENDA_LOCKED" class="col-sm-12 col-md-2">
+                        <button [disabled]="f?.codFiscale?.invalid" (click)="onClickCercaAzienda()" type="button"
+                            class="btn btn-primary mt-lg-btn-form">{{'APP.GENERICO.BTN.CERCA_UPPER_C' | translate}}</button>
+                    </div>
+                    <div class="mb-3 col-sm-12 col-md-5 lettura">
+                        {{ "DATI_AZIENDALI.FIELD.DENOMINAZIONE"| translate}}
+                        <span class="valore">{{aziendaCorrente?.denomAzienda}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4>{{"DATI_AZIENDALI.SUB_TITLE_SEDE_LEGALE" | translate}}</h4>
+                </div>
+                <div class="row lettura">
+                    <div class="col-sm-12 col-md-4">{{ "DATI_AZIENDALI.FIELD.COMUNE"| translate}} <span
+                            class="valore">{{(aziendaCorrente?.comuneSede?.id ? aziendaCorrente?.comuneSede?.id+", " :
+                            "")+(aziendaCorrente?.comuneSede?.descr ? aziendaCorrente?.comuneSede?.descr: "")}}</span>
+                    </div>
+                    <div class="col-sm-12 col-md-4">{{ "DATI_AZIENDALI.FIELD.INDIRIZZO"| translate}} <span
+                            class="valore">{{aziendaCorrente?.indirizzoSede}}</span></div>
+                    <div class="col-sm-12 col-md-4">{{ "DATI_AZIENDALI.FIELD.CAP"| translate}} <span
+                            class="valore">{{aziendaCorrente?.capSede}}</span></div>
+                </div>
+                <div class="row lettura">
+                    <div class="col-sm-12 col-md-4">{{ "DATI_AZIENDALI.FIELD.CCNL"| translate}} <span class="valore">{{(
+                            aziendaCorrente?.silapDCcnl?.cod ? aziendaCorrente?.silapDCcnl.cod+", " :
+                            "")+(aziendaCorrente?.silapDCcnl?.descr ? aziendaCorrente?.silapDCcnl?.descr : "")}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>{{"DATI_AZIENDALI.SUB_TITLE_INSERIMENTO_DICH" | translate}}</h3>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-sm-12 col-md-4 lettura">
+                        {{ "DATI_AZIENDALI.FIELD.ANNO_RIF"| translate}} <span *ngIf="INS_MODE" class="oblg"
+                            title="campo obbligatorio">*</span>
+                    </div>
+                    <div class="mb-3 col-sm-12 col-md-4 lettura">
+                        {{ "DATI_AZIENDALI.FIELD.CREDITO_RESIDUO"| translate}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngIf="INS_MODE" class="mb-3 col-sm-12 col-md-4">
+                        <fieldset>
+                            <legend class="sr-only">{{ "DATI_AZIENDALI.FIELD.ANNO_RIF"| translate}}</legend>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" formControlName="annoRiferimento"
+                                    [value]="annoPrecedenteValue" type="radio" id="annoPrecedenteValue" name="annoRiferimento">
+                                <label class="form-check-label" for="annoPrecedenteValue">
+                                    {{ annoPrecedenteValue }}
+                                </label>
+                            </div>
+                            <div *ngIf="annoCorrenteValue" class="form-check form-check-inline">
+                                <input class="form-check-input" formControlName="annoRiferimento"
+                                    [value]="annoCorrenteValue" type="radio" id="annoCorrenteValue" name="annoRiferimento">
+                                <label class="form-check-label" for="annoCorrenteValue">
+                                    {{ annoCorrenteValue }}
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div *ngIf="!INS_MODE" class="mb-3 col-sm-12 col-md-4">
+                        <span class="valore">{{versamentoCorrente?.annoRiferimento}}</span>
+                    </div>
+
+                    <div class="mb-3 col-sm-12 col-md-4 lettura">
+                        <span class="valore">{{aziendaCorrente?.numCreditoResiduo | number:'0.2-2'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-sm-12 col-md-4">
+                        <label class="form-check-label" for="versamento">
+                            {{ "DATI_AZIENDALI.FIELD.VERSAMENTO"| translate}} <span class="oblg"
+                                title="campo obbligatorio">*</span>
+                        </label>
+                    </div>
+                    <div class="mb-3 col-sm-12 col-md-3 lettura">
+                        <label class="form-check-label" for="mailRiferimento">{{'DATI_AZIENDALI.LABEL.MAIL' |
+                            translate}}<span class="oblg" title="campo obbligatorio">*</span></label>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="mb-3 col-sm-12 col-md-4">
+                        <fieldset>
+                            <legend class="sr-only">{{ "DATI_AZIENDALI.FIELD.VERSAMENTO"| translate}}</legend>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" formControlName="numRate" [value]="1" type="radio"
+                                    id="numRate1" name="numRate">
+                                <label class="form-check-label" for="numRate1">
+                                    {{ "DATI_AZIENDALI.FIELD.VERSAMENTO_1"| translate}}
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" formControlName="numRate" [value]="2" type="radio"
+                                    id="numRate2" name="numRate">
+                                <label class="form-check-label" for="numRate2">
+                                    {{ "DATI_AZIENDALI.FIELD.VERSAMENTO_2"| translate}}
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="mb-3 col-sm-12 col-md-3 lettura">
+
+                        <input type="text" class="form-control" formControlName="dsEmailRiferimento"
+                            oninput="this.value = this.value.trim()" id="mailRiferimento">
+                        <div *ngIf="f?.dsEmailRiferimento?.invalid" class="text-danger">
+                            <p *ngIf="f?.dsEmailRiferimento?.errors?.pattern">{{getMsgValidazioneByCode('100027')}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!VIEW_MODE" class="row">
+                    <div class="col">
+                        <button type="button" (click)="onClickReset()" class="btn btn-outline-secondary btn-sm">{{
+                            'APP.GENERICO.BTN.ANNULLA' | translate }}</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-sm btn-primary" [disabled]="DATI_AZIENDALI_INVALID">{{
+                            'APP.GENERICO.BTN.CONFIRM' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="container">
+  <colmirwcl-accordion-info [messaggio]="messaggioAccordionInfo"></colmirwcl-accordion-info>
+  <h2 *ngIf="INS_MODE">
+    <i style="color: #005ca9;" class="fas fa-edit mr-2"></i>{{"PROVINCE.TITLE_INS" | translate}}
+  </h2>
+  <h2 *ngIf="EDIT_MODE">
+      <i style="color: #005ca9;" class="fas fa-edit mr-2"></i>{{"PROVINCE.TITLE_EDIT" | translate}}
+  </h2>
+  <h2 *ngIf="VIEW_MODE">
+      <i style="color: #005ca9;" class="fas fa-eye mr-2"></i>{{"PROVINCE.TITLE_VIS" | translate}}
+  </h2>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <h3>{{'PROVINCE.FIELD.ELENCO_PROVINCE' | translate}}</h3>
+      </div>
+      <div *ngIf="form" class="row">
+        <form [formGroup]="form">
+          <div class="mb3 col-sm-12 col-md-4">
+            <label for="province">{{ 'PROVINCE.FIELD.SEL_PROV' | translate}}</label>
+            <select formControlName="versamentoProvincia" (change)="onChangeProvincia()" class="form-select" id="province">
+              <option *ngFor="let versamentoProvincia of versamentoProvince" [ngValue]="versamentoProvincia">
+                {{versamentoProvincia?.silapDProvincia?.dsSilapDProvincia}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="versamenetoProvinciaSelezionata" class="row">
+        <div class="col-sm-12 col-md-6">
+          <h3 class="title">{{'PROVINCE.LABEL.DATI_ESON_PARZIALE' | translate}}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>{{'PROVINCE.LABEL.DATA_RICHIESTA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.%_RICHIESTA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.DATA_CONCESSIONE' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.%_CONCESSA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.DATA_SCADENZA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.DATA_DINIEGO' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let versamentoEsonero of versamenetoProvinciaSelezionata?.esoTVersamentoPvEsoneros">
+              <td>{{versamentoEsonero?.dRichiesta | date:'dd/MM/yyyy'}}</td>
+              <td>{{versamentoEsonero?.percRichiesta}}</td>
+              <td>{{versamentoEsonero?.dConcessione | date:'dd/MM/yyyy'}}</td>
+              <td>{{versamentoEsonero?.percConcessione}}</td>
+              <td>{{versamentoEsonero?.dScadenza | date:'dd/MM/yyyy'}}</td>
+              <td>{{versamentoEsonero?.dDiniego | date:'dd/MM/yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="versamenetoProvinciaSelezionata" class="row">
+        <div class="col-sm-12 col-md-6">
+          <h3 class="title">{{'PROVINCE.LABEL.DATI_RICONOSC_INABILITA' | translate}}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>{{'PROVINCE.LABEL.DATA_RICONOSC' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.DATA_SCADENZA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.ORE_SETTIMANALI_MEDIE' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let versamentoPvRicIns of versamenetoProvinciaSelezionata?.esoTVersamentoPvRicIns">
+              <td>{{versamentoPvRicIns?.dRiconoscimentoInvalidita | date: 'dd/MM/yyyy'}}</td>
+              <td>{{versamentoPvRicIns?.dScadenza | date: 'dd/MM/yyyy'}}</td>
+              <td>{{versamentoPvRicIns?.numOreSettMed }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="versamenetoProvinciaSelezionata" class="row">
+        <div class="col-sm-12 col-md-6">
+          <h3 class="title">{{'PROVINCE.LABEL.DATI_CONVENZIONE' | translate}}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>{{'PROVINCE.LABEL.DATA_STIPULA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.TIPOLOGIA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.NUM_POSIZIONI_APERTE' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.DATA_SCADENZA' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let versamentoConvenzione of versamenetoProvinciaSelezionata?.esoTVersamentoPvConvenziones">
+              <td>{{versamentoConvenzione?.dStipula | date:'dd/MM/yyyy'}}</td>
+              <td>{{versamentoConvenzione?.esoDVersamentoTipoConvenzione?.dsEsoDVersamentoTipoConvenzione}}</td>
+              <td>{{versamentoConvenzione?.numPosizioniAperte}}</td>
+              <td>{{versamentoConvenzione?.dScadenza | date:'dd/MM/yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="versamenetoProvinciaSelezionata && versamentoPvProspettoWrapper?.length > 0" class="row">
+        <div class="col-sm-12 col-md-6">
+          <h3 class="title">{{'PROVINCE.LABEL.DATI_PROSPETTI_INFO' | translate}}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>{{'PROVINCE.LABEL.ANNO' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.BASE_COMPUTO' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.QUOTA_RISERVA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.DISABILI_FORZA' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.NUM_COMPENSAZIONE' | translate}}</th>
+              <th>{{'PROVINCE.LABEL.NUM_ESON_AUTOCERT' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let versamentoPvProspettoWrapper of versamentoPvProspettoWrapper">
+              <td>{{versamentoPvProspettoWrapper?.annoRiferimento}}</td>
+              <td>{{versamentoPvProspettoWrapper?.baseComputoProvinciale}}</td>
+              <td>{{versamentoPvProspettoWrapper?.quotaRiservaDisabili}}</td>
+              <td>{{versamentoPvProspettoWrapper?.numDisabiliInForza}}</td>
+              <td>{{versamentoPvProspettoWrapper?.numSoggettiCompensatiDisabili}}</td>
+              <td>{{versamentoPvProspettoWrapper?.numEsoneratiAutocertificati}}</td>
+            </tr> 
+          </tbody>
+        </table>
+        <div *ngIf="prospettoRiallineamentoNazionale" 
+          class="alert-info info-box-quota-riserva"
+          [innerHTML]="getMessageByCodDecodificato('100099')">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="versamenetoProvinciaSelezionata" class="card">
+    <div class="card-body">
+      <ul ngbNav [roles]="false" #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="0">
+          <a ngbNavLink>{{'PROVINCE.TABS.TILE.GIORNI_LAVORATIVI' | translate}}</a>
+          <ng-template ngbNavContent>
+            <colmirwcl-giorni-lavorativi
+              [mode]="mode"
+              (emitConferma)="confermaGiorniLavorativi($event,nav)"
+              [initialVersamento]="initialVersamento"
+              [versamenetoProvinciaSelezionata]="versamenetoProvinciaSelezionata"></colmirwcl-giorni-lavorativi>
+          </ng-template>
+        </li>
+        <li [disabled]="!VIEW_MODE && active < 1" [ngbNavItem]="1">
+          <a ngbNavLink>{{'PROVINCE.TABS.TILE.SOSPENSIONI' | translate}}</a>
+          <ng-template ngbNavContent>
+            <colmirwcl-sospensioni
+            (emitConferma)="confermaSospensioni($event,nav)"
+            [initialVersamento]="initialVersamento"
+            [versamenetoProvinciaSelezionataInitial]="versamenetoProvinciaSelezionata"
+            [mode]="mode"></colmirwcl-sospensioni>
+          </ng-template>
+        </li>
+        <li [disabled]="!VIEW_MODE && active < 2" [ngbNavItem]="2">
+          <a ngbNavLink>{{'PROVINCE.TABS.TILE.DETTAGLIO_DICHIARAZIONE' | translate}}</a>
+          <ng-template ngbNavContent>
+            <colmirwcl-dichiarazione
+            [warnings]="warnings"
+            [versamento]="initialVersamento"
+            [versamenetoProvinciaSelezionata]="versamenetoProvinciaSelezionata"
+            (emitConferma)="confermaDichiarazioneVersamento($event)"
+            [mode]="mode"></colmirwcl-dichiarazione>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav"></div>
+    </div>
+  </div>
+</div>

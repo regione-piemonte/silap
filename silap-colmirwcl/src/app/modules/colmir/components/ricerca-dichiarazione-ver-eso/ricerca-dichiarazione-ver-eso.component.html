@@ -1,0 +1,34 @@
+<colmirwcl-accordion-info [messaggio]="messaggioAccordionInfo"></colmirwcl-accordion-info>
+<div class="row">
+    <h2 *ngIf="IS_OPERATORE_REGIONALE" class="col-9">{{'RICERCA_DICHIARAZIONE_VER_ESO.TITLE_OP_REGIONE' | translate}}</h2>
+    <h2 *ngIf="!IS_OPERATORE_REGIONALE" class="col-9">{{'RICERCA_DICHIARAZIONE_VER_ESO.TITLE_NO_OP_REGIONE' | translate}}</h2>
+    <div *ngIf="ruolo?.idSilapDRuolo !== OPERATORE_REGIONALE" class="col-3">
+        <button (click)="onClickGoToNavMain()" type="button" style="float: right;" class="btn btn-primary ml-auto btn-lg">{{'RICERCA_DICHIARAZIONE_VER_ESO.BTN_NUOVO' | translate}}</button>
+    </div>
+</div>
+<ngb-accordion #accordionRicerca
+        activeIds="panelRicerca"
+        id="accordion-ricerca"
+        [closeOthers]="true"
+        [destroyOnHide]="false">
+        <ngb-panel title="Criteri di ricerca" id="panelRicerca">
+            <ng-template ngbPanelContent let-opened="opened">
+                <colmirwcl-form-ricerca-dichiarazione-ver-eso
+                    *ngIf="stati"
+                    [stati]="stati"
+                    [formPristine]="formPristine"
+                    [formRicerca]="formRicerca"
+                    (datiRicerca)="onCerca($event)"
+                    (resetForm)="onResetForm()">
+                </colmirwcl-form-ricerca-dichiarazione-ver-eso>
+            </ng-template>
+          </ngb-panel>
+</ngb-accordion>
+<colmirwcl-risultati-ricerca-dichiarazione-ver-eso
+    *ngIf="ricercaEffettuata"
+    [formRicerca]="ricercaDaInviare"
+    [pagedResponse]="pagedResponse"
+    [currentPaginationData]="currentPaginationData"
+    (changePaginationData)="onChangePaginationData($event)" 
+    (eliminaDichiarazioneNotify)="eliminaDichiarazione($event)">
+</colmirwcl-risultati-ricerca-dichiarazione-ver-eso>

@@ -1,0 +1,68 @@
+<!--*************************************************
+Copyright Regione Piemonte - 2024
+SPDX-License-Identifier: EUPL-1.2-or-later
+***************************************************/-->
+<header class="fixed-top">
+
+  <nav class="navbar navbar-expand navbar-dark-blue">
+    <div class="container-fluid">
+
+      <div class="row header-body">
+
+        <div class="col-2">
+          <div class="d-flex flex-column flex-md-row align-items-center">
+            <div role="heading" aria-level="1" class="mb-0 heading-1">
+              <button type="button" (click)="openCloseSideBar()" aria-label="apri menu'" class="btn btn-link mr-2" id="menu-mobile"><i class="fas fa-bars"></i> <span class="sr-only">apri menu'</span> </button>
+              <a (click)="onClickGoToHomePage()">{{'HEADER.TITLE' | translate}}</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-10 d-flex justify-content-end">
+            <span>
+
+              <a href="http://www.sistemapiemonte.it/lavoro/guida_applicazioni/cms/index.php?option=com_content&view=article&id=73&Itemid=53" title="Contatti" alt="contatti" _blank><i class="fas fa-id-card"></i></a>
+
+              <a href="http://www.sistemapiemonte.it/lavoro/guida_applicazioni/cms/" title="Guida" alt="guida" _blank><i class="fas fa-question-circle"></i></a>
+
+              <!--  TASTO ACCEDI  <button class="btn btn-primary accedi">Accedi</button> -->
+
+              <span ngbDropdown tabindex="0" class="menu-utente">
+                <a ngbDropdownToggle alt="menù utente" title="menù utente" class="btn btn-link dropdown-toggle">
+                  <span class="utente"> {{'HEADER.MENU.BUTTON.UTENTE_NU' | translate}} <!-- {{ utente?.nome?.charAt(0) }}{{ utente?.cognome?.charAt(0) }} --></span>
+                </a>
+                <div class="dropdown-menu" ngbDropdownMenu>
+                  <div class="dropdown-divider"></div>
+                  <button aria-label="Nome" type="button" class="dropdown-item" ngbDropdownItem disabled>{{'HEADER.MENU.BUTTON.NAME' | translate}}
+                      {{(utente?.nome ? utente.nome : "" )+' - '+ (utente?.cognome ? utente?.cognome  : "")}}
+                  </button>
+                  <ng-container>
+                    <button aria-label="Ruolo" type="button" class="dropdown-item" ngbDropdownItem disabled>
+                      {{'HEADER.MENU.BUTTON.ROLE' | translate}}
+                      {{ruolo?.dsSilapDRuolo}}
+                    </button>
+                  </ng-container>
+                  <ng-container>
+                    <button aria-label="Ente" type="button" class="dropdown-item" ngbDropdownItem disabled>
+                      {{'HEADER.MENU.BUTTON.ENTE' | translate}}
+                      {{ruolo?.denominazioneSoggettoAbilitato}}
+                    </button>
+                  </ng-container>
+                  <ng-container>
+                    <button aria-label="Codice fiscale" type="button" class="dropdown-item" ngbDropdownItem disabled>
+                      {{'HEADER.MENU.BUTTON.CF' | translate}}
+                      {{CODICE_FISCALE}}
+                    </button>
+                  </ng-container>
+                  <div class="dropdown-divider"></div>
+                  <button aria-label="Cambia ruolo" (click)="onClickGoToAccessoRuolo()" type="button" class="dropdown-item" ngbDropdownItem
+                    >{{'HEADER.MENU.BUTTON.CHANGE_ROLE' | translate}}</button>
+                  <button (click)="onClickLogOut()" type="button" class="dropdown-item" ngbDropdownItem>{{'HEADER.MENU.BUTTON.LOG_OUT' | translate}}</button>
+                </div>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+  </nav>
+</header>

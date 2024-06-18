@@ -1,0 +1,148 @@
+<div class="container-body">
+    <div *ngIf="form" class="card">
+        <div class="card-body">
+            <p class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span class="oblg">*</span> {{'APP.GENERICO.OBBLIGO' | translate}}</p>
+            <form [formGroup]="form" (ngSubmit)="onClickConfermaProsegui()">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="giorniLavorativi">{{'GIORNI_LAVORATIVI.LABEL.GIORNI_LAVORATIVI' | translate}}<span
+                                class="oblg" title="campo obbligatorio">*</span></label>
+                        <div class="mb-3 col-sm-9 col-md-5 mt-2">
+                            <fieldset>
+                                <div class="form-check form-check-inline">
+                                    <input 
+                                        type="radio"
+                                        class="form-check-input" 
+                                        formControlName="giorniLav" 
+                                        [value]=5 
+                                        id="giorniLav1">
+                                    <label class="form-check-label" for="giorniLav1">
+                                        {{ "GIORNI_LAVORATIVI.LABEL.GIORNI_LAV_1"| translate}}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input 
+                                        type="radio"
+                                        class="form-check-input" 
+                                        formControlName="giorniLav" 
+                                        [value]=6 
+                                        id="giorniLav2">
+                                    <label class="form-check-label" for="giorniLav2">
+                                        {{ "GIORNI_LAVORATIVI.LABEL.GIORNI_LAV_2"| translate}}
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-7 mb-2">
+                        <label for="festaPatronale">{{ "GIORNI_LAVORATIVI.LABEL.FESTA_PATRONALE"| translate}}</label>
+                        <div class="mb-3 col-sm-12 col-md-4 ">
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="dataFestaPatronale"
+                                    id="festaPatronale" 
+                                    ngbDatepicker 
+                                    #d_festaPatronale="ngbDatepicker"
+                                    (change)="onChnageDataFestaPatronale()"
+                                    (dateSelect)="onChnageDataFestaPatronale()"
+                                    [minDate]="{year: versamentoCorrente?.annoRiferimento, month: 1, day: 1}"
+                                    [maxDate]="{year: versamentoCorrente?.annoRiferimento, month: 12, day: 31}"
+                                    maxlength="10">
+                                <div class="input-group-addon">
+                                    <button class="btn btn-outline-primary calendar" (click)="d_festaPatronale.toggle()"
+                                        type="button">
+                                        <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span><i
+                                            class="far fa-calendar-alt fa-lg"></i></button>
+                                </div>
+                            </div>
+                            <div *ngIf="f?.dataFestaPatronale?.invalid" class="text-danger">
+                                <ng-container *ngIf="f?.dataFestaPatronale?.errors?.ngbDate" class="text-danger">
+                                    <p *ngIf="f?.dataFestaPatronale?.errors?.ngbDate?.minDate || f?.dataFestaPatronale?.errors?.ngbDate?.maxDate  else elseBlock" >
+                                        <!-- NUOVO MESSAGGIO -->
+                                        {{getMsgValidazioneByCode('100135')}}
+                                    </p>
+                                    <ng-template #elseBlock>
+                                        <p>
+                                            {{getMsgValidazioneByCode('100004')}}
+                                        </p>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+                            <div *ngIf="errorFestaPatronale && f?.dataFestaPatronale?.value" class="text-danger">
+                                <p>{{getMsgValidazioneByCode('100105')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-sm-6 col-md-3">
+                        <label for="giorniFestivi">{{ "GIORNI_LAVORATIVI.LABEL.GIORNI_FEST_CONTRATTO"| translate}}</label>
+                        <div class="mb-3 col-sm-12 col-md-10">
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="dataGiorniFestivi"
+                                    id="giorniFestivi" 
+                                    ngbDatepicker
+                                    [minDate]="{year: versamentoCorrente?.annoRiferimento, month: 1, day: 1}"
+                                    [maxDate]="{year: versamentoCorrente?.annoRiferimento, month: 12, day: 31}"
+                                    #d_giorniFestivi="ngbDatepicker" 
+                                    maxlength="10"
+                                    (change)="onChnageDate()"
+                                    (dateSelect)="onDateSelection($event)">
+                                <div class="input-group-addon">
+                                    <button class="btn btn-outline-primary calendar" (click)="d_giorniFestivi.toggle()"
+                                        type="button">
+                                        <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span>
+                                        <i class="far fa-calendar-alt fa-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="f?.dataGiorniFestivi?.invalid" class="text-danger">
+                                <ng-container *ngIf="f?.dataGiorniFestivi?.errors?.ngbDate" class="text-danger">
+                                    <p *ngIf="f?.dataGiorniFestivi?.errors?.ngbDate?.minDate || f?.dataGiorniFestivi?.errors?.ngbDate?.maxDate else elseBlock" >
+                                        <!-- NUOVO MESSAGGIO -->
+                                        {{getMsgValidazioneByCode('100135')}}
+                                    </p>
+                                    <ng-template #elseBlock>
+                                        <p>
+                                            {{getMsgValidazioneByCode('100004')}}
+                                        </p>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+                            <div *ngIf="error && f?.dataGiorniFestivi?.value" class="text-danger">
+                                <p>{{getMessageByCodDecodificato()}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-sm-12 col-md-7">
+                        <label for="giorniLavContratto">{{ "GIORNI_LAVORATIVI.LABEL.ELENCO_GIORNI_FEST_CONTRATTO"| translate}}</label>
+                        <ul>
+                            <li *ngFor="let giornoFest of elencoGiorniFestivi; index as i;" class="mt-2">{{ giornoFest?.dGgFestivo | date:'dd/MM/yyyy' }} 
+                               <a *ngIf="!VIEW_MODE" (click)="onClickElimina(i)" (keydown.enter)="onClickElimina(i)"><i class="fas fa-trash-alt" title="Elimina giorno festivo" aria-label="Azione: elimina" tabindex="0"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div *ngIf="!VIEW_MODE" class="row">
+                    <div class="col">
+                        <button
+                        type="button"
+                        (click)="onClickReset()"
+                        class="btn btn-outline-secondary btn-sm">{{ 'APP.GENERICO.BTN.ANNULLA' | translate }}</button>
+                    </div>
+                    <div class="col-auto">
+                      <button
+                       [disabled]="GIORNI_LAVORATIVI_INVALID"
+                       type="submit"
+                        class="btn btn-sm btn-primary">{{ 'APP.GENERICO.BTN.CONFIRM' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

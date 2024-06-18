@@ -1,0 +1,7 @@
+<ngb-alert [type]="'danger'" [dismissible]="false">
+    <h4>{{ 'ERROR.ERROR_TITLE' | translate }}</h4>
+    <p *ngIf="apiError">
+        {{'status: '+apiError?.code}}<br>
+        {{apiError?.message}}
+    </p>
+</ngb-alert>

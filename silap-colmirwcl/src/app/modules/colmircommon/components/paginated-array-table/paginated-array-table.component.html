@@ -1,0 +1,48 @@
+
+<div  class="scrollbar-table scrollbar-primary">
+
+    <!-- //NOSONAR --><table class="table  table-hover table-sortable comonl-table" id="infoTable">
+      <thead>
+        <ng-template [ngTemplateOutlet]="tplHead?.templateRef"></ng-template>
+      </thead>
+      <tbody *ngIf="pagedResponse.length > 0; else noData">
+        <ng-template *ngFor="let el of pageSlice" [ngTemplateOutlet]="tplBody?.templateRef" [ngTemplateOutletContext]="{$implicit: el, el: el}"></ng-template>
+      </tbody>
+      <ng-template #noData>
+        <tbody role="group">
+          <tr *ngIf="columnNumber > 0" role="row">
+            <td [colSpan]="columnNumber">Non ci sono dati</td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </table>
+  </div>
+  <nav aria-label="Navigazione">
+    <div class="container row comonl-pagination-footer">
+      <div class="col-12 col-sm-3 col-md-2">
+      </div>
+  
+      <div class="col-12 col-sm-3 col-md-3">
+        <label for="itesmForPage">{{'APP.PAGINATION_TABLE.ROWS_FOR_PAGE' | translate}}</label>
+        
+        <select name="recordPerpagina" (change)="changePageSize($event)" [ngModel]="limit" id="itesmForPage" aria-label="Righe per pagina"  class="silplibwcl-select-page">
+          <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+        </select>
+      </div>
+  
+      <div class="col-12 col-sm-4 col-md-2 mt-2">
+        {{ paginationFooter }}
+      </div>
+  
+      <div class="col-12 col-sm-6 col-md-4 float-right">
+        <ngb-pagination #pagination class="d-flex justify-content-end" [collectionSize]="pagedResponse.length" [page]="page"
+          [pageSize]="limit" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)="goToPage($event)">
+          <ng-template ngbPaginationFirst>{{'APP.PAGINATION_TABLE.START' | translate}}</ng-template>
+          <ng-template ngbPaginationLast>{{'APP.PAGINATION_TABLE.END' | translate}}</ng-template>
+          <ng-template ngbPaginationPrevious>{{'APP.PAGINATION_TABLE.PREV' | translate}}</ng-template>
+          <ng-template ngbPaginationNext>{{'APP.PAGINATION_TABLE.NEX' | translate}}</ng-template>
+        </ngb-pagination>
+      </div>
+    </div>
+  </nav>
+  

@@ -1,0 +1,30 @@
+<!--*************************************************
+Copyright Regione Piemonte - 2024
+SPDX-License-Identifier: EUPL-1.2-or-later
+***************************************************/-->
+<div *ngIf="ruoli" class="card mt-3 mb-3">
+  <div class="card-body">
+    <h2>{{ 'ACCESSO_RUOLO.TITLE' | translate}}</h2>
+    <colmirwcl-paginated-array-table [columnNumber]="4" [pagedResponse]="ruoli" [limit]="10">
+      <ng-template colmirwclPaginationHead>
+        <tr>
+          <th scope="col">{{'ACCESSO_RUOLO.TABLE.HEAD.SEL' | translate}}</th>
+          <th scope="col">{{'ACCESSO_RUOLO.TABLE.HEAD.DENOMINAZIONE' | translate}}</th>
+          <th scope="col">{{'ACCESSO_RUOLO.TABLE.HEAD.RUOLO' | translate}}</th>
+          <th scope="col">{{'ACCESSO_RUOLO.TABLE.HEAD.COD_FISC' | translate}}</th>
+        </tr>
+      </ng-template>
+      <ng-template colmirwclPaginationBody let-item>
+          <tr>
+            <td>
+              <input (change)="onClickSelectRuolo(item)" (keydown.enter)="onClickSelectRuolo(item)" name="radioRuolo" type="radio" id="{{item?.idSilapDRuolo}}">
+              <label for="{{item?.idSilapDRuolo}}" class="sr-only">{{getDenominazione(item)+" "+item?.dsSilapDRuolo+" "+getCodiceFiscale(item)}}</label>
+            </td>
+            <td>{{getDenominazione(item)}}</td>
+            <td>{{item?.dsSilapDRuolo}}</td>
+            <td>{{getCodiceFiscale(item)}}</td>
+          </tr>
+      </ng-template>
+    </colmirwcl-paginated-array-table>
+  </div>
+</div>

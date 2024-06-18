@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-12">
+      <h3>{{'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TITLE' | translate}}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <p class="filtri">{{'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.FILTRI_APPL' | translate}}</p>
+    </div>
+    <div *ngIf="formRicerca" class="col-sm-12 col-md-6 col-lg-7 filtri">
+        <label *ngIf="formRicerca?.codFisc">
+            <i class="fas fa-check"></i>
+            {{"Codice Fiscale: "+formRicerca?.codFisc}}
+        </label>
+        <label *ngIf="formRicerca?.denomAzienda">
+            <i class="fas fa-check"></i>
+            {{"Denominazione Azienda: "+formRicerca?.denomAzienda}}
+        </label>
+        <label *ngIf="formRicerca?.dataInizio">
+            <i class="fas fa-check"></i>
+            {{"Data stato dichiarazione: Da: "+(formRicerca?.dataInizio | date: "dd/MM/yyyy")}}
+        </label>
+        <label *ngIf="formRicerca?.dataFine">
+            <i class="fas fa-check"></i>
+            {{"Data stato dichiarazione: a: "+(formRicerca?.dataFine | date: "dd/MM/yyyy")}}
+        </label>
+        <label *ngIf="formRicerca?.statoDichiarazione && formRicerca?.statoDichiarazione.length > 0">
+            <i class="fas fa-check"></i> Stato:
+            <div class="custom" *ngFor="let stato of formRicerca?.statoDichiarazione">
+               {{ stato | statoDVersamento }}
+            </div>
+        </label>
+        <label *ngIf="formRicerca?.annoProtocollo">
+            <i class="fas fa-check"></i>
+            {{"Anno protocollo: "+formRicerca?.annoProtocollo}}
+        </label>
+        <label *ngIf="formRicerca?.numProtocollo">
+            <i class="fas fa-check"></i>
+            {{"Numero protocollo: "+formRicerca?.numProtocollo}}
+        </label>
+        <label>
+            {{"Versamento in unica soluzione: "+(formRicerca?.flgUnicaSoluzione | siNo)}}
+        </label>
+        <label>
+            {{"Versamento in due rate: "+(formRicerca?.flgDueRate | siNo)}}
+        </label>
+    </div>
+</div>
+<div class="mt-5 scrollbar-table scrollbar-primary">
+    <colmirwcl-paginated-table
+        [pagedResponse]="pagedResponse" (changePaginationData)="onChangePaginationData($event)"
+        #pagedTable [columnNumber]="10" [limit]="pagedResponse?.recordPage">
+        <ng-template colmirwclPaginationHead>
+            <tr>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.AZIENDA' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.ANNO_RIF' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.DT_STATO' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.STATO' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.N_PROT' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.IMPORTO' | translate}}</th>
+
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.N_RATE' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.IMPORTO_VERSATO' | translate}}</th>
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.DATA_VERS' | translate}}</th>
+
+                <th>{{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.TABLE.HEAD.AZIONI' | translate}}</th>
+            </tr>
+        </ng-template>
+        <ng-template colmirwclPaginationBody let-el>
+            <tr>
+                <td>{{el?.codFiscale}}</td>
+                <td>{{el?.annoRiferimento}}</td>
+                <td>{{el?.dtStato | date: 'dd/MM/yyyy'}}</td>
+                <td>{{el?.descStato}}</td>
+                <td>{{el?.numProtocollo}}</td>
+                <td>{{el?.importo | number:'0.2-2' }}</td>
+                <td>{{el?.numRata}}</td>
+                <td>{{el?.importoPagato | number:'0.2-2'}}</td>
+                <td>{{el?.dtEsito | date: 'dd/MM/yyyy'}}</td>
+                <td class="col-md-2">
+                    <a (click)="onClickGoToNavMain(el?.idEsoTVersamento,'view')" (keydown.enter)="onClickGoToNavMain(el?.idEsoTVersamento,'view')" class="icon_light" aria-label="Azione: visualizzare dichiarazione" title="Visualizzare dichiarazione" tabindex="0">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a *ngIf="showModifica(el)" (click)="onClickGoToNavMain(el?.idEsoTVersamento,'edit')" (keydown.enter)="onClickGoToNavMain(el?.idEsoTVersamento,'edit')" aria-label="Azione: modificare dichiarazione" title="Modificare dichiarazione" tabindex="0">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a *ngIf="showElimina(el)" (click)="onClickEliminaAnnulla(el,true)" (keydown.enter)="onClickEliminaAnnulla(el,true)"aria-label="Azione: eliminare dichiarazione" title="Eliminare dichiarazione" tabindex="0">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a *ngIf="showAnnulla(el)" (click)="onClickEliminaAnnulla(el,false)" (keydown.enter)="onClickEliminaAnnulla(el,false)" aria-label="Azione: annullare dichiarazione" title="Annullare dichiarazione" tabindex="0">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a *ngIf="showStampa(el)" (click)="onClickStampa(el?.idEsoTVersamento)" (keydown.enter)="onClickStampa(el?.idEsoTVersamento)" class="icon_light" aria-label="Azione: scaricare dichiarazione" title="Scarica dichiarazione" tabindex="0">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a *ngIf="showVisualizzaAvvisoPagamento(el)" (click)="onClickStampaAvvisoPagamento(el?.idEsoTVersamento)" (keydown.enter)="onClickStampaAvvisoPagamento(el?.idEsoTVersamento)" class="icon_light" aria-label="Azione: scaricare pdf avviso pagamento" title="Scarica pdf avviso pagamento" tabindex="0">
+                        <i class="fas fa-file-alt"></i>
+                    </a>
+                    <a *ngIf="showVerificaStatoPagamento(el)" (click)="onClickVerificaStatoPagamento(el?.idEsoTVersamento)" (keydown.enter)="onClickVerificaStatoPagamento(el?.idEsoTVersamento)" class="icon_light" aria-label="Azione: verificare stato pagamento" title="Verificare stato pagamento" tabindex="0">
+                        <i class="fas fa-euro-sign" style="color: #066bb3;"></i>
+                    </a>
+                </td>
+            </tr>
+        </ng-template>
+    </colmirwcl-paginated-table>
+</div>
+<div class="row">
+    <div class="col-auto">
+      <button type="button" (click)="onClickEsportaFile('pdf')" class="btn btn-primary ml-auto btn-lg">
+        {{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.BUTTON.EXPORT_PDF' | translate}}
+      </button>
+    </div>
+    <div class="col-auto">
+      <div class="col-auto">
+        <button type="button" (click)="onClickEsportaFile('xls')" class="btn btn-primary ml-auto btn-lg">
+            {{ 'RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO.BUTTON.EXPORT_EXCEL' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>

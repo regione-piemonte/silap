@@ -1,0 +1,125 @@
+<form [formGroup]="form" *ngIf="showForm" (ngSubmit)="onSubmit()">
+  <p class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span class="oblg">*</span>
+    {{'APP.GENERICO.OBBLIGO' | translate}}</p>
+  <div class="row">
+    <div class="mb-3 col-sm-12 col-md-4">
+      <label for="codFiscRicercaAzi">{{'FORM_RICERCA_DICH.LABEL.CF' | translate}}</label>
+      <input type="text" class="form-control" formControlName="codFisc"
+        oninput="this.value = this.value.toUpperCase().trim()" id="codFiscRicercaAzi" maxlength="16">
+      <div *ngIf="f?.codFisc?.invalid" class="text-danger">
+        <p *ngIf="f?.codFisc?.errors?.minlength">{{getMsgValidazioneByCode('100002')}}</p>
+      </div>
+    </div>
+    <div class="mb-3 col-sm-12 col-md-8">
+      <label for="denomAzi">{{'FORM_RICERCA_DICH.LABEL.DENOM' | translate}}</label>
+      <input type="text" class="form-control" formControlName="denomAzienda"
+        oninput="this.value = this.value.toUpperCase()" id="denomAzi">
+      <div *ngIf="f?.denomAzienda?.invalid" class="text-danger">
+        <p *ngIf="f?.denomAzienda?.errors?.minlength">{{getMsgValidazioneByCode('100005')}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-md-3 col-lg-3">
+      <div class="mb-3">
+        <label for="dataInizio">{{'FORM_RICERCA_DICH.LABEL.DATA_STATO_DICH_INIZIO' | translate}}<span
+            class="oblg">*</span></label>
+        <div class="input-group">
+          <input type="text" class="form-control"
+            [maxDate]="{year: sysDate.getFullYear(), month: (sysDate.getMonth()) + 1, day: sysDate.getDate()}"
+            (keyup)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+            (dateSelect)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+            data-provide="datepicker" formControlName="dataInizio" id="dataInizio" placeholder="Data da" ngbDatepicker
+            #d_dataInizio="ngbDatepicker" maxlength="10">
+          <div class="input-group-addon">
+            <button class="btn btn-outline-primary calendar" (click)="d_dataInizio.toggle()" type="button">
+              <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span><i
+                class="far fa-calendar-alt fa-lg"></i></button>
+          </div>
+        </div>
+        <div *ngIf="f?.dataInizio?.invalid" class="text-danger">
+          <ng-container *ngIf="f?.dataInizio?.errors?.ngbDate">
+            <p *ngIf="f?.dataInizio?.errors?.ngbDate?.maxDate; else elseBlock" >
+              <!-- NUOVO MESSAGGIO -->
+              {{getMsgValidazioneByCode('100134')}}
+            </p>
+            <ng-template #elseBlock>{{getMsgValidazioneByCode('100004')}}</ng-template>
+          </ng-container>
+          <p *ngIf="f?.dataInizio?.errors?.invalidDataRange">{{getMsgValidazioneByCode('100139')}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-3 col-lg-3">
+      <div class="mb-3">
+        <label for="dataFine">{{'FORM_RICERCA_DICH.LABEL.DATA_STATO_DICH_FINE' | translate}}<span
+            class="oblg">*</span></label>
+        <div class="input-group date">
+          <input type="text" class="form-control"
+            (keyup)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+            (dateSelect)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+            formControlName="dataFine" id="dataFine" placeholder="Data a" ngbDatepicker #d_dataFine="ngbDatepicker"
+            maxlength="10">
+          <div class="input-group-addon">
+            <button class="btn btn-outline-primary calendar" (click)="d_dataFine.toggle()" type="button">
+              <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span><i
+                class="far fa-calendar-alt fa-lg"></i></button>
+          </div>
+        </div>
+        <div *ngIf="f?.dataFine?.invalid" class="text-danger">
+          <p *ngIf="f?.dataFine?.errors?.ngbDate">{{getMsgValidazioneByCode('100004')}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 col-sm-6 col-md-6">
+      <fieldset formArrayName="statoDichiarazione">
+        <legend>{{'FORM_RICERCA_DICH.LABEL.STATO_DICH' | translate}}</legend>
+        <button type="button" (click)="statiSelezionati = []; f?.statoDichiarazione?.reset()" style="margin-left: 1em;" class="btn btn-primary ml-auto btn-lg">{{'FORM_RICERCA_DICH.BUTTON.RIMUOVI_CHECK_STATO' | translate}}</button>
+        <ul class="list-inline">
+          <li *ngFor="let stato of stati; index as i" class="list-inline-item">
+            <input type="checkbox" class="form-check-input" [formControlName]="i" (change)="selectRemoveStato(stato?.id)"
+              id="{{'option'+i}}">
+            <label for="{{'option'+i}}">{{stato?.descr}}</label>
+          </li>
+        </ul>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3 col-sm-2 col-md-2">
+      <label for="annoProtocollo" class="form-label">{{'FORM_RICERCA_DICH.LABEL.ANNO_PROT' | translate}}</label>
+      <input (change)="setNumeroProtocolloControlState()" colmirwclOnlyNumber maxlength="4" type="text"
+        class="form-control" formControlName="annoProtocollo" id="annoProtocollo">
+        <div *ngIf="f?.annoProtocollo?.invalid" class="text-danger">
+          <p *ngIf="f?.annoProtocollo?.errors?.minlength">Anno non valido</p>
+        </div>
+    </div>
+    <div class="mb-3 col-sm-12 col-md-2">
+      <label for="numeroProtocollo" class="form-label">{{'FORM_RICERCA_DICH.LABEL.NUM_PROT' | translate}}</label><span *ngIf="f?.numProtocollo?.errors?.required" class="oblg">*</span>
+      <input type="text" colmirwclOnlyNumber class="form-control" formControlName="numProtocollo" id="numeroProtocollo">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-2"></div>
+    <div class="mb-3 col-sm-12 col-md-6">
+      <fieldset>
+        <legend>{{'FORM_RICERCA_DICH.LABEL.VERSAMENTO' | translate}}</legend>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <input type="checkbox" class="form-check-input" formControlName="flgUnicaSoluzione" id="unicaSol"><label for="unicaSol">{{'FORM_RICERCA_DICH.LABEL.UNICA_SOL' | translate}}</label>
+          </li>
+          <li class="list-inline-item">
+            <input type="checkbox" class="form-check-input" formControlName="flgDueRate" id="dueRate"><label for="dueRate">{{'FORM_RICERCA_DICH.LABEL.DUE_RATE' | translate}}</label>
+          </li>
+        </ul>
+      </fieldset>
+    </div>
+  </div>
+  <div *ngIf="form" class="row">
+    <div class="col">
+      <button type="button" (click)="onClickReset()" class="btn btn-outline-secondary btn-sm">{{
+        "APP.GENERICO.BTN.RIMUOVI_FILTRI_UPPER_C" | translate}}</button>
+    </div>
+    <div class="col-auto">
+      <button [disabled]="!form?.valid" type="submit" class="btn btn-primary ml-auto btn-lg">{{
+        "APP.GENERICO.BTN.CERCA_UPPER_C" | translate}}</button>
+    </div>
+  </div>
+</form>

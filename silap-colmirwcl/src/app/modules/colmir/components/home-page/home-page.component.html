@@ -1,0 +1,79 @@
+<!--*************************************************
+Copyright Regione Piemonte - 2024
+SPDX-License-Identifier: EUPL-1.2-or-later
+***************************************************/-->
+<!-- START FUNZIONI -->
+<div *ngIf="templateMenu" class="row home">
+    <div *ngIf="templateMenu[DICHIARAZIONE_VERSAMENTO_ESONERI_ID]" class="card col-auto">
+        <div class="card-body">
+            <button (click)="goToFunzioneById(DICHIARAZIONE_VERSAMENTO_ESONERI_ID)" class="btn btn-outline-secondary btn-sm">
+                <div class="d-flex align-items-center">
+                    <i [ngClass]="getIconByIdFunzione(DICHIARAZIONE_VERSAMENTO_ESONERI_ID)"></i>
+                    <div class="ml-2">
+                        <div class="title">
+                            <p [innerHTML]="getTitleByIdFunzione(DICHIARAZIONE_VERSAMENTO_ESONERI_ID)"></p>
+                        </div>
+                        <div class="sub_title">
+                            <p [innerHTML]="getSubTitleByIdFunzione(DICHIARAZIONE_VERSAMENTO_ESONERI_ID)"></p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="templateMenu[GENERA_AVVISI_DI_PAGAMENTO_ID]" class="card col-auto">
+        <div class="card-body">
+            <button  (click)="goToFunzioneById(GENERA_AVVISI_DI_PAGAMENTO_ID)" class="btn btn-outline-secondary btn-sm">
+                <div class="d-flex align-items-center">
+                    <i [ngClass]="getIconByIdFunzione(GENERA_AVVISI_DI_PAGAMENTO_ID)"></i>
+                    <div class="ml-2">
+                        <div class="title">
+                            <p [innerHTML]="getTitleByIdFunzione(GENERA_AVVISI_DI_PAGAMENTO_ID)"></p>
+                        </div>
+                        <div class="sub_title">
+                            <p [innerHTML]="getSubTitleByIdFunzione(GENERA_AVVISI_DI_PAGAMENTO_ID)"></p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="templateMenu" class="row home">
+    <div *ngIf="templateMenu[PREVISIONE_DICHIARAZIONI_ID]" class="card col-auto">
+        <div class="card-body">
+            <button  (click)="goToFunzioneById(PREVISIONE_DICHIARAZIONI_ID)" class="btn btn-outline-secondary btn-sm">
+                <div class="d-flex align-items-center">
+                    <i [ngClass]="getIconByIdFunzione(PREVISIONE_DICHIARAZIONI_ID)"></i>
+                    <div class="ml-2">
+                        <div class="title">
+                            <p [innerHTML]="getTitleByIdFunzione(PREVISIONE_DICHIARAZIONI_ID)"></p>
+                        </div>
+                        <div class="sub_title">
+                            <p [innerHTML]="getSubTitleByIdFunzione(PREVISIONE_DICHIARAZIONI_ID)"></p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="templateMenu[AUTORIZZA_DICHIARAZIONI_ID]" class="card col-auto">
+        <div class="card-body">
+            <button (click)="goToFunzioneById(AUTORIZZA_DICHIARAZIONI_ID)" class="btn btn-outline-secondary btn-sm">
+                <div class="d-flex align-items-center">
+                    <i [ngClass]="getIconByIdFunzione(AUTORIZZA_DICHIARAZIONI_ID)"></i>
+                    <div class="ml-2">
+                        <div class="title">
+                            <p [innerHTML]="getTitleByIdFunzione(AUTORIZZA_DICHIARAZIONI_ID)"></p>
+                        </div>
+                        <div class="sub_title">
+                            <p [innerHTML]="getSubTitleByIdFunzione(AUTORIZZA_DICHIARAZIONI_ID)"></p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- END FUNZIONI -->

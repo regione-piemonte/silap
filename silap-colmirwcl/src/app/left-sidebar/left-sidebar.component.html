@@ -1,0 +1,29 @@
+<!--*************************************************
+Copyright Regione Piemonte - 2024
+SPDX-License-Identifier: EUPL-1.2-or-later
+***************************************************/-->
+<div [ngClass]="{'show-sidebar-left': close,'sidebar-nav': true }">
+    <a (click)="setClass()" class="navbar-toggle btn btn-link" data-toggle="collapse" id="menu-toggle">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <ul *ngIf="ruoloFunzioni" class="nav-pills nav-stacked" id="menu">
+      <li *ngFor="let el of ruoloFunzioni; index as i">
+        <a *ngIf="DICHIARAZIONE_VERSAMENTO_ESONERI_ID === el?.funzione?.idSilapDFunzione" (click)="onCLickLink(DICHIARAZIONE_VERSAMENTO_ESONERI_ID)" [title]="el?.funzione?.dsSilapDFunzione">
+          <i [class]="el?.funzione?.iconaSilapDFunzione"></i>
+          <span>{{el?.funzione?.dsSilapDFunzione}}</span>
+        </a>
+        <a *ngIf="AUTORIZZA_DICHIARAZIONE === el?.funzione?.idSilapDFunzione" (click)="onCLickLink(AUTORIZZA_DICHIARAZIONE)" [title]="el?.funzione?.dsSilapDFunzione">
+          <i [class]="el?.funzione?.iconaSilapDFunzione"></i>
+          <span>{{el?.funzione?.dsSilapDFunzione}}</span>
+        </a>
+        <a *ngIf="PREVISIONE_DICHIARAZIONE === el?.funzione?.idSilapDFunzione" (click)="onCLickLink(PREVISIONE_DICHIARAZIONE)" [title]="el?.funzione?.dsSilapDFunzione">
+          <i [class]="el?.funzione?.iconaSilapDFunzione"></i>
+          <span>{{el?.funzione?.dsSilapDFunzione}}</span>
+        </a>
+        <a *ngIf="GENERA_AVVISI_DI_PAGAMENTO_ID === el?.funzione?.idSilapDFunzione" (click)="onCLickLink(GENERA_AVVISI_DI_PAGAMENTO_ID)" [title]="el?.funzione?.dsSilapDFunzione">
+          <i [class]="el?.funzione?.iconaSilapDFunzione"></i>
+          <span>{{el?.funzione?.dsSilapDFunzione}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>

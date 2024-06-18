@@ -1,0 +1,40 @@
+.title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+ 
+  td {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-color: #dee2e6;
+  }
+ 
+  .tableIter{
+    padding-left: 3px;
+  }
+
+
+  textarea{
+    width: 100%;
+}
+
+p,
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 1em;
+}

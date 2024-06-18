@@ -1,0 +1,41 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 7px;
+    text-align: left;
+  }
+  
+  
+  td {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .custom-h3{
+    margin-top: 0;
+  }
+
+  .insert-item{
+    background-color: rgba(0, 0, 0, 0.075) !important;
+  }
+
+  h3.title{
+    width: 40.4em;
+  }
+
+  .btn-control-list-middle{
+    margin-left: 2%;
+  }
+
+  .periodo-sovrapposto{
+    background-color: rgba(255, 0, 0, 0.4) !important;
+  }
+
+  .operatore{
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 3%;
+  }

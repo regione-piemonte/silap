@@ -1,0 +1,349 @@
+{
+  "ACCESSO_RUOLO": {
+    "TABLE": {
+      "HEAD": {
+        "COD_FISC": null,
+        "DENOMINAZIONE": null,
+        "RUOLO": null,
+        "SEL": null
+      }
+    },
+    "TITLE": null
+  },
+  "APP": {
+    "GENERICO": {
+      "BTN": {
+        "ANNULLA": null,
+        "APRI_CAL": null,
+        "CERCA_UPPER_C": null,
+        "CONFERMA": null,
+        "CONFIRM": null,
+        "RIMUOVI_FILTRI_UPPER_C": null
+      },
+      "CAMPI_CONTR": null,
+      "OBBLIGO": null
+    },
+    "LOADING": "Loading...",
+    "NO": null,
+    "PAGINATION_TABLE": {
+      "END": null,
+      "NEX": null,
+      "PREV": null,
+      "ROWS_FOR_PAGE": null,
+      "START": null
+    },
+    "YES": null
+  },
+  "AUTORIZZA": {
+    "MODAL": {
+      "TITLE": null
+    }
+  },
+  "DATI_AZIENDALI": {
+    "FIELD": {
+      "ANNO_RIF": null,
+      "CAP": null,
+      "CCNL": null,
+      "COMUNE": null,
+      "CREDITO_RESIDUO": null,
+      "DENOMINAZIONE": null,
+      "INDIRIZZO": null,
+      "VERSAMENTO": null,
+      "VERSAMENTO_1": null,
+      "VERSAMENTO_2": null
+    },
+    "LABEL": {
+      "CF": null,
+      "MAIL": null
+    },
+    "SUB_TITLE_INSERIMENTO_DICH": null,
+    "SUB_TITLE_SEDE_LEGALE": null,
+    "TITLE_EDIT": null,
+    "TITLE_INS": null,
+    "TITLE_VIS": null
+  },
+  "DICHIARAZIONE": {
+    "MODAL": {
+      "RIPRISTINO_DATI": {
+        "TITLE": null
+      }
+    }
+  },
+  "DICHIARAZIONI": {
+    "BUTTON": {
+      "ELIMINA_SEL": null,
+      "RIPRISTINA_DATI": null
+    },
+    "LABEL": {
+      "%_SOSPENSIONE": null,
+      "AZIONI": null,
+      "BASE_COMPUTO": null,
+      "CAT_AZI": null,
+      "DATA_FINE": null,
+      "DATA_INIZIO": null,
+      "DICHIARAZIONE_ESONERI": null,
+      "DISABILI_FORZA": null,
+      "ELENCO_CALCOLATO": null,
+      "ELENCO_DICHIARAZIONI": null,
+      "GIORNI_LAVORATIVI": null,
+      "IMPORTO": null,
+      "MOT_SOSPENSIONE": null,
+      "NUM_COMPENSATI": null,
+      "NUM_ESONERATI": null,
+      "NUM_ESON_CERTIFICATI": null,
+      "NUM_LAV_SOSPESI": null,
+      "NUM_RIALLINEAM_NAZ": null,
+      "PERIODO": null,
+      "QUOTA_RISERVA": null,
+      "TOT_PERIODI": null
+    }
+  },
+  "ERROR": {
+    "ERROR_TITLE": null,
+    "POPUP_BLOCKED": "Please disable your Pop-up blocker and try again."
+  },
+  "FORM_RICERCA_DICH": {
+    "BUTTON": {
+      "RIMUOVI_CHECK_STATO": null
+    },
+    "LABEL": {
+      "ANNO_PROT": null,
+      "CF": null,
+      "DATA_STATO_DICH_FINE": null,
+      "DATA_STATO_DICH_INIZIO": null,
+      "DENOM": null,
+      "DUE_RATE": null,
+      "NUM_PROT": null,
+      "STATO_DICH": null,
+      "UNICA_SOL": null,
+      "VERSAMENTO": null
+    }
+  },
+  "GENERA_AVVISO": {
+    "MODAL": {
+      "TITLE": null
+    }
+  },
+  "GIORNI_LAVORATIVI": {
+    "LABEL": {
+      "ELENCO_GIORNI_FEST_CONTRATTO": null,
+      "FESTA_PATRONALE": null,
+      "GIORNI_FEST_CONTRATTO": null,
+      "GIORNI_LAVORATIVI": null,
+      "GIORNI_LAV_1": null,
+      "GIORNI_LAV_2": null
+    }
+  },
+  "HEADER": {
+    "MENU": {
+      "BUTTON": {
+        "CF": "Tax ID code",
+        "CHANGE_ROLE": "Change role",
+        "ENTE": null,
+        "LOG_OUT": "Log out",
+        "NAME": "Name",
+        "ROLE": "Role",
+        "UTENTE_NU": "NU"
+      }
+    },
+    "TITLE": "title"
+  },
+  "LANGUAGE": {
+    "ENGLISH": "ENG",
+    "ITALIAN": "ITA"
+  },
+  "MODAL": {
+    "TITLE": {
+      "ANNULLA_DICH": null,
+      "ELIMINA_DICH": null,
+      "ELIMINA_SOSP": null,
+      "INSERIM_SOSP_LICENZIAMENTO_COLLETTIVO": null,
+      "PERIODO": null
+    }
+  },
+  "NAV_MAIN": {
+    "BUTTON": {
+      "TORNA_ELENCO": null
+    },
+    "WIZARD": {
+      "STEP_1": {
+        "TITLE": null
+      },
+      "STEP_2": {
+        "TITLE": null
+      },
+      "STEP_3": {
+        "TITLE": null
+      }
+    }
+  },
+  "NAV_MAIN_DICH_VER": {
+    "MODAL": {
+      "TITLE": null
+    }
+  },
+  "PAGINATION": {
+    "FIRST": "First",
+    "LAST": "Last",
+    "NEXT": "Next",
+    "PREV": "Prev."
+  },
+  "PREVISIONE_DICHIARAZIONE": {
+    "BUTTON": {
+      "DOWNLOAD_TEMPLATE": null,
+      "UPLOAD": null
+    },
+    "LABEL": {
+      "ANNO": null,
+      "EMAIL": null,
+      "FILE": null
+    },
+    "VALIDATION": {
+      "FORMAT_FILE": null
+    }
+  },
+  "PROVINCE": {
+    "FIELD": {
+      "ELENCO_PROVINCE": null,
+      "SEL_PROV": null
+    },
+    "LABEL": {
+      "%_CONCESSA": null,
+      "%_RICHIESTA": null,
+      "ANNO": null,
+      "BASE_COMPUTO": null,
+      "DATA_CONCESSIONE": null,
+      "DATA_DINIEGO": null,
+      "DATA_RICHIESTA": null,
+      "DATA_RICONOSC": null,
+      "DATA_SCADENZA": null,
+      "DATA_STIPULA": null,
+      "DATI_CONVENZIONE": null,
+      "DATI_ESON_PARZIALE": null,
+      "DATI_PROSPETTI_INFO": null,
+      "DATI_RICONOSC_INABILITA": null,
+      "DISABILI_FORZA": null,
+      "NUM_COMPENSAZIONE": null,
+      "NUM_ESON_AUTOCERT": null,
+      "NUM_POSIZIONI_APERTE": null,
+      "ORE_SETTIMANALI_MEDIE": null,
+      "QUOTA_RISERVA": null,
+      "TIPOLOGIA": null
+    },
+    "TABS": {
+      "TILE": {
+        "DETTAGLIO_DICHIARAZIONE": null,
+        "GIORNI_LAVORATIVI": null,
+        "SOSPENSIONI": null
+      }
+    },
+    "TITLE_EDIT": null,
+    "TITLE_INS": null,
+    "TITLE_VIS": null
+  },
+  "RICERCA_DICHIARAZIONE_VER_ESO": {
+    "BTN_NUOVO": null,
+    "TITLE_NO_OP_REGIONE": null,
+    "TITLE_OP_REGIONE": null
+  },
+  "RIEPILOGO": {
+    "ACCORDION": {
+      "TITLE": {
+        "AUTORIZZA": null,
+        "DATI_PAGAMENTO": null
+      }
+    },
+    "AUTORIZZA": {
+      "BTN": {
+        "AGGIORNA_STATO": null
+      },
+      "FIELD": {
+        "NO": null,
+        "NOTE": null,
+        "SI": null
+      },
+      "LABEL": {
+        "RADIO": null
+      }
+    },
+    "BTN": {
+      "INVIO": null
+    },
+    "LABEL": {
+      "ANNO_RIF": null,
+      "CAP": null,
+      "CCNL": null,
+      "CF": null,
+      "COD_AVVISO": null,
+      "COMUNE": null,
+      "CREDITO_RESIDUO": null,
+      "DATA": null,
+      "DATA_AVVISO": null,
+      "DATA_VERSAMENTO": null,
+      "DENOMINAZIONE_AZIENDA": null,
+      "DESC_CAUSALE_VER": null,
+      "GIORNI_LAVORATIVI": null,
+      "IDENTIFICATIVO_UNIVOCO_RISC": null,
+      "IMPORTO": null,
+      "IMPORTO_ATTESO": null,
+      "IMPORTO_VERSATO": null,
+      "INDIRIZZO": null,
+      "IUV": null,
+      "MAIL_RIF": null,
+      "NOTE": null,
+      "NUM_ESONERATI": null,
+      "NUM_TRANSAZ": null,
+      "PRESTATORE_SERV": null,
+      "PROTOCOLLO": null,
+      "PROVINCIA": null,
+      "SEDE_LEGALE": null,
+      "STATO": null,
+      "TOT_AZIENDA": null,
+      "VERSAMENTO": null
+    },
+    "MODAL": {
+      "TITLE": {
+        "AUTORIZZA": null
+      }
+    },
+    "TITLE_DATI": null,
+    "TITLE_DICHIARAZIONE": null,
+    "TITLE_DICHIA_VERS": null,
+    "TITLE_ITER_DICHIA_VERS": null
+  },
+  "RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO": {
+    "BUTTON": {
+      "EXPORT_EXCEL": null,
+      "EXPORT_PDF": null
+    },
+    "FILTRI_APPL": null,
+    "TABLE": {
+      "HEAD": {
+        "ANNO_RIF": null,
+        "AZIENDA": null,
+        "AZIONI": null,
+        "DATA_VERS": null,
+        "DT_STATO": null,
+        "IMPORTO": null,
+        "IMPORTO_VERSATO": null,
+        "N_PROT": null,
+        "N_RATE": null,
+        "STATO": null
+      }
+    },
+    "TITLE": null
+  },
+  "SOSPENSIONI": {
+    "LABEL": {
+      "%_SOSPENSIONE": null,
+      "AZIONI": null,
+      "DATA_FINE": null,
+      "DATA_INIZIO": null,
+      "ELENCO_SOSPENSIONI": null,
+      "MOT_SOSPENSIONE": null,
+      "NUM_LAV_SOSPESI": null,
+      "PERIODO": null,
+      "SOSPENSIONI": null
+    }
+  }
+}

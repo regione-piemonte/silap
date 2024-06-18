@@ -1,0 +1,17 @@
+<em *ngIf="!flgModalTarget" data-scroll-marker="top"></em>
+<em *ngIf="flgModalTarget" data-scroll-marker="modal-top"></em>
+<br>
+<br>
+<div *ngIf="show">
+  <div *ngFor="let msg of listApiMessage; index as i" [ngClass]="{'alert':true,
+                    'alert-success': msg?.tipo === 'S',
+                    'alert-danger': msg?.tipo === 'E',
+                    'alert-warning': msg?.tipo === 'W',
+                    'alert-info': msg?.tipo === 'I'
+                  }" role="alert" aria-atomic="true">
+    <span [innerHTML]="msg?.message + '<br>' | escapeHtml"></span>
+  </div>
+  <div *ngFor="let msg of listErrorMsg; index as i" class="alert alert-danger" role="alert" aria-atomic="true">
+    <span [innerHTML]="msg?.message + '<br>' | escapeHtml"></span>
+  </div>
+</div>

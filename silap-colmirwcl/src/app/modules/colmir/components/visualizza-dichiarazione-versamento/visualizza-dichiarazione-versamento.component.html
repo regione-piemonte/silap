@@ -1,0 +1,243 @@
+<div class="container">
+    <colmirwcl-accordion-info [messaggio]="messaggioAccordionInfo"></colmirwcl-accordion-info>
+    <h2>
+        <i style="color: #005ca9;" class="fas fa-eye mr-2"></i>
+        {{"NAV_MAIN.WIZARD.STEP_3.TITLE" | translate}}
+    </h2>
+    <ngb-accordion #accordionArea0 activeIds="panelArea0" id="accordion-area0" [closeOthers]="true" [destroyOnHide]="false">
+        <ngb-panel id="panelArea0" [title]="'RIEPILOGO.TITLE_DATI' | translate">
+            <ng-template ngbPanelContent let-opened="opened">
+                <div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.CF' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.codFiscale}}</dd>
+                        </dl>
+                        <dl class="mb-5 col-sm-12 col-md-6 mb-2">
+                            <dt>{{'RIEPILOGO.LABEL.DENOMINAZIONE_AZIENDA' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.dsDenominazioneAzienda}}</dd>
+                        </dl>
+                        
+                        <p>{{'RIEPILOGO.LABEL.SEDE_LEGALE' | translate}}</p>
+                        <dl class="mb-5 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.COMUNE' | translate}}</dt>
+                            <dd
+                                >{{versamentoCorrente?.versamentoSede?.comune?.id+(versamentoCorrente?.versamentoSede?.comune?.id
+                                ? ", " : "")+versamentoCorrente?.versamentoSede?.comune?.descr}}</dd>
+                        </dl>
+                        <dl class="mb-5 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.INDIRIZZO' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.versamentoSede?.dsIndirizzo}}</dd>
+                        </dl>
+                        <dl class="mb-5 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.CAP' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.versamentoSede?.codCap}}</dd>
+                        </dl>
+                        <dl class="mb-3 col-sm-12 mb-2">
+                            <dt>{{'RIEPILOGO.LABEL.CCNL' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.silapDCcnl?.cod ? versamentoCorrente?.silapDCcnl.cod + versamentoCorrente?.silapDCcnl?.descr : ""}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <ngb-accordion #accordionArea1 activeIds="panelArea1" id="accordion-area1" [closeOthers]="true" [destroyOnHide]="false">
+        <ngb-panel [title]="'RIEPILOGO.TITLE_DICHIARAZIONE' | translate">
+            <ng-template ngbPanelContent let-opened="opened">
+                <div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.ANNO_RIF' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.annoRiferimento}}</dd>
+                        </dl>
+                        <dl class="mb-5 col-sm-12 col-md-6 mb-2">
+                            <dt>{{'RIEPILOGO.LABEL.CREDITO_RESIDUO' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.numCreditoResiduo | number:'0.2-2'}}</dd>
+                        </dl>
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.VERSAMENTO' | translate}}</dt>
+                            <dd>{{
+                                (versamentoCorrente?.numRate === 1 ? "DATI_AZIENDALI.FIELD.VERSAMENTO_1" :
+                                "DATI_AZIENDALI.FIELD.VERSAMENTO_2") | translate
+                                }}</dd>
+                        </dl>
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.MAIL_RIF' | translate}}</dt>
+                            <dd>{{versamentoCorrente?.dsEmailRiferimento}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <ngb-accordion *ngIf="showLists" #accordionArea2 activeIds="panelArea2" id="accordion-area2" [closeOthers]="true" [destroyOnHide]="false">
+        <ngb-panel [title]="'RIEPILOGO.TITLE_DICHIA_VERS' | translate">
+            <ng-template ngbPanelContent let-opened="opened">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{{'RIEPILOGO.LABEL.PROVINCIA' | translate}}</th>
+                                <th>{{'RIEPILOGO.LABEL.GIORNI_LAVORATIVI' | translate}}</th>
+                                <!-- <th>{{'RIEPILOGO.LABEL.NUM_ESONERATI' | translate}}</th> -->
+                                <th>{{'RIEPILOGO.LABEL.IMPORTO' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let el of dichiarazioneVersamenti">
+                                <td>{{el?.provincia}}</td>
+                                <td>{{el?.giorniLavorativi}}</td>
+                                <!-- <td>{{el?.numLavEsonerati}}</td> -->
+                                <td>{{el?.importo | number: '0.2-2'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <dl class="mb-5 col-sm-12 col-md-4 mt-4">
+                        <dt>{{'RIEPILOGO.LABEL.TOT_AZIENDA' | translate}}</dt>
+                        <dd>{{totaleImporto}}</dd>
+                    </dl>
+                    <div class="mb-3 col-sm-12 col-md-6">
+                        <h3 class="title">{{'RIEPILOGO.TITLE_ITER_DICHIA_VERS' | translate}}</h3>
+                    </div>
+                    <dl class="mb-3 col-sm-12 col-md-4">
+                        <dt>{{'RIEPILOGO.LABEL.PROTOCOLLO' | translate}}</dt>
+                        <dd>{{(versamentoCorrente?.annoProtocollo ? versamentoCorrente?.annoProtocollo+"/" : "")+(versamentoCorrente?.numProtocollo ? versamentoCorrente?.numProtocollo : "")}}</dd>
+                    </dl>
+                    <table>
+                        <thead>
+                            <tr class="tableIter">
+                                <th>{{'RIEPILOGO.LABEL.DATA' | translate}}</th>
+                                <th>{{'RIEPILOGO.LABEL.STATO' | translate}}</th>
+                                <th>{{'RIEPILOGO.LABEL.NOTE' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let stato of versamentoCorrente?.esoTVersamentoStatos" class="tableIter">
+                                <td>{{stato?.dtStato | date:'dd/MM/yyyy'}}</td>
+                                <td>{{stato?.esoDVersamentoStato?.descr}}</td>
+                                <td>{{stato?.dsNote}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <ngb-accordion *ngIf="SEZIONE_AUTORIZZA" #accordionAutorizza activeIds="panelAreaAutorizza" id="accordion-autorizza" [closeOthers]="true" [destroyOnHide]="false">
+        <ngb-panel id="panelAreaAutorizza" [title]="'RIEPILOGO.ACCORDION.TITLE.AUTORIZZA' | translate">
+            <ng-template ngbPanelContent let-opened="opened">
+                <p class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span class="oblg">*</span> {{'APP.GENERICO.OBBLIGO' | translate}}</p>
+                <form [formGroup]="form" (ngSubmit)="onClickAutorizza()">
+                    <div class="row">
+                        <div class="mb-3 col-sm-12 col-md-4">
+                            <label>{{'RIEPILOGO.AUTORIZZA.LABEL.RADIO' | translate}}<span class="oblg" title="campo obbligatorio">*</span></label>
+                        </div>
+                        <div class="mb-3 col-sm-12 col-md-4">
+                            <fieldset>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" formControlName="idDstato" name="idDstato" [value]="4" type="radio" id="autorizzaSi">
+                                    <label class="form-check-label" for="autorizzaSi">
+                                        {{ 'RIEPILOGO.AUTORIZZA.FIELD.SI' | translate }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" formControlName="idDstato" name="idDstato" [value]="5" type="radio" id="autorizzaNo">
+                                    <label class="form-check-label" for="autorizzaNo">
+                                        {{ 'RIEPILOGO.AUTORIZZA.FIELD.NO' | translate }}
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-12">
+                            <label for="noteAutorizza">{{ 'RIEPILOGO.AUTORIZZA.FIELD.NOTE' | translate }}<span class="oblg" title="campo obbligatorio">*</span></label>
+                            <textarea formControlName="dsNote" id="noteAutorizza" maxlength="300" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-auto">
+                          <button type="submit"
+                            class="btn btn-sm btn-primary"
+                            [disabled]="!form?.valid">{{ 'RIEPILOGO.AUTORIZZA.BTN.AGGIORNA_STATO' | translate }}</button>
+                        </div>
+                    </div>
+                </form>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <ngb-accordion *ngIf="SHOW_DATI_PAGAMENTO" #accordionDatiPagamento activeIds="panelDatiPagamento" id="accordion-dati-pagamento" [closeOthers]="true" [destroyOnHide]="false">
+        <ngb-panel [title]="'RIEPILOGO.ACCORDION.TITLE.DATI_PAGAMENTO' | translate">
+            <ng-template ngbPanelContent let-opened="opened">
+                <!-- Avviso di pagamento rata i-esima -->
+                <div *ngFor="let posizioneDebitoria of versamentoCorrente?.esoTPosizioneDebitorias; index as i">
+                    <div class="row">
+                        <h2>Avviso di pagamento rata: {{posizioneDebitoria?.numRata}}</h2>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.IUV' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.codIuv}}</dd>
+                        </dl>
+                        <dl class="mb-3 col-sm-12 col-md-6">
+                            <dt>{{'RIEPILOGO.LABEL.COD_AVVISO' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.codAvviso}}</dd>
+                        </dl>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.DATA_AVVISO' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.dtInserim| date: 'dd/MM/yyyy'}}</dd>
+                        </dl>
+                        <dl class="mb-5 col-sm-12 col-md-6 mb-2">
+                            <dt>{{'RIEPILOGO.LABEL.IMPORTO_ATTESO' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.importoAtteso | number: '0.2-2'}}</dd>
+                        </dl>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-8">
+                            <dt>{{'RIEPILOGO.LABEL.DESC_CAUSALE_VER' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.dsCausale}}</dd>
+                        </dl>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-4">
+                            <dt>{{'RIEPILOGO.LABEL.DATA_VERSAMENTO' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.dtEsito | date: 'dd/MM/yyyy'}}</dd>
+                        </dl>
+                        <dl class="mb-5 col-sm-12 col-md-6 mb-2">
+                            <dt>{{'RIEPILOGO.LABEL.IMPORTO_VERSATO' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.importoPagato | number: '0.2-2'}}</dd>
+                        </dl>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-8">
+                            <dt>{{'RIEPILOGO.LABEL.PRESTATORE_SERV' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.dsPsp}}</dd>
+                        </dl>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-8">
+                            <dt>{{'RIEPILOGO.LABEL.NUM_TRANSAZ' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.codTransazione}}</dd>
+                        </dl>
+                    </div>
+                    <div class="row">
+                        <dl class="mb-3 col-sm-12 col-md-8">
+                            <dt>{{'RIEPILOGO.LABEL.IDENTIFICATIVO_UNIVOCO_RISC' | translate}}</dt>
+                            <dd>{{posizioneDebitoria?.codIur}}</dd>
+                        </dl>
+                    </div>
+    
+                </div>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <div *ngIf="SHOW_BTN_INVIO" class="row justify-content-end">
+        <div class="col-auto">
+            <button type="button" (click)="onClickInvio()" class="btn btn-sm btn-primary">{{ 'RIEPILOGO.BTN.INVIO' | translate }}</button>
+        </div>
+    </div>
+</div>
+

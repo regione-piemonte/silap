@@ -1,0 +1,80 @@
+<div class="colmirwcl-testata-lista">
+
+    <!--
+    <nav aria-label="Navigazione">
+      <div class="col-12 row mr-0 comonl-header-pagination">
+        <div class="col-3 col-sm-6 col-xl-6">
+          <ng-select class="form-control" [items]="pageSizes" [virtualScroll]="true" [ngModel]="limit"
+          (change)="changePageSize($event)" comonlIsInvalidClass [clearable]="false"></ng-select>
+        </div>
+  
+        <div class="col-9 col-sm-6 col-xl-6 ">
+          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="pagedResponse.totalResult" [(page)]="page"
+            [pageSize]="limit" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+            (pageChange)="goToPage($event)">
+            <ng-template ngbPaginationFirst>{{ 'PAGINATION.FIRST' | translate }}</ng-template>
+            <ng-template ngbPaginationLast>{{ 'PAGINATION.LAST' | translate }}</ng-template>
+            <ng-template ngbPaginationPrevious>{{ 'PAGINATION.PREV' | translate }}</ng-template>
+            <ng-template ngbPaginationNext>{{ 'PAGINATION.NEXT' | translate }}</ng-template>
+          </ngb-pagination>
+        </div>
+      </div>
+    </nav>
+    -->
+  
+    <div class="scrollbar-table scrollbar-primary">
+  
+      <!-- table-bordered table-striped -->
+      <table class="table  table-hover table-sortable colmirwcl-table" id="infoTable">
+        <thead>
+          <ng-template [ngTemplateOutlet]="tplHead?.templateRef"></ng-template>
+        </thead>
+        <tbody *ngIf="pagedResponse.totalResult > 0; else noData">
+          <ng-template
+            *ngFor="let el of pagedResponse.list; index as index; first as first; last as last; even as even; odd as odd"
+            [ngTemplateOutlet]="tplBody?.templateRef"
+            [ngTemplateOutletContext]="{$implicit: el, el: el, index: index, first: first, last: last, even: even, odd: odd}">
+          </ng-template>
+        </tbody>
+        <ng-template #noData>
+          <tbody role="group">
+            <tr  *ngIf="columnNumber > 0" role="row">
+              <td [colSpan]="columnNumber">Non ci sono dati</td>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+    </div>
+  
+  </div>
+  
+  <nav aria-label="Navigazione">
+    <div class="container row colmirwcl-pagination-footer">
+      <div class="col-12 col-sm-3 col-md-2">
+      </div>
+  
+      <div class="col-12 col-sm-3 col-md-2  mt-2">
+        <span>{{paginationHeader}}</span>
+      </div> 
+      <!-- <div class="col-12 col-sm-3 col-md-2">
+        <ng-select [dropdownPosition]="'top'" class="colmirwcl-select-page" [items]="pageSizes" [virtualScroll]="true" [ngModel]="limit"
+          (change)="changePageSize($event)" [clearable]="false"></ng-select>
+      </div> -->
+  
+      <!-- <div class="col-12 col-sm-4 col-md-2 mt-2">
+        {{ paginationFooter }}
+      </div> -->
+  
+      <div class="col-12 col-sm-6 col-md-4 float-right">
+        <ngb-pagination class="d-flex justify-content-end" [collectionSize]="pagedResponse.totalResult" [(page)]="page"
+          [pageSize]="limit" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+          (pageChange)="goToPage($event)">
+          <ng-template ngbPaginationFirst>{{'APP.PAGINATION_TABLE.START' | translate}}</ng-template>
+          <ng-template ngbPaginationLast>{{'APP.PAGINATION_TABLE.END' | translate}}</ng-template>
+          <ng-template ngbPaginationPrevious>{{'APP.PAGINATION_TABLE.PREV' | translate}}</ng-template>
+          <ng-template ngbPaginationNext>{{'APP.PAGINATION_TABLE.NEX' | translate}}</ng-template>
+        </ngb-pagination>
+      </div>
+    </div>
+  </nav>
+  

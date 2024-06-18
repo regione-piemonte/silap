@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card">
+        <div *ngIf="form" class="card-body">
+            <p class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span class="oblg">*</span></p>
+            <form [formGroup]="form" (ngSubmit)="onClickUploadFile()">
+                <div class="row">
+                    <div class="mb-3 col-auto">
+                        <label for="inputFile">{{'PREVISIONE_DICHIARAZIONE.LABEL.FILE' | translate}}<span class="oblg" title="campo obbligatorio">*</span></label><br>
+                        <input #validatedXlsxFile type="file" (change)="chooseFile($event)" accept=".xlsx" title="Scegli un file xlsx..." formControlName="file" class="custom-file-input text-muted" id="inputFile"><br>
+                        <span *ngIf="validateFile('fileXLSX')" style="color: red">{{'PREVISIONE_DICHIARAZIONE.VALIDATION.FORMAT_FILE' | translate}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-3">
+                        <label for="anno">{{'PREVISIONE_DICHIARAZIONE.LABEL.ANNO' | translate}}<span class="oblg" title="campo obbligatorio">*</span></label><br>
+                        <input colmirwclOnlyNumber formControlName="anno" maxlength="4" type="text" id="anno">
+                    </div>
+                    <div class="mb-3 col-9">
+                        <label for="mail">{{'PREVISIONE_DICHIARAZIONE.LABEL.EMAIL' | translate}}<span class="oblg" title="campo obbligatorio">*</span></label><br>
+                        <input type="text" formControlName="email" oninput="this.value = this.value.trim()" id="mail">
+                        <div *ngIf="f?.email?.invalid" class="text-danger">
+                            <p *ngIf="f?.email?.errors?.pattern">{{getMsgValidazioneByCode('100027')}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                            (click)="onClickReset()">{{ 'APP.GENERICO.BTN.RIMUOVI_FILTRI_UPPER_C' | translate | uppercase}}</button>
+                      </div>
+                      <div class="col-auto">
+                        <button type="button" (click)="onClickDownloadFile()" class="btn btn-primary ml-auto btn-lg verify"
+                        >{{ 'PREVISIONE_DICHIARAZIONE.BUTTON.DOWNLOAD_TEMPLATE' | translate }}</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" [disabled]="!form.valid || INVALID_FILE" class="btn btn-primary ml-auto btn-lg verify"
+                        >{{ 'PREVISIONE_DICHIARAZIONE.BUTTON.UPLOAD' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<ngb-accordion class="alert-accordion-info" style="background-color: #dbeef7;" #a="ngbAccordion"
+    activeIds="custom-panel-1">
+    <ngb-panel style="background-color: #dbeef7;" aria-atomic="true">
+        <ng-template ngbPanelTitle>
+            <span class="alert-info" role="alert" aria-atomic="true">
+                {{_messaggio?.dsTitolo}}
+            </span>
+            
+        </ng-template>
+        <ng-template ngbPanelContent>
+                <div>
+                    {{_messaggio?.dsSilapDMessaggio}}
+                </div>
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>

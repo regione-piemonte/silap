@@ -1,0 +1,184 @@
+<div class="container-body">
+    <div *ngIf="versamentoCorrente" class="card">
+        <div class="card-body">
+            <div class="row">
+                <h3 class="custom-h3">{{"SOSPENSIONI.LABEL.SOSPENSIONI" | translate}}</h3>
+            </div>
+            <p *ngIf="!VIEW_MODE" class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span
+                    class="oblg">*</span>
+                {{'APP.GENERICO.OBBLIGO' | translate}}</p>
+            <form *ngIf="!VIEW_MODE" [formGroup]="form" (ngSubmit)="onClickConferma()">
+                <div class="row">
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="dataInizio">{{ "SOSPENSIONI.LABEL.DATA_INIZIO"| translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text"
+                                    class="form-control"
+                                    formControlName="dataInizio"
+                                    id="dataInizio"
+                                    ngbDatepicker
+                                    #d_dataInizio="ngbDatepicker"
+                                    data-provide="datepicker"
+                                    placeholder="Data da"
+                                    [maxDate]="{year: versamentoCorrente?.annoRiferimento, month: 12, day: 31}"
+                                    (keyup)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    (dateSelect)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    maxlength="10">
+                                <div class="input-group-addon">
+                                    <button class="btn btn-outline-primary calendar" (click)="d_dataInizio.toggle()"
+                                        type="button">
+                                        <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span><i class="far fa-calendar-alt fa-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="f?.dataInizio?.invalid && f?.dataInizio?.value" class="text-danger">
+                                <ng-container *ngIf="f?.dataInizio?.errors?.ngbDate">
+                                    <p *ngIf="f?.dataInizio?.errors?.ngbDate?.maxDate; else elseBlock" >
+                                        <!-- NUOVO MESSAGGIO -->
+                                        {{getMsgValidazioneByCode('100136')}}
+                                    </p>
+                                    <ng-template #elseBlock>{{getMsgValidazioneByCode('100004')}}</ng-template>
+                                </ng-container>
+                                <p *ngIf="f?.dataInizio?.errors?.invalidDataRange">{{ getMsgValidazioneByCode('100003')}}</p>
+                                <p *ngIf="f?.dataInizio?.errors?.dateAllowed?.invalidGenerico">{{getMsgValidazioneByCode('100077') }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="dataFine">{{ "SOSPENSIONI.LABEL.DATA_FINE"| translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="dataFine" formControlName="dataFine"
+                                    placeholder="Data a" ngbDatepicker #d_dataFine="ngbDatepicker"
+                                    [minDate]="{year: versamentoCorrente?.annoRiferimento, month: 1, day: 1}"
+                                    (keyup)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    (dateSelect)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    maxlength="10">
+                                <div class="input-group-addon">
+                                    <button class="btn btn-outline-primary calendar" (click)="d_dataFine.toggle()"
+                                        type="button">
+                                        <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span>
+                                        <i class="far fa-calendar-alt fa-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="f?.dataFine?.invalid && f?.dataFine?.value" class="text-danger">
+                                <ng-container *ngIf="f?.dataInizio?.errors?.ngbDate">
+                                    <p *ngIf="f?.dataFine?.errors?.ngbDate?.minDate; else elseBlock" >
+                                        <!-- NUOVO MESSAGGIO -->
+                                        {{getMsgValidazioneByCode('100137')}}
+                                    </p>
+                                    <ng-template #elseBlock>{{getMsgValidazioneByCode('100004')}}</ng-template>
+                                </ng-container>
+                                <p *ngIf="f?.dataFine?.errors?.dateAllowed?.invalidGenerico">{{getMsgValidazioneByCode('100077') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="motSospensione">{{'SOSPENSIONI.LABEL.MOT_SOSPENSIONE' | translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-10">
+                            <select class="form-select" formControlName="motSospensioneSelect" id="motSospensione"
+                                (change)="onChangeMotivoSospensione()">
+                                <option [ngValue]="null"></option>
+                                <option *ngFor="let motivo of motiviSospensioni" [ngValue]="motivo?.id">
+                                    {{motivo?.descr}}</option>
+                            </select>
+                            <div *ngIf="f?.motSospensioneSelect?.invalid" class="text-danger">
+                                <p *ngIf="f?.motSospensioneSelect?.errors?.motivoSospensioneValidator">Liceziamento
+                                    collettivo già presente per un altra provincia della stessa dichiarazione</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="motiviSospensioni" class="col-sm-12 col-md-4">
+                        <label for="percentSosp">{{'SOSPENSIONI.LABEL.%_SOSPENSIONE' | translate}}<span
+                                *ngIf="f?.percentSospSelect?.enabled" class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNumber class="form-control" id="percentSosp"
+                                formControlName="percentSospSelect" (change)="onChangePercentSosp()" maxlength="3">
+                            <div *ngIf="f?.percentSospSelect?.invalid && f?.percentSospSelect?.value"
+                                class="text-danger">
+                                <p *ngIf="f?.percentSospSelect?.errors">{{ getMsgValidazioneByCode('100069') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="numLavSosp">{{'SOSPENSIONI.LABEL.NUM_LAV_SOSPESI' | translate}}<span
+                                *ngIf="f?.numLavSospSelect?.enabled" class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNumber class="form-control" id="numLavSosp"
+                                formControlName="numLavSospSelect" (change)="onChangeNumLavSosp()" maxlength="6">
+                            <div *ngIf="f?.numLavSospSelect?.invalid && f?.numLavSospSelect?.value" class="text-danger">
+                                <p *ngIf="f?.numLavSospSelect?.errors">{{ getMsgValidazioneByCode('100070') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!VIEW_MODE" class="row">
+                    <div class="col">
+                        <button type="button" (click)="onClickReset()" class="btn btn-outline-secondary btn-sm">
+                            {{ 'APP.GENERICO.BTN.ANNULLA' | translate }}
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-sm btn-primary"
+                            [disabled]="SOSPENSIONI_INVALID">
+                            {{ 'APP.GENERICO.BTN.CONFERMA' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div *ngIf="!RANGE_SOSPENSIONI_ISVALID" class="row alert-danger">
+                {{getMsgByCode('100110')}}
+            </div>
+            <br>
+            <div class="row">
+                <div class="mb-3 col-sm-12 col-md-6 mt-4">
+                    <h3 class="title">{{'SOSPENSIONI.LABEL.ELENCO_SOSPENSIONI' | translate}}</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{{ 'SOSPENSIONI.LABEL.PERIODO' | translate }}</th>
+                            <th>{{ 'SOSPENSIONI.LABEL.MOT_SOSPENSIONE' | translate }}</th>
+                            <th>{{ 'SOSPENSIONI.LABEL.%_SOSPENSIONE' | translate }}</th>
+                            <th>{{ 'SOSPENSIONI.LABEL.NUM_LAV_SOSPESI' | translate }}</th>
+                            <th *ngIf="!VIEW_MODE">{{ 'SOSPENSIONI.LABEL.AZIONI' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let versamentoSospensione of versamentoPvSospensione; index as i">
+                            <td>{{(versamentoSospensione?.dInizioSospensione | date:'dd/MM/yyyy') + ' - '
+                                +(versamentoSospensione?.dFineSospensione | date:'dd/MM/yyyy')}}</td>
+                            <td>
+                                {{versamentoSospensione?.esoDVersamentoMotivoSospensione?.dsEsoDVersamentoMotivoSospensione}}
+                            </td>
+                            <td>{{ versamentoSospensione?.percSospensione }}</td>
+                            <td>{{ versamentoSospensione?.numLavoratoriSospesi }}</td>
+                            <td *ngIf="!VIEW_MODE"><a (click)="onClickElimina(i)" tabindex="0"><i class="fas fa-trash-alt"
+                                        aria-label="Azione: elimina" title="elimina sospensione"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="!versamentoPvSospensione || versamentoPvSospensione.length <= 0" class="alert-warning">
+                    Non ci sono dati
+                </div>
+            </div>
+            <div *ngIf="!VIEW_MODE" class="row justify-content-end">
+                <div class="col-auto">
+                    <button [disabled]="!RANGE_SOSPENSIONI_ISVALID" type="button" (click)="onClickConfermaProsegui()"
+                        class="btn btn-sm btn-primary">{{ 'APP.GENERICO.BTN.CONFIRM' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

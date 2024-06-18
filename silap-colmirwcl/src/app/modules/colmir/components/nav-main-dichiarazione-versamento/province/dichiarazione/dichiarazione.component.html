@@ -1,0 +1,305 @@
+<div class="container-body">
+    <div *ngIf="form" class="card">
+        <div class="card-body">
+            <div class="row">
+                <h3 class="custom-h3">{{"DICHIARAZIONI.LABEL.DICHIARAZIONE_ESONERI" | translate}}</h3>
+            </div>
+            <p *ngIf="!VIEW_MODE" class="text-muted">{{ 'APP.GENERICO.CAMPI_CONTR' | translate }} <span class="oblg">*</span>
+                {{'APP.GENERICO.OBBLIGO' | translate}}</p>
+            <form *ngIf="!VIEW_MODE" [formGroup]="form" (ngSubmit)="onClickConferma()">
+                <div class="row">
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="dataInizio">{{ "DICHIARAZIONI.LABEL.DATA_INIZIO"| translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-provide="datepicker"
+                                    formControlName="dataInizio" id="dataInizio" placeholder="Data da" ngbDatepicker
+                                    #d_dataInizio="ngbDatepicker"
+                                    (keyup)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    (dateSelect)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    [minDate]="{year: versamento?.annoRiferimento, month: 1, day: 1}"
+                                    [maxDate]="{year: versamento?.annoRiferimento, month: 12, day: 31}" maxlength="10">
+                                <div class="input-group-addon">
+                                    <button class="btn btn-outline-primary calendar" (click)="d_dataInizio.toggle()"
+                                        type="button">
+                                        <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span><i
+                                            class="far fa-calendar-alt fa-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="f?.dataInizio?.invalid && f?.dataInizio?.value" class="text-danger">
+                                <ng-container *ngIf="f?.dataInizio?.errors?.ngbDate" class="text-danger">
+                                    <p *ngIf="f?.dataInizio?.errors?.ngbDate?.minDate || f?.dataInizio?.errors?.ngbDate?.maxDate  else elseBlock">
+                                        <!-- NUOVO MESSAGGIO -->
+                                        {{getMsgValidazioneByCode('100135')}}
+                                    </p>
+                                    <ng-template #elseBlock>
+                                        <p>
+                                            {{getMsgValidazioneByCode('100004')}}
+                                        </p>
+                                    </ng-template>
+                                </ng-container>
+                                <p *ngIf="f?.dataInizio?.errors?.invalidDataRange">
+                                    {{getMsgValidazioneByCode('100003')}}
+                                </p>
+                                <p *ngIf="!f?.dataInizio?.errors?.invalidDataRange && f?.dataInizio?.errors?.periodoValidator?.invalidPeriodo">
+                                    {{getMsgValidazioneByCode('100138')}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="dataFine">{{ "DICHIARAZIONI.LABEL.DATA_FINE"| translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="dataFine" id="dataFine"
+                                    placeholder="Data a" ngbDatepicker #d_dataFine="ngbDatepicker"
+                                    (keyup)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    (dateSelect)="updateValueAndValidity(f?.dataFine);updateValueAndValidity(f?.dataInizio)"
+                                    [minDate]="{year: versamento?.annoRiferimento, month: 1, day: 1}"
+                                    [maxDate]="{year: versamento?.annoRiferimento, month: 12, day: 31}" maxlength="10">
+                                <div class="input-group-addon">
+                                    <button class="btn btn-outline-primary calendar" (click)="d_dataFine.toggle()"
+                                        type="button">
+                                        <span class="sr-only">{{'APP.GENERICO.BTN.APRI_CAL' | translate}}</span>
+                                        <i class="far fa-calendar-alt fa-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="f?.dataFine?.invalid && f?.dataFine?.value" class="text-danger">
+                                <ng-container *ngIf="f?.dataFine?.errors?.ngbDate" class="text-danger">
+                                    <p *ngIf="f?.dataFine?.errors?.ngbDate?.minDate || f?.dataFine?.errors?.ngbDate?.maxDate  else elseBlock" >
+                                        <!-- NUOVO MESSAGGIO -->
+                                        {{getMsgValidazioneByCode('100135')}}
+                                    </p>
+                                    <ng-template #elseBlock>
+                                        <p>
+                                            {{getMsgValidazioneByCode('100004')}}
+                                        </p>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="baseComputo">{{'DICHIARAZIONI.LABEL.BASE_COMPUTO' | translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNumber class="form-control" id="baseComputo"
+                                formControlName="baseComputoInput" maxlength="6"
+                                (keyup)="updateValueAndValidity(f?.disabForzaInput)">
+                            <div *ngIf="f?.baseComputoInput?.invalid" class="text-danger">
+                                <p *ngIf="f?.baseComputoInput?.errors?.min">{{getMsgByCode('100072')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <label for="disabForza">{{'DICHIARAZIONI.LABEL.DISABILI_FORZA' | translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNumber class="form-control" id="disabForza"
+                                formControlName="disabForzaInput" maxlength="6">
+                            <div *ngIf="f?.disabForzaInput?.invalid" class="text-danger">
+                                <p *ngIf="f?.disabForzaInput?.errors?.disabiliInForza">
+                                    {{getMsgByCode('100073')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="numCompensati">{{'DICHIARAZIONI.LABEL.NUM_COMPENSATI' | translate}}<span
+                                class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNegativePositiveNumber class="form-control" id="numCompensati"
+                                formControlName="numCompensatiInput" maxlength="6">
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="numEsoCert">{{'DICHIARAZIONI.LABEL.NUM_ESON_CERTIFICATI' | translate}}</label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNumber class="form-control" id="numEsoCert"
+                                formControlName="numEsoCertInput" maxlength="6">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="numRiallineam">{{'DICHIARAZIONI.LABEL.NUM_RIALLINEAM_NAZ' | translate}}<span class="oblg">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" colmirwclOnlyNegativePositiveNumber class="form-control" id="numRiallineam"
+                                formControlName="numRiallineamentoNazionale" maxlength="6">
+                        </div>
+                    </div>
+                    <div class="mb-5 col-sm-12 col-md-4">
+                        <label for="categoriaAzienda">{{'DICHIARAZIONI.LABEL.CAT_AZI' | translate}}<span class="oblg">*</span></label>
+                        <div class="col-sm-10">
+                            <select class="form-select" formControlName="iDcategoriaAzeinda" id="categoriaAzienda">
+                                <option [ngValue]="null"></option>
+                                <option *ngFor="let categoriaAz of categorieAzienda" [ngValue]="categoriaAz?.id">{{(categoriaAz?.id | categoriaAzienda)+' - '+categoriaAz?.descr}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!VIEW_MODE" class="row">
+                    <div class="col">
+                        <button type="button" (click)="onClickReset()" class="btn btn-outline-secondary btn-sm">
+                            {{'APP.GENERICO.BTN.ANNULLA' | translate }}
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-sm btn-primary"
+                            [disabled]="DICHIARAZIONE_INVALID">
+                            {{ 'APP.GENERICO.BTN.CONFERMA' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div *ngIf="showTable" class="row">
+                <div class="col-7 align-self-start">
+                    <h3  class="title">{{'DICHIARAZIONI.LABEL.ELENCO_DICHIARAZIONI' | translate}}</h3>
+                </div>
+                <div *ngIf="!VIEW_MODE" class="col-5 align-self-end d-flex justify-content-end">
+                    <button type="button" class="btn btn-outline-secondary" [disabled]="periodiSelezionati?.length <= 0" (click)="onClickEliminaPeriodiSelezionati()">{{'DICHIARAZIONI.BUTTON.ELIMINA_SEL' | translate}}</button>
+                    <button type="button" class="btn btn-outline-secondary btn-control-list-middle" (click)="onClickRipristinaDati()">{{'DICHIARAZIONI.BUTTON.RIPRISTINA_DATI' | translate}}</button>
+                </div>
+            </div>
+            <div *ngIf="showTable" class="row">
+                
+                    <colmirwcl-paginated-array-table #paginatedTable 
+                                        (changePaginationData)="changePagination($event)"
+                                        [columnNumber]="!VIEW_MODE ? 13 : 12"
+                                        [pagedResponse]="versamentoPvPeriodo"  
+                                        [limit]="paginationDataChange?.limit">
+                        <ng-template colmirwclPaginationHead>
+                            <tr>
+                                <!-- PvPeriodo -->
+                                <th *ngIf="!VIEW_MODE">
+                                    <label for="selectAll">Sel.</label><input id="selectAll" [(ngModel)]="selectAll" type="checkbox" (change)="onClickSelectAll()" (keydown.enter)="keyDownSelectAll()" name="selectAll">
+                                </th>
+                                <th>{{'DICHIARAZIONI.LABEL.PERIODO' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.CAT_AZI' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.BASE_COMPUTO' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.DISABILI_FORZA' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.NUM_COMPENSATI' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.MOT_SOSPENSIONE' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.%_SOSPENSIONE' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.NUM_LAV_SOSPESI' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.NUM_ESON_CERTIFICATI' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.QUOTA_RISERVA' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.NUM_RIALLINEAM_NAZ' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.GIORNI_LAVORATIVI' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.NUM_ESONERATI' | translate}}</th>
+                                <th>{{'DICHIARAZIONI.LABEL.IMPORTO' | translate}}</th>
+                                <!-- <th *ngIf="!VIEW_MODE">{{'DICHIARAZIONI.LABEL.AZIONI' | translate}}</th> -->
+                            </tr>
+                        </ng-template>
+                        <ng-template colmirwclPaginationBody let-item>
+                            <tr>
+                                <ng-container *ngIf="!VIEW_MODE">
+                                    <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">
+                                        <input id="{{'check'+item?.idEsoTVersamentoPvPeriodo}}" (click)="onClickCheckBox(item)" (keydown.enter)="onClickCheckBox(item)" type="checkbox" [checked]="isChecked(item?.idEsoTVersamentoPvPeriodo)">
+                                        <label for="{{'check'+item?.idEsoTVersamentoPvPeriodo}}" class="sr-only"></label>
+                                    </td>
+                                </ng-container>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{(item?.dInizio | date:'dd/MM/yyyy') + ' - ' +(item?.dFine | date:'dd/MM/yyyy')}}
+                                    <ng-template #tipContent1><b>{{tooltipText}}</b>!</ng-template>
+                                    <span *ngIf="item?.flgTipo === 'O'" class="operatore" [ngbTooltip]="tipContent1">
+                                        *
+                                    </span>
+                                </td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.silapDCategoriaAzienda?.codCategoriaAzienda}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.baseComputo}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numDisabiliInForza}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numSoggettiCompensati}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{getSospensioneByPeriodo(item?.dInizio,item?.dFine)?.esoDVersamentoMotivoSospensione?.dsEsoDVersamentoMotivoSospensione}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{getSospensioneByPeriodo(item?.dInizio,item?.dFine)?.percSospensione }}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{getSospensioneByPeriodo(item?.dInizio,item?.dFine)?.numLavoratoriSospesi }}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numEsoneratiAutocertificati}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.quotaRiserva}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numRiallineamentoNazionale}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numGgLavorativi}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numLavoratoriEsonerati}}</td>
+                                <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.importo | number:'0.2-2'}}</td>
+                                <!-- <td *ngIf="!VIEW_MODE" [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }"><a (click)="onClickElimina(item)"><i class="fas fa-trash-alt"
+                                            title="Elimina"></i></a></td> -->
+                            </tr>
+                        </ng-template>
+                    </colmirwcl-paginated-array-table>
+                <div class="row">
+                    <div class="mb-5 col-sm-12 col-md-6 mt-4">
+                        <label for="totPeriodi">{{'DICHIARAZIONI.LABEL.TOT_PERIODI' | translate :{provincia: versamenetoProvinciaSelezionata?.silapDProvincia?.dsSilapDProvincia} }}: </label> {{TOTALE_PERIODI | number:'0.2-2'}}
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="showTablePeriodiCalcolati" class="row">
+                <div class="col align-self-start">
+                    <h3  class="title">{{'DICHIARAZIONI.LABEL.ELENCO_CALCOLATO' | translate}}</h3>
+                </div>
+            </div>
+            <div *ngIf="showTablePeriodiCalcolati" class="row">
+                <colmirwcl-paginated-array-table #paginatedTable [columnNumber]="12" [pagedResponse]="versamentoPvPeriodoCalcolati" [limit]="5">
+                    <ng-template colmirwclPaginationHead>
+                        <tr>
+                            <!-- PvPeriodo -->
+                            <th>{{'DICHIARAZIONI.LABEL.PERIODO' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.CAT_AZI' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.BASE_COMPUTO' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.DISABILI_FORZA' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.NUM_COMPENSATI' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.MOT_SOSPENSIONE' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.%_SOSPENSIONE' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.NUM_LAV_SOSPESI' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.NUM_ESON_CERTIFICATI' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.QUOTA_RISERVA' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.NUM_RIALLINEAM_NAZ' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.GIORNI_LAVORATIVI' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.NUM_ESONERATI' | translate}}</th>
+                            <th>{{'DICHIARAZIONI.LABEL.IMPORTO' | translate}}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template colmirwclPaginationBody let-item>
+                        <tr>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{(item?.dInizio | date:'dd/MM/yyyy') + ' - ' +(item?.dFine | date:'dd/MM/yyyy')}}
+                                <ng-template #tipContent2><b>{{tooltipText}}</b>!</ng-template>
+                                <span *ngIf="item?.flgTipo === 'O'" class="operatore" [ngbTooltip]="tipContent2">
+                                    *
+                                </span>
+                            </td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.silapDCategoriaAzienda?.codCategoriaAzienda}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.baseComputo}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numDisabiliInForza}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numSoggettiCompensati}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{getSospensioneByPeriodo(item?.dInizio,item?.dFine)?.esoDVersamentoMotivoSospensione?.dsEsoDVersamentoMotivoSospensione}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{getSospensioneByPeriodo(item?.dInizio,item?.dFine)?.percSospensione }}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{getSospensioneByPeriodo(item?.dInizio,item?.dFine)?.numLavoratoriSospesi }}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numEsoneratiAutocertificati}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.quotaRiserva}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numRiallineamentoNazionale}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numGgLavorativi}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.numLavoratoriEsonerati}}</td>
+                            <td [ngClass]="{'insert-item': item?.idEsoTVersamentoPvPeriodo === insertItem?.idEsoTVersamentoPvPeriodo && !item?.sovrapposto, 'periodo-sovrapposto': item?.sovrapposto }">{{item?.importo | number:'0.2-2'}}</td>
+                        </tr>
+                    </ng-template>
+                </colmirwcl-paginated-array-table>
+                <div class="row">
+                    <div class="mb-5 col-sm-12 col-md-6 mt-4">
+                        <label for="totAziendaPeriodi">{{'DICHIARAZIONI.LABEL.TOT_PERIODI' | translate :{provincia: versamenetoProvinciaSelezionata?.silapDProvincia?.dsSilapDProvincia} }}: </label> {{totaleCalcolato | number:'0.2-2'}}
+                    </div>
+                </div>
+            </div>
+            
+            <div *ngIf="!VIEW_MODE" class="row justify-content-end">
+                <div class="col-auto">
+                    <button type="button" (click)="onClickConfermaProsegui()" class="btn btn-sm btn-primary">{{'APP.GENERICO.BTN.CONFIRM' | translate }}</button>
+                </div>
+            </div>
+            
+            <!-- <div [innerHTML]="versamento?.printCalcoloAutomatico"></div> -->
+
+        </div>
+    </div>
+</div>

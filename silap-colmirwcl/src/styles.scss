@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+@import "./scss/custom.scss";
+@import "./scss/font.scss";
+@import "./scss/startup-loader.scss";

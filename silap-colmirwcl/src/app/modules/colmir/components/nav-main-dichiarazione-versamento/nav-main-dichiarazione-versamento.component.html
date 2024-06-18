@@ -1,0 +1,36 @@
+<div class="torna">
+	<button (click)="onClickTornaElenco()" type="button" class="btn btn-primary ml-auto btn-lg">{{"NAV_MAIN.BUTTON.TORNA_ELENCO" | translate}}</button>
+</div>
+<ul ngbNav [roles]="false" #nav="ngbNav" [(activeId)]="active" class="stepper">
+	<li [ngbNavItem]="0">
+	  <a ngbNavLink><span>1</span> {{"NAV_MAIN.WIZARD.STEP_1.TITLE" | translate}}</a>
+	  <ng-template ngbNavContent>
+		<colmirwcl-dati-aziendali 
+			*ngIf="versamento"
+			(emitConferma)="conferma($event,nav)"
+			[mode]="mode" 
+			[initialVersamento]="versamento"></colmirwcl-dati-aziendali>
+	  </ng-template>
+	</li>
+	<li [disabled]="!VIEW_MODE && active < 1" [ngbNavItem]="1">
+	  <a ngbNavLink><span>2</span> {{"NAV_MAIN.WIZARD.STEP_2.TITLE" | translate}}</a>
+	  <ng-template ngbNavContent>
+		<colmirwcl-province
+			[mode]="mode"
+			(emitConferma)="conferma($event,nav)"
+			[initialVersamento]="versamento">
+		</colmirwcl-province>
+	  </ng-template>
+	</li>
+	<li [disabled]="!VIEW_MODE && active < 2" [ngbNavItem]="2">
+		<a ngbNavLink><span>3</span> {{"NAV_MAIN.WIZARD.STEP_3.TITLE" | translate}}</a>
+		<ng-template ngbNavContent>
+			<colmirwcl-visualizza-dichiarazione-versamento 
+			[mode]="mode"
+			[initialVersamento]="versamento"
+			(emitConfermainvio)="confermaInvio($event)"
+			(emitAutorizzazione)="autorizzazione($event)"></colmirwcl-visualizza-dichiarazione-versamento>
+		</ng-template>
+	  </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>

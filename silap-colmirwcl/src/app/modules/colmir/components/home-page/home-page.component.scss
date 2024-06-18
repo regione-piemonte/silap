@@ -1,0 +1,45 @@
+/*@media (max-width: 992px){
+  header nav #menu-mobile{display: none  !important;}
+}*/
+
+.btn-sm {
+    max-width: 16em;
+}
+
+.card col {
+    width: 40rem;
+}
+
+i {
+    color: #016CB4;
+    padding-top: 5px;
+}
+
+button {
+    font-size: 16pt;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 2rem;
+}
+
+.sub_title,.title{
+    color: black;
+    font-weight: bold;
+}
+.title p {
+    font-size: 16pt;
+    line-height: 1.1;
+}
+
+.sub_title p{
+    padding-top: 3px;
+    font-size: 10pt;
+    line-height: 1.1;
+}
+
+// .card-body {
+//     max-width: 100%;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap;
+// }

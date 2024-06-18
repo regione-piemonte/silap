@@ -1,0 +1,349 @@
+{
+  "ACCESSO_RUOLO": {
+    "TABLE": {
+      "HEAD": {
+        "COD_FISC": "Codice fiscale",
+        "DENOMINAZIONE": "Denominazione azienda",
+        "RUOLO": "Ruolo",
+        "SEL": "Sel."
+      }
+    },
+    "TITLE": "Elenco ruoli disponibili"
+  },
+  "APP": {
+    "GENERICO": {
+      "BTN": {
+        "ANNULLA": "ANNULLA",
+        "APRI_CAL": "Apri calendario",
+        "CERCA_UPPER_C": "CERCA",
+        "CONFERMA": "CONFERMA",
+        "CONFIRM": "CONFERMA E PROSEGUI",
+        "RIMUOVI_FILTRI_UPPER_C": "RIMUOVI FILTRI"
+      },
+      "CAMPI_CONTR": "I campi contrassegnati con",
+      "OBBLIGO": "sono obbligatori"
+    },
+    "LOADING": "Caricamento...",
+    "NO": "No",
+    "PAGINATION_TABLE": {
+      "END": "Fine",
+      "NEX": "Succ.",
+      "PREV": "Prec.",
+      "ROWS_FOR_PAGE": "Righe per pagina",
+      "START": "Inizio"
+    },
+    "YES": "Si"
+  },
+  "AUTORIZZA": {
+    "MODAL": {
+      "TITLE": "Autorizza dichiarazione di versamento"
+    }
+  },
+  "DATI_AZIENDALI": {
+    "FIELD": {
+      "ANNO_RIF": "Anno di riferimento",
+      "CAP": "CAP",
+      "CCNL": "CCNL (cod, desc)",
+      "COMUNE": "Comune (cod, desc)",
+      "CREDITO_RESIDUO": "Credito residuo (€)",
+      "DENOMINAZIONE": "Denominazione azienda",
+      "INDIRIZZO": "Indirizzo",
+      "VERSAMENTO": "Versamento",
+      "VERSAMENTO_1": "in unica soluzione",
+      "VERSAMENTO_2": "in due rate"
+    },
+    "LABEL": {
+      "CF": "Codice fiscale azienda",
+      "MAIL": "Mail di riferimento"
+    },
+    "SUB_TITLE_INSERIMENTO_DICH": "Inserimento dati dichiarazione",
+    "SUB_TITLE_SEDE_LEGALE": "Sede legale",
+    "TITLE_EDIT": "Modifica dati aziendali",
+    "TITLE_INS": "Inserimento dati aziendali",
+    "TITLE_VIS": "Visualizzazione dati aziendali"
+  },
+  "DICHIARAZIONE": {
+    "MODAL": {
+      "RIPRISTINO_DATI": {
+        "TITLE": "Ripristino dati iniziali"
+      }
+    }
+  },
+  "DICHIARAZIONI": {
+    "BUTTON": {
+      "ELIMINA_SEL": "ELIMINA PERIODI SELEZIONATI",
+      "RIPRISTINA_DATI": "RIPRISTINA DATI INIZIALI"
+    },
+    "LABEL": {
+      "%_SOSPENSIONE": "% Sosp.",
+      "AZIONI": "Azioni",
+      "BASE_COMPUTO": "Base computo",
+      "CAT_AZI": "Categoria azienda",
+      "DATA_FINE": "Data fine",
+      "DATA_INIZIO": "Data inizio",
+      "DICHIARAZIONE_ESONERI": "Dichiarazione esoneri",
+      "DISABILI_FORZA": "N. disabili in forza",
+      "ELENCO_CALCOLATO": "Dati calcolati",
+      "ELENCO_DICHIARAZIONI": "Elenco dichiarazioni",
+      "GIORNI_LAVORATIVI": "GG lavor.",
+      "IMPORTO": "Importo",
+      "MOT_SOSPENSIONE": "Motivo sospensione",
+      "NUM_COMPENSATI": "N. compensati",
+      "NUM_ESONERATI": "N. lav. esonerati",
+      "NUM_ESON_CERTIFICATI": "N. eson. autocert.",
+      "NUM_LAV_SOSPESI": "N. lav. sosp.",
+      "NUM_RIALLINEAM_NAZ": "N. riallineamento nazionale",
+      "PERIODO": "Periodo",
+      "QUOTA_RISERVA": "Quota riserva",
+      "TOT_PERIODI": "Totale dichiarazione calcolata per provincia di {{provincia}}"
+    }
+  },
+  "ERROR": {
+    "ERROR_TITLE": "Contattare amministratore di sistema",
+    "POPUP_BLOCKED": "Si prega di disabilitare il blocco dei Pop-up e di riprovare."
+  },
+  "FORM_RICERCA_DICH": {
+    "BUTTON": {
+      "RIMUOVI_CHECK_STATO": "RIMUOVI CHECK STATO"
+    },
+    "LABEL": {
+      "ANNO_PROT": "Anno protocollo",
+      "CF": "Codice fiscale azienda",
+      "DATA_STATO_DICH_FINE": "Data stato dichiarazione a",
+      "DATA_STATO_DICH_INIZIO": "Data stato dichiarazione da",
+      "DENOM": "Denominazione azienda",
+      "DUE_RATE": "In due rate",
+      "NUM_PROT": "Numero protocollo",
+      "STATO_DICH": "Stato della dichiarazione",
+      "UNICA_SOL": "In unica soluzione",
+      "VERSAMENTO": "Versamento"
+    }
+  },
+  "GENERA_AVVISO": {
+    "MODAL": {
+      "TITLE": "Genera avvisi di pagamento"
+    }
+  },
+  "GIORNI_LAVORATIVI": {
+    "LABEL": {
+      "ELENCO_GIORNI_FEST_CONTRATTO": "Giorni festivi da contratto (ad eccezione delle festività nazionali già considerate dal sistema)",
+      "FESTA_PATRONALE": "Festa patronale",
+      "GIORNI_FEST_CONTRATTO": "Giorni festivi da contratto",
+      "GIORNI_LAVORATIVI": "Giorni lavorativi",
+      "GIORNI_LAV_1": "5",
+      "GIORNI_LAV_2": "6"
+    }
+  },
+  "HEADER": {
+    "MENU": {
+      "BUTTON": {
+        "CF": "Codice fiscale",
+        "CHANGE_ROLE": "Cambia ruolo",
+        "ENTE": "Ente",
+        "LOG_OUT": "Esci",
+        "NAME": "Nome",
+        "ROLE": "Ruolo",
+        "UTENTE_NU": "NU"
+      }
+    },
+    "TITLE": "Portale esoneri"
+  },
+  "LANGUAGE": {
+    "ENGLISH": "ENG",
+    "ITALIAN": "ITA"
+  },
+  "MODAL": {
+    "TITLE": {
+      "ANNULLA_DICH": "Annullare dichiarazione ai fini del versamento dell'esonero",
+      "ELIMINA_DICH": "Eliminare dichiarazione ai fini del versamento dell'esonero",
+      "ELIMINA_SOSP": "Elimina sospensione",
+      "INSERIM_SOSP_LICENZIAMENTO_COLLETTIVO": "Inserimento sospensione di licenziamento collettivo",
+      "PERIODO": "Elimina periodo"
+    }
+  },
+  "NAV_MAIN": {
+    "BUTTON": {
+      "TORNA_ELENCO": "TORNA ALL' ELENCO"
+    },
+    "WIZARD": {
+      "STEP_1": {
+        "TITLE": "Dati aziendali"
+      },
+      "STEP_2": {
+        "TITLE": "Province"
+      },
+      "STEP_3": {
+        "TITLE": "Riepilogo"
+      }
+    }
+  },
+  "NAV_MAIN_DICH_VER": {
+    "MODAL": {
+      "TITLE": "Salvataggio dichiarazione di versamento"
+    }
+  },
+  "PAGINATION": {
+    "FIRST": "Inizio",
+    "LAST": "Fine",
+    "NEXT": "Succ.",
+    "PREV": "Prec."
+  },
+  "PREVISIONE_DICHIARAZIONE": {
+    "BUTTON": {
+      "DOWNLOAD_TEMPLATE": "Download template",
+      "UPLOAD": "Upload"
+    },
+    "LABEL": {
+      "ANNO": "Anno",
+      "EMAIL": "Email",
+      "FILE": "Selezionare il file per la previsione della dichiarazione"
+    },
+    "VALIDATION": {
+      "FORMAT_FILE": "Formato non valido"
+    }
+  },
+  "PROVINCE": {
+    "FIELD": {
+      "ELENCO_PROVINCE": "Elenco province",
+      "SEL_PROV": "Selezionare "
+    },
+    "LABEL": {
+      "%_CONCESSA": "% Concessa",
+      "%_RICHIESTA": "% Richiesta",
+      "ANNO": "Anno",
+      "BASE_COMPUTO": "Base computo",
+      "DATA_CONCESSIONE": "Data concessione",
+      "DATA_DINIEGO": "Data diniego",
+      "DATA_RICHIESTA": "Data richiesta",
+      "DATA_RICONOSC": "Data riconoscimento",
+      "DATA_SCADENZA": "Data scadenza",
+      "DATA_STIPULA": "Data stipula",
+      "DATI_CONVENZIONE": "Dati convenzione",
+      "DATI_ESON_PARZIALE": "Dati esonero parziale",
+      "DATI_PROSPETTI_INFO": "Dati prospetti informativi",
+      "DATI_RICONOSC_INABILITA": "Dati riconoscimento inabilità",
+      "DISABILI_FORZA": "Disabili in forza",
+      "NUM_COMPENSAZIONE": "N. Compensazione",
+      "NUM_ESON_AUTOCERT": "N. Esonerati autocertificati",
+      "NUM_POSIZIONI_APERTE": "N. Posizioni aperte",
+      "ORE_SETTIMANALI_MEDIE": "Ore settimanali medie",
+      "QUOTA_RISERVA": "Quota riserva",
+      "TIPOLOGIA": "Tipologia"
+    },
+    "TABS": {
+      "TILE": {
+        "DETTAGLIO_DICHIARAZIONE": "Dettaglio dichiarazione",
+        "GIORNI_LAVORATIVI": "Giorni lavorativi",
+        "SOSPENSIONI": "Sospensioni"
+      }
+    },
+    "TITLE_EDIT": "Modifica province",
+    "TITLE_INS": "Inserimento province",
+    "TITLE_VIS": "Visualizzazione province"
+  },
+  "RICERCA_DICHIARAZIONE_VER_ESO": {
+    "BTN_NUOVO": "NUOVA DICHIARAZIONE",
+    "TITLE_NO_OP_REGIONE": "Inserimento e ricerca dichiarazione di versamento",
+    "TITLE_OP_REGIONE": "Ricerca dichiarazione di versamento"
+  },
+  "RIEPILOGO": {
+    "ACCORDION": {
+      "TITLE": {
+        "AUTORIZZA": "Autorizzazione da parte dell'operatore regionale",
+        "DATI_PAGAMENTO": "Dati pagamento"
+      }
+    },
+    "AUTORIZZA": {
+      "BTN": {
+        "AGGIORNA_STATO": "AGGIORNA STATO"
+      },
+      "FIELD": {
+        "NO": "No",
+        "NOTE": "Note",
+        "SI": "Si"
+      },
+      "LABEL": {
+        "RADIO": "Si autorizza la dichiarazione di versamento esoneri?"
+      }
+    },
+    "BTN": {
+      "INVIO": "CONFERMA E INVIA"
+    },
+    "LABEL": {
+      "ANNO_RIF": "Anno riferimento",
+      "CAP": "CAP",
+      "CCNL": "CCNL (cod, desc)",
+      "CF": "Codice fiscale",
+      "COD_AVVISO": "Codice avviso",
+      "COMUNE": "Comune (cod, desc)",
+      "CREDITO_RESIDUO": "Credito residuo",
+      "DATA": "Data",
+      "DATA_AVVISO": "Data creazione avviso",
+      "DATA_VERSAMENTO": "Data versamento",
+      "DENOMINAZIONE_AZIENDA": "Denominazione azienda",
+      "DESC_CAUSALE_VER": "Causale del versamento",
+      "GIORNI_LAVORATIVI": "Giorni lavorativi",
+      "IDENTIFICATIVO_UNIVOCO_RISC": "Identificativo univoco riscossione",
+      "IMPORTO": "Importo €",
+      "IMPORTO_ATTESO": "Importo atteso",
+      "IMPORTO_VERSATO": "Importo versato",
+      "INDIRIZZO": "Indirizzo",
+      "IUV": "IUV",
+      "MAIL_RIF": "Mail di riferimento",
+      "NOTE": "Note",
+      "NUM_ESONERATI": "N° Esonerati",
+      "NUM_TRANSAZ": "Numero transazione",
+      "PRESTATORE_SERV": "Prestatore del servizio di pagamento",
+      "PROTOCOLLO": "Protocollo (anno/numero)",
+      "PROVINCIA": "Provincia",
+      "SEDE_LEGALE": "Sede legale",
+      "STATO": "Stato",
+      "TOT_AZIENDA": "TOTALE AZIENDA",
+      "VERSAMENTO": "Versamento"
+    },
+    "MODAL": {
+      "TITLE": {
+        "AUTORIZZA": "Autorizzazione operatore regionale"
+      }
+    },
+    "TITLE_DATI": "Dati azienda",
+    "TITLE_DICHIARAZIONE": "Dati dichiarazione",
+    "TITLE_DICHIA_VERS": "Dichiarazione versamenti",
+    "TITLE_ITER_DICHIA_VERS": "Iter amministrativo dichiarazione versamenti"
+  },
+  "RISULTATI_RICERCA_DICHIARAZIONE_VERS_ESO": {
+    "BUTTON": {
+      "EXPORT_EXCEL": "ESPORTA EXCEL",
+      "EXPORT_PDF": "ESPORTA PDF"
+    },
+    "FILTRI_APPL": "Filtri applicati",
+    "TABLE": {
+      "HEAD": {
+        "ANNO_RIF": "Anno rif.",
+        "AZIENDA": "Azienda",
+        "AZIONI": "Azioni",
+        "DATA_VERS": "Data ultimo versamento",
+        "DT_STATO": "Data stato",
+        "IMPORTO": "Importo",
+        "IMPORTO_VERSATO": "Importo versato",
+        "N_PROT": "N. protocollo",
+        "N_RATE": "N. Rate versate",
+        "STATO": "Stato"
+      }
+    },
+    "TITLE": "Dichiarazioni ai fini del versamento"
+  },
+  "SOSPENSIONI": {
+    "LABEL": {
+      "%_SOSPENSIONE": "% Sospensione",
+      "AZIONI": "Azioni",
+      "DATA_FINE": "Data fine",
+      "DATA_INIZIO": "Data inizio",
+      "ELENCO_SOSPENSIONI": "Elenco Sospensioni",
+      "MOT_SOSPENSIONE": "Motivo Sospensione",
+      "NUM_LAV_SOSPESI": "N. Lavoratori Sospesi",
+      "PERIODO": "Periodo",
+      "SOSPENSIONI": "Sospensioni"
+    }
+  }
+}

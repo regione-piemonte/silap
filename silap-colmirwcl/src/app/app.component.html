@@ -1,0 +1,29 @@
+<!--*************************************************
+Copyright Regione Piemonte - 2024
+SPDX-License-Identifier: EUPL-1.2-or-later
+***************************************************/-->
+<colmirwcl-header (notifyStateSidebar)="setStateSidebar($event)"></colmirwcl-header>
+<main>
+  <div class="container-fluid" style="padding-left: 0">
+    <div class="cf">
+      <div class="f-left col-left">
+        <colmirwcl-left-sidebar [state]="closeSideBar" [class.d-none]="hideSideBar"></colmirwcl-left-sidebar>
+      </div>
+      <div class="f-left col-right">
+        <div class="page-container">
+          <div class="page" id="sectionmain">
+            <div class="row">
+              <div class="col">
+                <colmirwcl-alert-message></colmirwcl-alert-message>
+              </div>
+            </div>
+            <router-outlet></router-outlet>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<colmirwcl-footer></colmirwcl-footer>
+<ngx-spinner type = "ball-clip-rotate-multiple"><p style="color: white" > {{ 'APP.LOADING' | translate}} </p></ngx-spinner>

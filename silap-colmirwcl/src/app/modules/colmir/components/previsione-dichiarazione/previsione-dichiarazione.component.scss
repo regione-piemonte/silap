@@ -1,0 +1,27 @@
+.custom-file-input {
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-file-label::before {
+    content: "seleziona";
+}
+
+#mail{
+    width: 20em;
+}
+#inputFile{
+    width: 43em;
+}
+.custom-file-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hidden-input {
+    display: none;
+  }
