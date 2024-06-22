@@ -1,5 +1,6 @@
 # This is the list of [silapdb] authors for copyright purposes.
 
+Andrea Borando
 Annalisa Bianco
 Antonino Motisi
 Luisa Farinasso
