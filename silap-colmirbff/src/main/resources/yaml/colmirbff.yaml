@@ -1,0 +1,2458 @@
+openapi: 3.0.1
+tags:
+- name: decodifica
+  description: Servizio decodifiche
+- name: Messaggio
+  description: Messaggi applicativi
+- name: ping
+  description: Ping
+- name: utente
+  description: Gestione utente applicativo
+- name: versamento esoneri
+  description: Servizio versamento esoneri
+paths:
+  /Messaggio/find/{id}:
+    get:
+      tags:
+      - Messaggio
+      summary: Restituisce il messaggio
+      operationId: find
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Messaggio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /Messaggio/findAll:
+    get:
+      tags:
+      - Messaggio
+      summary: Restituisce tutti i messaggi
+      operationId: findAll
+      responses:
+        "200":
+          description: Messaggi registrati sul sistema
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Map'
+  /Messaggio/{cod}:
+    get:
+      tags:
+      - Messaggio
+      summary: Restituisce il messaggio
+      operationId: findByCod
+      parameters:
+      - name: cod
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Messaggio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/fill-categoria-azienda/{txt}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce le categorie azienda autocomplete
+      operationId: fillCategoriaAzienda
+      parameters:
+      - name: txt
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Elenco decodifiche categorie azienda autocomplete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/fill-ccnl/{txt}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce i ccnl autocomplete
+      operationId: fillCcnl
+      parameters:
+      - name: txt
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Elenco decodifiche ccnl autocomplete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/fill-comune/{txt}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce i comuni autocomplete
+      operationId: fillComune
+      parameters:
+      - name: txt
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Elenco decodifiche comune autocomplete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/fill-esoDStatoVersamento/{txt}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce i d_statoVersamento autocomplete
+      operationId: fillDStatoVersamento
+      parameters:
+      - name: txt
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Elenco decodifiche d_statoVersamento autocomplete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/fill-esoDVersamentoMotivoSospensione/{txt}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce i d_versamento_motivo_sospensione autocomplete
+      operationId: fillDVersamentoMotivoSospensione
+      parameters:
+      - name: txt
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Elenco decodifiche d_versamento_motivo_sospensione autocomplete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/fill-provincia/{txt}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce le provincie autocomplete
+      operationId: fillProvincia
+      parameters:
+      - name: txt
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Elenco decodifiche provincia autocomplete
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-categoria-azienda:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce tutte le categorie azienda
+      operationId: findCategoriaAzienda
+      responses:
+        "200":
+          description: Elenco decodifiche categorie azienda
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-categoria-azienda/{id}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce la categoria azienda
+      operationId: findCategoriaAziendaById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Categorie azienda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-ccnl:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce tutti i ccnl
+      operationId: findCcnl
+      responses:
+        "200":
+          description: Elenco decodifiche ccnl
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-ccnl/{id}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce il ccnl
+      operationId: findCcnlById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ccnl
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-comune:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce tutti i comuni
+      operationId: findComune
+      responses:
+        "200":
+          description: Elenco decodifiche comune
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-comune/{id}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce il comune
+      operationId: findComuneById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Comune
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-esoDStatoVersamento:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce tutti i d_statoVersamento
+      operationId: findfindDStatoVersamento
+      responses:
+        "200":
+          description: Elenco decodifiche d_StatoVersamento
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-esoDStatoVersamento/{id}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce il d_statoVersamento
+      operationId: findDStatoVersamentoById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Versamento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-esoDVersamentoMotivoSospensione:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce tutti i d_versamento_motivo_sospensione
+      operationId: findDVersamentoMotivoSospensione
+      responses:
+        "200":
+          description: Elenco decodifiche d_versamento_motivo_sospensione
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-esoDVersamentoMotivoSospensione/{id}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce il d_versamento_motivo_sospensione
+      operationId: findDVersamentoMotivoSospensioneById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Motivo Sospensione
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-provincia:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce tutti le provincia
+      operationId: findProvincia
+      responses:
+        "200":
+          description: Elenco decodifiche provincia
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /decodifica/find-provincia/{id}:
+    get:
+      tags:
+      - decodifica
+      summary: Restituisce la provincia
+      operationId: findProvinciaById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Provincia
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decodifica'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /ping/call:
+    get:
+      tags:
+      - ping
+      summary: Restituisce l'utente per l'operatore
+      operationId: call
+      responses:
+        "200":
+          description: Risposta
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /ping/current-date:
+    get:
+      tags:
+      - ping
+      summary: Restituisce la data corrente
+      operationId: getCurrentDate
+      responses:
+        "200":
+          description: Risposta
+          content:
+            application/json:
+              schema:
+                type: string
+                format: date-time
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /utente/self:
+    get:
+      tags:
+      - utente
+      summary: Restituisce l'utente per l'operatore
+      operationId: self
+      responses:
+        "200":
+          description: Utente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Utente'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/autorizza-dichiarazioni-batch:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Batch per l'autorizzazione delle dichiarazioni di esoneo
+      operationId: autorizzaDichiarazioniBatch
+      responses:
+        "200":
+          description: Restituisce il messaggio del lancio batch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/autorizza-versamento:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamento con lo stato aggiornato
+      operationId: autorizzaVersamento
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoStato'
+      responses:
+        "200":
+          description: Versamento stato esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/cancella-periodi-provincia/{idProvincia}:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamento
+      operationId: cancellaPeriodiProvincia
+      parameters:
+      - name: idProvincia
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/VersamentoPvPeriodo'
+      responses:
+        "200":
+          description: Versamento periodi provincia
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersamentoPvPeriodosResponse'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/cancella-periodo-automatico-provincia/{idProvincia}:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamento
+      operationId: cancellaPeriodoAutomaticoProvincia
+      parameters:
+      - name: idProvincia
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoPvPeriodo'
+      responses:
+        "200":
+          description: Versamento periodi provincia
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersamentoPvPeriodosResponse'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/cancella-periodo-provincia:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamento periodo
+      operationId: cancellaPeriodoProvincia
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoPvPeriodo'
+      responses:
+        "200":
+          description: Versamento periodo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersamentoPvPeriodo'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/check-posizioni-debitorie-batch:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Batch per la creazione delle posizioni debitorie
+      operationId: checkPosizioniDebitorieBatch
+      responses:
+        "200":
+          description: Restituisce il messaggio del lancio batch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/conferma-invia:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Conferma e invia il versamento
+      operationId: confermaInviaVersamento
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: integer
+              format: int64
+      responses:
+        "200":
+          description: Versamento periodo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/conferma-versamento-provincie:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamento
+      operationId: confermaVersamentoProvincie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: integer
+              format: int64
+      responses:
+        "200":
+          description: Versamento periodo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/controllo-modifica:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: controlloModifica
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Versamento'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/creazione-posizioni-debitorie-batch:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Batch per la creazione delle posizioni debitorie
+      operationId: creazionePosizioniDebitorieBatch
+      responses:
+        "200":
+          description: Restituisce il messaggio del lancio batch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/download-previsione-dichiarazioni-template:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Scarica il template per il batch previsione dichiarazioni
+      operationId: downloadPrevisioneDichiarazioniTemplate
+      responses:
+        "200":
+          description: Restituisce il file template
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        "0":
+          description: Errore sul sistema
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/get-pdf-avviso-pagamento/{idVersamento}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il pdf del pagamento
+      operationId: getPdfAvvisoPagamento
+      parameters:
+      - name: idVersamento
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Pdf avviso pagamento
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        "0":
+          description: Errore sul sistema
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/get-posizione-debitoria/{idVersamento}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce la posizione debitoria
+      operationId: getPosizioneDebitoria
+      parameters:
+      - name: idVersamento
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Messaggio posizione debitoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/get-versamento/{idEsoTVersamento}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce la dichiarazione versamento
+      operationId: getVersamento
+      parameters:
+      - name: idEsoTVersamento
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Versamento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/inserisci-periodo-provincia/{idProvincia}:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamento periodo
+      operationId: inserisciPeriodoProvincia
+      parameters:
+      - name: idProvincia
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoPvPeriodo'
+      responses:
+        "200":
+          description: Versamento periodo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersamentoPvPeriodo'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/modifica-dati-aziendali:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: modificaDatiAziendali
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Versamento'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/modifica-gg-lavorativi-provincia:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: modificaGGLavorativiProvincia
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoProvincia'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/modifica-sospensioni-provincia/{ripristina}:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: modificaSospensioniProvincia
+      parameters:
+      - name: ripristina
+        in: path
+        required: true
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoProvincia'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/modifica-versamento/{idEsoTVersamento}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce la dichiarazione versamento da modificare
+      operationId: modificaVersamento
+      parameters:
+      - name: idEsoTVersamento
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Versamento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/nuovo-versamento:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce un VersamentoStato predisposto per l'inserimento
+      operationId: getNuovoVersamento
+      responses:
+        "200":
+          description: VersamentoStato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/parametro/{codParametro}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce un Parametro dato il codice
+      operationId: getParametroByCod
+      parameters:
+      - name: codParametro
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Parametro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parametro'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/ricerca:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce i versamenti esoneri
+      operationId: ricercaVersamentoEsoneri
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRicercaVersamentoEsoneri'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RicercaVersamentoEsoneriResponse'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/ricerca-azienda/{cf}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce l'azienda da un codice fiscale
+      operationId: ricercaAzienda
+      parameters:
+      - name: cf
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: idVersamento
+        in: query
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Azienda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Azienda'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/salva-dati-aziendali:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: salvaDatiAziendali
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Versamento'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/salva-gg-lavorativi-provincia:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: salvaGGLavorativiProvincia
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoProvincia'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/salva-sospensioni-provincia:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il versamenti esoneri salvato
+      operationId: salvaSospensioniProvincia
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersamentoProvincia'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/stampa-ricerca:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Restituisce la stampa dei versamenti esoneri
+      operationId: stampaRicercaVersamentoEsoneri
+      parameters:
+      - name: format
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRicercaVersamentoEsoneri'
+      responses:
+        "200":
+          description: Versamento esoneri
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        "0":
+          description: Errore sul sistema
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/stampa-versamento/{idEsoTVersamento}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce la stampa del versamento visualizzato
+      operationId: stampaVersamento
+      parameters:
+      - name: idEsoTVersamento
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Stampa versamento visualizzato
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        "0":
+          description: Errore sul sistema
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/update-stato/{idEsoTVersamento}/{idDVersamentoStato}:
+    get:
+      tags:
+      - versamento esoneri
+      summary: Restituisce il nuovo stato versamento modificato
+      operationId: updateStatoVersamento
+      parameters:
+      - name: idEsoTVersamento
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: idDVersamentoStato
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: VersamentoStato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Versamento'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /versamento-esoneri/upload-previsione-dichiarazioni:
+    post:
+      tags:
+      - versamento esoneri
+      summary: Upload il file xls per lanciare il batch previsione dichiarazioni
+      operationId: uploadPrevisioneDichiarazioni
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormPrevisioniVersamentoEsoneri'
+      responses:
+        "200":
+          description: Restituisce il messaggio del lancio batch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Messaggio'
+        "0":
+          description: Errore sul sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  schemas:
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ApiMessage:
+      type: object
+      properties:
+        code:
+          type: string
+        error:
+          type: boolean
+        message:
+          type: string
+        tipo:
+          type: string
+        title:
+          type: string
+    Azienda:
+      type: object
+      properties:
+        capSede:
+          type: string
+        codFiscale:
+          type: string
+        comuneSede:
+          $ref: '#/components/schemas/Comune'
+        denomAzienda:
+          type: string
+        idEsoTCreditoResiduo:
+          type: integer
+          format: int64
+        idSilAziAnagrafica:
+          type: integer
+          format: int64
+        idSilAziSede:
+          type: integer
+          format: int64
+        indirizzoSede:
+          type: string
+        numCreditoResiduo:
+          type: number
+        ragioneSocialeSede:
+          type: string
+        silapDCcnl:
+          $ref: '#/components/schemas/Ccnl'
+    CategoriaAzienda:
+      type: object
+      properties:
+        codCategoriaAzienda:
+          type: string
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        descr:
+          type: string
+        id:
+          type: integer
+          format: int64
+    Ccnl:
+      type: object
+      properties:
+        cod:
+          type: string
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        descr:
+          type: string
+        dsSettore:
+          type: string
+        id:
+          type: string
+        numOre:
+          type: integer
+          format: int64
+    Comune:
+      type: object
+      properties:
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        descr:
+          type: string
+        id:
+          type: string
+        silapDProvincia:
+          $ref: '#/components/schemas/Provincia'
+    CreditoResiduo:
+      type: object
+      properties:
+        codFiscale:
+          type: string
+        idEsoTCreditoResiduo:
+          type: integer
+          format: int64
+        numValore:
+          type: number
+    DVersamentoStato:
+      type: object
+      properties:
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        descr:
+          type: string
+        flgStatoFinale:
+          type: string
+        id:
+          type: integer
+          format: int64
+    Decodifica:
+      type: object
+      properties:
+        descr:
+          type: string
+        id:
+          type: object
+    FormPrevisioniVersamentoEsoneri:
+      type: object
+      properties:
+        anno:
+          type: string
+        attachment:
+          type: array
+          items:
+            type: string
+            format: byte
+        email:
+          type: string
+    FormRicercaVersamentoEsoneri:
+      type: object
+      properties:
+        annoProtocollo:
+          type: integer
+          format: int32
+        codFisc:
+          type: string
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        denomAzienda:
+          type: string
+        flgDueRate:
+          type: string
+        flgUnicaSoluzione:
+          type: string
+        numProtocollo:
+          type: integer
+          format: int32
+        statoDichiarazione:
+          type: array
+          items:
+            type: integer
+            format: int64
+    Funzione:
+      type: object
+      properties:
+        dFine:
+          type: string
+          format: date-time
+        dInizio:
+          type: string
+          format: date-time
+        dsEstesa:
+          type: string
+        dsSilapDFunzione:
+          type: string
+        iconaSilapDFunzione:
+          type: string
+        idSilapDFunzione:
+          type: integer
+          format: int64
+        noteSilapDFunzione:
+          type: string
+    Messaggio:
+      type: object
+      properties:
+        codSilapDMessaggio:
+          type: string
+        dsSilapDMessaggio:
+          type: string
+        dsTitolo:
+          type: string
+        flgAttivo:
+          type: string
+        idSilapDMessaggio:
+          type: integer
+          format: int64
+        silapDTipoMessaggio:
+          $ref: '#/components/schemas/TipoMessaggio'
+    Operatore:
+      type: object
+      properties:
+        codFiscale:
+          type: string
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dsCognome:
+          type: string
+        dsNome:
+          type: string
+        idSilapDOperatore:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int32
+    Parametro:
+      type: object
+      properties:
+        codParametro:
+          type: string
+        dFineValidita:
+          type: string
+          format: date-time
+        dInizioValidita:
+          type: string
+          format: date-time
+        dsNote:
+          type: string
+        dsValore:
+          type: string
+        flgTipoValore:
+          type: string
+        idEsoTParametro:
+          type: integer
+          format: int64
+    PosizioneDebitoria:
+      type: object
+      properties:
+        cfDebitore:
+          type: string
+        codAvviso:
+          type: string
+        codIdPagamento:
+          type: string
+        codIur:
+          type: string
+        codIuv:
+          type: string
+        codTransazione:
+          type: string
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        codVersamento:
+          type: string
+        dsCausale:
+          type: string
+        dsDebitore:
+          type: string
+        dsInfoAggiuntive:
+          type: string
+        dsNote:
+          type: string
+        dsPsp:
+          type: string
+        dsSoggettoVersante:
+          type: string
+        dtAggiorn:
+          type: string
+          format: date-time
+        dtEsito:
+          type: string
+          format: date-time
+        dtFineValidita:
+          type: string
+          format: date-time
+        dtInizioValidita:
+          type: string
+          format: date-time
+        dtInserim:
+          type: string
+          format: date-time
+        dtInvioPromemoria:
+          type: string
+          format: date-time
+        dtOperazione:
+          type: string
+          format: date-time
+        dtScadenza:
+          type: string
+          format: date-time
+        idEsoTPosizioneDebitoria:
+          type: integer
+          format: int64
+        importoAtteso:
+          type: number
+        importoPagato:
+          type: number
+        ntimestamp:
+          type: integer
+          format: int64
+        numRata:
+          type: integer
+          format: int64
+    Provincia:
+      type: object
+      properties:
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        descr:
+          type: string
+        dsSilapDProvincia:
+          type: string
+        id:
+          type: string
+    RicercaVersamentoEsoneriResponse:
+      type: object
+      properties:
+        apiMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiMessage'
+        currentPage:
+          type: integer
+          format: int32
+        esitoPositivo:
+          type: boolean
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoEsoneriRidotto'
+        recordOfPage:
+          type: integer
+          format: int32
+        recordPage:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        totalResult:
+          type: integer
+          format: int32
+    Ruolo:
+      type: object
+      properties:
+        codiceFiscaleSoggettoAbilitato:
+          type: string
+        denominazioneSoggettoAbilitato:
+          type: string
+        dsDescrizione:
+          type: string
+        dsSilapDRuolo:
+          type: string
+        idSilapDRuolo:
+          type: integer
+          format: int64
+        operatore:
+          $ref: '#/components/schemas/Operatore'
+        ruoloFunzioni:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuoloFunzione'
+    RuoloFunzione:
+      type: object
+      properties:
+        dataFine:
+          type: string
+          format: date-time
+        dataInizio:
+          type: string
+          format: date-time
+        funzione:
+          $ref: '#/components/schemas/Funzione'
+    TipoMessaggio:
+      type: object
+      properties:
+        dsSilapDTipoMessaggio:
+          type: string
+        idSilapDTipoMessaggio:
+          type: string
+    Utente:
+      type: object
+      properties:
+        codFisc:
+          type: string
+        cognome:
+          type: string
+        community:
+          type: string
+        ente:
+          type: string
+        livAuth:
+          type: integer
+          format: int32
+        nome:
+          type: string
+        ruoli:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ruolo'
+        ruolo:
+          type: string
+    Versamento:
+      type: object
+      properties:
+        annoProtocollo:
+          type: integer
+          format: int64
+        annoRiferimento:
+          type: integer
+          format: int64
+        codFiscale:
+          type: string
+        codFiscaleSoggetto:
+          type: string
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dProtocollo:
+          type: string
+          format: date-time
+        dsDenominazioneAzienda:
+          type: string
+        dsEmailRiferimento:
+          type: string
+        esoTCreditoResiduo:
+          $ref: '#/components/schemas/CreditoResiduo'
+        esoTPosizioneDebitorias:
+          type: array
+          items:
+            $ref: '#/components/schemas/PosizioneDebitoria'
+        esoTVersamentoProspettos:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoProspetto'
+        esoTVersamentoProvincias:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoProvincia'
+        esoTVersamentoStatos:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoStato'
+        idEsoTVersamento:
+          type: integer
+          format: int64
+        idSilAziAnagrafica:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+        numCreditoResiduo:
+          type: number
+        numProtocollo:
+          type: integer
+          format: int64
+        numRate:
+          type: integer
+          format: int64
+        partivaIva:
+          type: string
+        printCalcoloAutomatico:
+          type: string
+        silapDCcnl:
+          $ref: '#/components/schemas/Ccnl'
+        versamentoSede:
+          $ref: '#/components/schemas/VersamentoSede'
+    VersamentoCobLav:
+      type: object
+      properties:
+        codFiscale:
+          type: string
+        codiceComunicazioneReg:
+          type: string
+        dsCognome:
+          type: string
+        dsNome:
+          type: string
+        dsTipoComunicazione:
+          type: string
+        dsTipoContratto:
+          type: string
+        flgFulltime:
+          type: string
+        flgL68:
+          type: string
+        idEsoTVersamentoPvCobLav:
+          type: integer
+          format: int64
+        numOreSettMed:
+          type: integer
+          format: int64
+        siglaPv:
+          type: string
+    VersamentoEsoneriRidotto:
+      type: object
+      properties:
+        annoProtocollo:
+          type: integer
+          format: int64
+        annoRiferimento:
+          type: integer
+          format: int64
+        codFiscale:
+          type: string
+        descStato:
+          type: string
+        dsDenominazioneAzienda:
+          type: string
+        dtEsito:
+          type: string
+          format: date-time
+        dtStato:
+          type: string
+          format: date-time
+        idEsoDVersamentoStato:
+          type: integer
+          format: int64
+        idEsoTVersamento:
+          type: integer
+          format: int64
+        importo:
+          type: number
+        importoPagato:
+          type: number
+        numProtocollo:
+          type: integer
+          format: int64
+        numRata:
+          type: integer
+          format: int64
+    VersamentoMotivoSospensione:
+      type: object
+      properties:
+        dFine:
+          type: string
+          format: date-time
+        dInizio:
+          type: string
+          format: date-time
+        dsEsoDVersamentoMotivoSospensione:
+          type: string
+        idEsoDVersamentoMotivoSospensione:
+          type: integer
+          format: int64
+        percentuale:
+          type: integer
+          format: int64
+    VersamentoProspetto:
+      type: object
+      properties:
+        annoRiferimento:
+          type: integer
+          format: int64
+        baseComputoNazionale:
+          type: integer
+          format: int64
+        categoriaAzienda:
+          type: string
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        codiceRegionale:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        esoTVersamentoPvProspettos:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvProspetto'
+        idEsoTVersamento:
+          type: integer
+          format: int64
+        idEsoTVersamentoProspetto:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+    VersamentoProvincia:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dFestaPatronale:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        esoTVersamentoPvCobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvCob'
+        esoTVersamentoPvConvenziones:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvConvenzione'
+        esoTVersamentoPvEsoneros:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvEsonero'
+        esoTVersamentoPvGgExtraFestivis:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvGgExtraFestivi'
+        esoTVersamentoPvPeriodoMasters:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvPeriodoMaster'
+        esoTVersamentoPvPeriodos:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvPeriodo'
+        esoTVersamentoPvRicIns:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvRicIn'
+        esoTVersamentoPvSospensiones:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvSospensione'
+        idEsoTVersamento:
+          type: integer
+          format: int64
+        idEsoTVersamentoProvincia:
+          type: integer
+          format: int64
+        importoAutomatico:
+          type: number
+        nTimestamp:
+          type: integer
+          format: int64
+        numGgLavorativiSettimanali:
+          type: integer
+          format: int64
+        silapDProvincia:
+          $ref: '#/components/schemas/Provincia'
+    VersamentoPvCob:
+      type: object
+      properties:
+        dCob:
+          type: string
+          format: date-time
+        esoTVersamentoCobLavs:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoCobLav'
+        idEsoTVersamentoPvCob:
+          type: integer
+          format: int64
+        numLavoratori:
+          type: integer
+          format: int64
+        numLavoratoriDisabili:
+          type: integer
+          format: int64
+    VersamentoPvConvenzione:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dScadenza:
+          type: string
+          format: date-time
+        dStipula:
+          type: string
+          format: date-time
+        esoDVersamentoTipoConvenzione:
+          $ref: '#/components/schemas/VersamentoTipoConvenzione'
+        idEsoTVersamentoPvConvenzione:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+        numPosizioniAperte:
+          type: integer
+          format: int64
+    VersamentoPvEsonero:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dClassificazione:
+          type: string
+          format: date-time
+        dConcessione:
+          type: string
+          format: date-time
+        dDiniego:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dRichiesta:
+          type: string
+          format: date-time
+        dScadenza:
+          type: string
+          format: date-time
+        dsTipoComunicazione:
+          type: string
+        idEsoTVersamentoPvEsonero:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+        numClassificazione:
+          type: integer
+          format: int64
+        percConcessione:
+          type: integer
+          format: int64
+        percRichiesta:
+          type: integer
+          format: int64
+    VersamentoPvGgExtraFestivi:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dGgFestivo:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        idEsoTVersamentoPvGgExtraFestivi:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+    VersamentoPvPeriodo:
+      type: object
+      properties:
+        baseComputo:
+          type: integer
+          format: int64
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dFine:
+          type: string
+          format: date-time
+        dInizio:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        flgTipo:
+          type: string
+        idEsoTVersamentoPvPeriodo:
+          type: integer
+          format: int64
+        idEsonero:
+          type: integer
+          format: int64
+        importo:
+          type: number
+        nTimestamp:
+          type: integer
+          format: int64
+        numDisabiliInForza:
+          type: integer
+          format: int64
+        numEsoneratiAutocertificati:
+          type: integer
+          format: int64
+        numGgLavorativi:
+          type: integer
+          format: int64
+        numLavoratoriEsonerati:
+          type: integer
+          format: int64
+        numRiallineamentoNazionale:
+          type: integer
+          format: int64
+        numSoggettiCompensati:
+          type: integer
+          format: int64
+        quotaRiserva:
+          type: integer
+          format: int64
+        silapDCategoriaAzienda:
+          $ref: '#/components/schemas/CategoriaAzienda'
+        sovrapposto:
+          type: boolean
+    VersamentoPvPeriodoMaster:
+      type: object
+      properties:
+        baseComputo:
+          type: integer
+          format: int64
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dFine:
+          type: string
+          format: date-time
+        dInizio:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        flgTipo:
+          type: string
+        idEsoTVersamentoPvPeriodo:
+          type: integer
+          format: int64
+        idEsonero:
+          type: integer
+          format: int64
+        importo:
+          type: number
+        listaPeriodi:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvPeriodo'
+        nTimestamp:
+          type: integer
+          format: int64
+        numDisabiliInForza:
+          type: integer
+          format: int64
+        numEsoneratiAutocertificati:
+          type: integer
+          format: int64
+        numGgLavorativi:
+          type: integer
+          format: int64
+        numLavoratoriEsonerati:
+          type: integer
+          format: int64
+        numRiallineamentoNazionale:
+          type: integer
+          format: int64
+        numSoggettiCompensati:
+          type: integer
+          format: int64
+        quotaRiserva:
+          type: integer
+          format: int64
+        silapDCategoriaAzienda:
+          $ref: '#/components/schemas/CategoriaAzienda'
+        sovrapposto:
+          type: boolean
+    VersamentoPvPeriodosResponse:
+      type: object
+      properties:
+        apiMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiMessage'
+        esitoPositivo:
+          type: boolean
+        periodi:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersamentoPvPeriodo'
+    VersamentoPvProspetto:
+      type: object
+      properties:
+        baseComputoProvinciale:
+          type: integer
+          format: int64
+        catCompensazioneDisabili:
+          type: string
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        idEsoTVersamentoPvProspetto:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+        numDisabiliInForza:
+          type: integer
+          format: int64
+        numEsoneratiAutocertificati:
+          type: integer
+          format: int64
+        numSoggettiCompensatiDisabili:
+          type: integer
+          format: int64
+        quotaRiservaDisabili:
+          type: integer
+          format: int64
+        silapDProvincia:
+          $ref: '#/components/schemas/Provincia'
+    VersamentoPvRicIn:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dRiconoscimentoInvalidita:
+          type: string
+          format: date-time
+        dScadenza:
+          type: string
+          format: date-time
+        idEsoTVersamentoPvRicIn:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+        numOreSettMed:
+          type: integer
+          format: int64
+    VersamentoPvSospensione:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dFineSospensione:
+          type: string
+          format: date-time
+        dInizioSospensione:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        esoDVersamentoMotivoSospensione:
+          $ref: '#/components/schemas/VersamentoMotivoSospensione'
+        idEsoTVersamentoPvSospensione:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+        numLavoratoriSospesi:
+          type: integer
+          format: int64
+        percSospensione:
+          type: integer
+          format: int64
+    VersamentoSede:
+      type: object
+      properties:
+        codCap:
+          type: string
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        comune:
+          $ref: '#/components/schemas/Comune'
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dsDenominazioneSede:
+          type: string
+        dsIndirizzo:
+          type: string
+        idEsoTVersamentoSede:
+          type: integer
+          format: int64
+        idSilAziSede:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+    VersamentoStato:
+      type: object
+      properties:
+        codUserAggiorn:
+          type: string
+        codUserInserim:
+          type: string
+        dAggiorn:
+          type: string
+          format: date-time
+        dInserim:
+          type: string
+          format: date-time
+        dsNote:
+          type: string
+        dtStato:
+          type: string
+          format: date-time
+        esoDVersamentoStato:
+          $ref: '#/components/schemas/DVersamentoStato'
+        flgCurrentRecord:
+          type: string
+        idEsoTVersamento:
+          type: integer
+          format: int64
+        idEsoTVersamentoStato:
+          type: integer
+          format: int64
+        nTimestamp:
+          type: integer
+          format: int64
+    VersamentoTipoConvenzione:
+      type: object
+      properties:
+        dFine:
+          type: string
+          format: date-time
+        dInizio:
+          type: string
+          format: date-time
+        dsEsoDVersamentoTipoConvenzione:
+          type: string
+        idEsoDVersamentoTipoConvenzione:
+          type: integer
+          format: int64
+        idSilL68TipoConvenzione:
+          type: string

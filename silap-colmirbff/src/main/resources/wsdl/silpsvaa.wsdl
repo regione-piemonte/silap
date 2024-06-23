@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:silpsvaa" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:silpsvaa" xmlns:intf="urn:silpsvaa" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Nov 13, 2013 (09:13:21 GMT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="urn:silpsvaa" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="ricercaElencoAziende">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+      <element minOccurs="0" name="in1" type="impl:ElencoAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ElencoAziende">
+    <sequence>
+     <element name="codFiscale" nillable="true" type="xsd:string"/>
+     <element name="flagTipoAzienda" nillable="true" type="xsd:string"/>
+     <element name="flgMaster" nillable="true" type="xsd:string"/>
+     <element name="idAzienda" nillable="true" type="xsd:string"/>
+     <element name="partitaIva" nillable="true" type="xsd:string"/>
+     <element name="ragioneSociale" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaElencoAziendeResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="ricercaElencoAziendeReturn" type="impl:ElencoAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="CSIException">
+    <sequence>
+     <element name="nestedExcClassName" nillable="true" type="xsd:string"/>
+     <element name="nestedExcMsg" nillable="true" type="xsd:string"/>
+     <element name="stackTraceMessage" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserException">
+    <complexContent>
+     <extension base="impl:CSIException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ServiziSilpException">
+    <complexContent>
+     <extension base="impl:UserException">
+      <sequence>
+       <element name="codice" nillable="true" type="xsd:string"/>
+       <element name="descrizione" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="fault" type="impl:ServiziSilpException"/>
+   <element name="visualizzaDettaglioAzienda">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+      <element minOccurs="0" name="in1" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="visualizzaDettaglioAziendaResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="visualizzaDettaglioAziendaReturn" type="impl:AnagraficaAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AnagraficaAziende">
+    <sequence>
+     <element name="altreInformazioni" nillable="true" type="xsd:string"/>
+     <element name="codLavoroTemp" nillable="true" type="xsd:string"/>
+     <element name="codMinAteco" nillable="true" type="xsd:string"/>
+     <element name="codUser" nillable="true" type="xsd:string"/>
+     <element name="codiceFiscale" nillable="true" type="xsd:string"/>
+     <element name="descrAteco" nillable="true" type="xsd:string"/>
+     <element name="descrCcnlAzienda" nillable="true" type="xsd:string"/>
+     <element name="descrMinAteco" nillable="true" type="xsd:string"/>
+     <element name="descrNaturaGiuridica" nillable="true" type="xsd:string"/>
+     <element name="descrTipoAzienda" nillable="true" type="xsd:string"/>
+     <element name="flagArtigiana" nillable="true" type="xsd:string"/>
+     <element name="flagMaster" nillable="true" type="xsd:string"/>
+     <element name="flagPubblicaAmm" nillable="true" type="xsd:string"/>
+     <element name="flagTipoAzienda" nillable="true" type="xsd:string"/>
+     <element name="idAteco" nillable="true" type="xsd:string"/>
+     <element name="idAzienda" nillable="true" type="xsd:string"/>
+     <element name="idAziendaAccorpati" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     <element name="idCcnlAzienda" nillable="true" type="xsd:string"/>
+     <element name="idNaturaGiuridica" nillable="true" type="xsd:string"/>
+     <element name="partitaIva" nillable="true" type="xsd:string"/>
+     <element name="ragioneSociale" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaSediAzienda">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+      <element minOccurs="0" name="in1" type="impl:ElencoSedi"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ElencoSedi">
+    <sequence>
+     <element name="capSede" nillable="true" type="xsd:string"/>
+     <element name="codPatInail" nillable="true" type="xsd:string"/>
+     <element name="codiceFiscaleAzienda" nillable="true" type="xsd:string"/>
+     <element name="dataFineAttivita" nillable="true" type="xsd:string"/>
+     <element name="descrComuneSede" nillable="true" type="xsd:string"/>
+     <element name="descrIndirizzoSede" nillable="true" type="xsd:string"/>
+     <element name="descrLocalitaSede" nillable="true" type="xsd:string"/>
+     <element name="descrNazioneSede" nillable="true" type="xsd:string"/>
+     <element name="descrNumCivicoSede" nillable="true" type="xsd:string"/>
+     <element name="descrStatoSede" nillable="true" type="xsd:string"/>
+     <element name="descrToponimoSede" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="fax" nillable="true" type="xsd:string"/>
+     <element name="flgValida" nillable="true" type="xsd:string"/>
+     <element name="idAzienda" nillable="true" type="xsd:string"/>
+     <element name="idComuneSede" nillable="true" type="xsd:string"/>
+     <element name="idNazioneSede" nillable="true" type="xsd:string"/>
+     <element name="idSedeAzienda" nillable="true" type="xsd:string"/>
+     <element name="idStatoSede" nillable="true" type="xsd:string"/>
+     <element name="idToponimoSede" nillable="true" type="xsd:string"/>
+     <element name="motivoValidita" nillable="true" type="xsd:string"/>
+     <element name="numAgenziaSomministrazione" nillable="true" type="xsd:string"/>
+     <element name="numPreferenza" nillable="true" type="xsd:string"/>
+     <element name="ragioneSocialeSede" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="tipoSede" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaSediAziendaResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="ricercaSediAziendaReturn" type="impl:ElencoSedi"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="visualizzaDettaglioSedeAzienda">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+      <element minOccurs="0" name="in1" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="visualizzaDettaglioSedeAziendaResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="visualizzaDettaglioSedeAziendaReturn" type="impl:AnagraficaSediAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="AnagraficaSediAziende">
+    <sequence>
+     <element name="EMail" nillable="true" type="xsd:string"/>
+     <element name="altreInformazioni" nillable="true" type="xsd:string"/>
+     <element name="capSede" nillable="true" type="xsd:string"/>
+     <element name="codInail" nillable="true" type="xsd:string"/>
+     <element name="codInps" nillable="true" type="xsd:string"/>
+     <element name="codMinisteroAteco" nillable="true" type="xsd:string"/>
+     <element name="codUser" nillable="true" type="xsd:string"/>
+     <element name="dataFineAttivita" nillable="true" type="xsd:string"/>
+     <element name="dataInizioAttivita" nillable="true" type="xsd:string"/>
+     <element name="descrAtecoSede" nillable="true" type="xsd:string"/>
+     <element name="descrComuneSede" nillable="true" type="xsd:string"/>
+     <element name="descrIndirizzoSede" nillable="true" type="xsd:string"/>
+     <element name="descrLocalitaSede" nillable="true" type="xsd:string"/>
+     <element name="descrMotivo" nillable="true" type="xsd:string"/>
+     <element name="descrNazioneSede" nillable="true" type="xsd:string"/>
+     <element name="descrNumCivicoSede" nillable="true" type="xsd:string"/>
+     <element name="descrTipoSede" nillable="true" type="xsd:string"/>
+     <element name="descrToponimoSede" nillable="true" type="xsd:string"/>
+     <element name="fax" nillable="true" type="xsd:string"/>
+     <element name="flagValida" nillable="true" type="xsd:string"/>
+     <element name="idAtecoSede" nillable="true" type="xsd:string"/>
+     <element name="idAzienda" nillable="true" type="xsd:string"/>
+     <element name="idComuneSede" nillable="true" type="xsd:string"/>
+     <element name="idNazioneSede" nillable="true" type="xsd:string"/>
+     <element name="idSedeAccorpati" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     <element name="idSedeAzienda" nillable="true" type="xsd:string"/>
+     <element name="idTipoSede" nillable="true" type="xsd:string"/>
+     <element name="idToponimoSede" nillable="true" type="xsd:string"/>
+     <element name="numAgenziaSomm" nillable="true" type="xsd:string"/>
+     <element name="numPreferenza" nillable="true" type="xsd:string"/>
+     <element name="ragioneSocialeSede" nillable="true" type="xsd:string"/>
+     <element name="siglaProvinciaSede" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="modificaAzienda">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+      <element minOccurs="0" name="in1" type="impl:AnagraficaAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modificaAziendaResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="modificaAziendaReturn" type="impl:AnagraficaAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modificaSede">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+      <element minOccurs="0" name="in1" type="impl:AnagraficaSediAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modificaSedeResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="modificaSedeReturn" type="impl:AnagraficaSediAziende"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="visualizzaDettaglioAziendaRequest">
+
+      <wsdl:part element="impl:visualizzaDettaglioAzienda" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="visualizzaDettaglioSedeAziendaRequest">
+
+      <wsdl:part element="impl:visualizzaDettaglioSedeAzienda" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="visualizzaDettaglioSedeAziendaResponse">
+
+      <wsdl:part element="impl:visualizzaDettaglioSedeAziendaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificaAziendaResponse">
+
+      <wsdl:part element="impl:modificaAziendaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificaAziendaRequest">
+
+      <wsdl:part element="impl:modificaAzienda" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaElencoAziendeResponse">
+
+      <wsdl:part element="impl:ricercaElencoAziendeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaSediAziendaRequest">
+
+      <wsdl:part element="impl:ricercaSediAzienda" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaSediAziendaResponse">
+
+      <wsdl:part element="impl:ricercaSediAziendaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="visualizzaDettaglioAziendaResponse">
+
+      <wsdl:part element="impl:visualizzaDettaglioAziendaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaElencoAziendeRequest">
+
+      <wsdl:part element="impl:ricercaElencoAziende" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificaSedeResponse">
+
+      <wsdl:part element="impl:modificaSedeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiziSilpException">
+
+      <wsdl:part element="impl:fault" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificaSedeRequest">
+
+      <wsdl:part element="impl:modificaSede" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EstrazioneAnagraficaAziende">
+
+      <wsdl:operation name="ricercaElencoAziende">
+
+         <wsdl:input message="impl:ricercaElencoAziendeRequest" name="ricercaElencoAziendeRequest"/>
+
+         <wsdl:output message="impl:ricercaElencoAziendeResponse" name="ricercaElencoAziendeResponse"/>
+
+         <wsdl:fault message="impl:ServiziSilpException" name="ServiziSilpException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="visualizzaDettaglioAzienda">
+
+         <wsdl:input message="impl:visualizzaDettaglioAziendaRequest" name="visualizzaDettaglioAziendaRequest"/>
+
+         <wsdl:output message="impl:visualizzaDettaglioAziendaResponse" name="visualizzaDettaglioAziendaResponse"/>
+
+         <wsdl:fault message="impl:ServiziSilpException" name="ServiziSilpException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ricercaSediAzienda">
+
+         <wsdl:input message="impl:ricercaSediAziendaRequest" name="ricercaSediAziendaRequest"/>
+
+         <wsdl:output message="impl:ricercaSediAziendaResponse" name="ricercaSediAziendaResponse"/>
+
+         <wsdl:fault message="impl:ServiziSilpException" name="ServiziSilpException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="visualizzaDettaglioSedeAzienda">
+
+         <wsdl:input message="impl:visualizzaDettaglioSedeAziendaRequest" name="visualizzaDettaglioSedeAziendaRequest"/>
+
+         <wsdl:output message="impl:visualizzaDettaglioSedeAziendaResponse" name="visualizzaDettaglioSedeAziendaResponse"/>
+
+         <wsdl:fault message="impl:ServiziSilpException" name="ServiziSilpException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificaAzienda">
+
+         <wsdl:input message="impl:modificaAziendaRequest" name="modificaAziendaRequest"/>
+
+         <wsdl:output message="impl:modificaAziendaResponse" name="modificaAziendaResponse"/>
+
+         <wsdl:fault message="impl:ServiziSilpException" name="ServiziSilpException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificaSede">
+
+         <wsdl:input message="impl:modificaSedeRequest" name="modificaSedeRequest"/>
+
+         <wsdl:output message="impl:modificaSedeResponse" name="modificaSedeResponse"/>
+
+         <wsdl:fault message="impl:ServiziSilpException" name="ServiziSilpException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="silpsvaaSoapBinding" type="impl:EstrazioneAnagraficaAziende">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="ricercaElencoAziende">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ricercaElencoAziendeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ricercaElencoAziendeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiziSilpException">
+
+            <wsdlsoap:fault name="ServiziSilpException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="visualizzaDettaglioAzienda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="visualizzaDettaglioAziendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="visualizzaDettaglioAziendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiziSilpException">
+
+            <wsdlsoap:fault name="ServiziSilpException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ricercaSediAzienda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ricercaSediAziendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ricercaSediAziendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiziSilpException">
+
+            <wsdlsoap:fault name="ServiziSilpException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="visualizzaDettaglioSedeAzienda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="visualizzaDettaglioSedeAziendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="visualizzaDettaglioSedeAziendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiziSilpException">
+
+            <wsdlsoap:fault name="ServiziSilpException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificaAzienda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modificaAziendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modificaAziendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiziSilpException">
+
+            <wsdlsoap:fault name="ServiziSilpException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificaSede">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modificaSedeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modificaSedeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiziSilpException">
+
+            <wsdlsoap:fault name="ServiziSilpException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EstrazioneAnagraficaAziendeService">
+
+      <wsdl:port binding="impl:silpsvaaSoapBinding" name="silpsvaa">
+
+         <wsdlsoap:address location=""/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,409 @@
+---
+swagger: "2.0"
+info:
+  description: "API per SRV ComonlSrv"
+  version: "1.0.0"
+  title: "ComonlSrv"
+host: "localhost:8080"
+basePath: "/comonlsrv/api/v1"
+tags:
+- name: "comunicazioni"
+- name: "ruoli"
+- name: "spicom"
+- name: "ComunicazioneTracciatoUnicoDTOXML"
+- name: "system"
+schemes:
+- "http"
+paths:
+  /comunicazioni/comobb/{idChiamante}:
+    post:
+      tags:
+      - "comunicazioni"
+      summary: "Ricerca comunicazioni obbligatorie"
+      description: ""
+      operationId: "findComunicazioniObbligatorie"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idChiamante"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/FilterComunicazioniObbligatorie"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ComunicazioneObbligatoria"
+        default:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiError"
+        "400":
+          description: "Errore generico."
+          schema:
+            $ref: "#/definitions/ApiError"
+  /ruoli/{idChiamante}/{codiceFiscaleIdentita}:
+    get:
+      tags:
+      - "ruoli"
+      summary: "Ruoli"
+      description: ""
+      operationId: "getRuoli"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idChiamante"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "codiceFiscaleIdentita"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Dati registrati su sistema."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Ruolo"
+        default:
+          description: "Errore generico."
+          schema:
+            $ref: "#/definitions/ApiError"
+        "400":
+          description: "Errore generico."
+          schema:
+            $ref: "#/definitions/ApiError"
+  /spicom/ricevi-comunicazione:
+    post:
+      tags:
+      - "ComunicazioneTracciatoUnicoDTOXML"
+      summary: "ComunicazioneTracciatoUnicoDTOXML"
+      description: ""
+      operationId: "riceviComunicazioneDaSpicom"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Dati registrati su sistema."
+          schema:
+            type: "integer"
+            format: "int64"
+        default:
+          description: "Errore generico."
+          schema:
+            $ref: "#/definitions/ApiError"
+        "400":
+          description: "Errore generico."
+          schema:
+            $ref: "#/definitions/ApiError"
+  /system/ping:
+    get:
+      tags:
+      - "system"
+      operationId: "ping_1"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+  /system/test-error-srv/{code}:
+    get:
+      tags:
+      - "system"
+      summary: "Restituisce dati registrati su sistema."
+      description: ""
+      operationId: "testError"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "code"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        default:
+          description: "Errore generico."
+          schema:
+            $ref: "#/definitions/ApiError"
+definitions:
+  ApiError:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+      group:
+        type: "string"
+      errorMessage:
+        type: "string"
+      params:
+        type: "object"
+      groupParams:
+        type: "object"
+      type:
+        type: "string"
+      fullErrorMessage:
+        type: "string"
+  ComunicazioneObbligatoria:
+    type: "object"
+    properties:
+      apiWarnings:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApiError"
+      id:
+        type: "integer"
+        format: "int32"
+      codiceFiscaleAzienda:
+        type: "string"
+      idAziendaSilp:
+        type: "integer"
+        format: "int64"
+      idComunicazione:
+        type: "integer"
+        format: "int64"
+      idComunicazionePrec:
+        type: "integer"
+        format: "int64"
+      codComunicazioneTu:
+        type: "string"
+      dsComunicazioneTu:
+        type: "string"
+      codiceFiscaleLavoratore:
+        type: "string"
+      cognomeLavoratore:
+        type: "string"
+      nomeLavoratore:
+        type: "string"
+      idLavoratoreSILP:
+        type: "integer"
+        format: "int64"
+      codiceFiscaleLavoratoreObb:
+        type: "string"
+      cognomeLavoratoreObb:
+        type: "string"
+      nomeLavoratoreObb:
+        type: "string"
+      idLavoratoreSILPObb:
+        type: "integer"
+        format: "int64"
+      codTipoComunicazione:
+        type: "string"
+      dsTipoComunicazione:
+        type: "string"
+      codTipoTracciato:
+        type: "string"
+      dataComunicazione:
+        type: "string"
+        format: "date-time"
+      dataInizioRapporto:
+        type: "string"
+        format: "date-time"
+      dataTrasformazione:
+        type: "string"
+        format: "date-time"
+      dataFineProroga:
+        type: "string"
+        format: "date-time"
+      dataFineRapporto:
+        type: "string"
+        format: "date-time"
+      dataCessazione:
+        type: "string"
+        format: "date-time"
+      codComunicazione:
+        type: "string"
+      codRegioneSedeLavoroMin:
+        type: "string"
+      dsRegioneSedeLavoroMin:
+        type: "string"
+      codProvinciaSedeLavoroMin:
+        type: "string"
+      siglaProvinciaSedeLavoro:
+        type: "string"
+      codComuneSedeLavoroMin:
+        type: "string"
+      dsComuneSedeLavoroMin:
+        type: "string"
+      idSedeLavoroSILP:
+        type: "integer"
+        format: "int64"
+      codRegioneSedeLavoroMinPrec:
+        type: "string"
+      dsRegioneSedeLavoroMinPrec:
+        type: "string"
+      codProvinciaSedeLavoroMinPrec:
+        type: "string"
+      siglaProvinciaSedeLavoroPrec:
+        type: "string"
+      codComuneSedeLavoroMinPrec:
+        type: "string"
+      dsComuneSedeLavoroMinPrec:
+        type: "string"
+      idSedeLavoroPrecSILP:
+        type: "integer"
+        format: "int64"
+      codTipoTrasformazione:
+        type: "string"
+      dsTipoTrasformazione:
+        type: "string"
+      codTipoContratto:
+        type: "string"
+      dsTipoContratto:
+        type: "string"
+      flgForma:
+        type: "string"
+      flgFullTime:
+        type: "string"
+      oreSettimanaliMedie:
+        type: "integer"
+        format: "int64"
+      oreSettimanaliMediePrec:
+        type: "integer"
+        format: "int64"
+      flgLegge68:
+        type: "string"
+      codiceCCNL:
+        type: "string"
+      dsCCNL:
+        type: "string"
+      codQualificaMin:
+        type: "string"
+      dsQualificaMin:
+        type: "string"
+      flgSocio:
+        type: "string"
+      flgDistaccoEstero:
+        type: "string"
+      dataInvio:
+        type: "string"
+        format: "date-time"
+      flgCurrentRecord:
+        type: "string"
+  FilterComunicazioniObbligatorie:
+    type: "object"
+    properties:
+      codiceFiscale:
+        type: "string"
+      tipoTracciato:
+        type: "array"
+        items:
+          type: "string"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      codProvincia:
+        type: "array"
+        items:
+          type: "string"
+  Ruolo:
+    type: "object"
+    properties:
+      apiWarnings:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApiError"
+      id:
+        type: "integer"
+        format: "int32"
+      denominazioneAzienda:
+        type: "string"
+      ilRuolo:
+        type: "string"
+      codiceFiscaleUtente:
+        type: "string"
+      codiceFiscaleAzienda:
+        type: "string"
+      dsNome:
+        type: "string"
+      dsCognome:
+        type: "string"
+      listaCasiUso:
+        type: "array"
+        items:
+          type: "string"
+      codMinSoggettoAbilitato:
+        type: "string"
+      idSoggetti:
+        type: "integer"
+        format: "int64"
+      flgScuolaPubblica:
+        type: "boolean"
+      codiceFiscaleStudioProfessionale:
+        type: "string"
+      descrizioneStudioProfessionale:
+        type: "string"
+      flgConsulenteAccentrato:
+        type: "boolean"
+      delegaValida:
+        type: "boolean"
+      tipoAnagrafica:
+        type: "string"
+      email:
+        type: "string"
+      codiceEnteOperatoreAPL:
+        type: "string"
+      tipoSoggettoAbilitato:
+        $ref: "#/definitions/TipoSoggettoAbilitato"
+      operatoreProvinciale:
+        type: "boolean"
+      amministratore:
+        type: "boolean"
+      consulenteRespo:
+        type: "boolean"
+      delegatoRespo:
+        type: "boolean"
+      legaleRappresentante:
+        type: "boolean"
+      personaAutorizzata:
+        type: "boolean"
+      monitoraggio:
+        type: "boolean"
+  TipoSoggettoAbilitato:
+    type: "object"
+    properties:
+      apiWarnings:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApiError"
+      id:
+        type: "integer"
+        format: "int64"
+      codSoggettoAbilitatoMin:
+        type: "string"
+      dsComTipoSoggettoAbilitato:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"

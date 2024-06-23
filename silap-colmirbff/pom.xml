@@ -6,8 +6,8 @@ SPDX-License-Identifier: EUPL-1.2-or-later
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>it.csi.silap</groupId>
-  <artifactId>colmirsrv</artifactId>
-  <version>1.0.0</version>
+  <artifactId>colmirbff</artifactId>
+  <version>2.0.0</version>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <failsafe.useModulePath>false</failsafe.useModulePath>
@@ -124,6 +124,10 @@ SPDX-License-Identifier: EUPL-1.2-or-later
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-undertow</artifactId>
     </dependency>
+ 	<dependency>
+	    <groupId>io.quarkus</groupId>
+	    <artifactId>quarkus-scheduler</artifactId>
+	</dependency>
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-vertx-websocket</artifactId>
@@ -132,14 +136,6 @@ SPDX-License-Identifier: EUPL-1.2-or-later
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
-    <dependency>
-	    <groupId>io.quarkus</groupId>
-	    <artifactId>quarkus-elytron-security-properties-file</artifactId>
-	</dependency>
-    <dependency>
-	  <groupId>io.quarkus</groupId>
-	  <artifactId>quarkus-resteasy-jsonb</artifactId>
-	</dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
@@ -424,15 +420,8 @@ SPDX-License-Identifier: EUPL-1.2-or-later
 		<dependency>
       <groupId>io.quarkiverse.cxf</groupId>
       <artifactId>quarkus-cxf</artifactId>
+      <version>1.7.3</version>
     </dependency>
-<dependency>
-    <groupId>io.quarkiverse.cxf</groupId>
-    <artifactId>quarkus-cxf-rt-ws-security</artifactId>
-</dependency>    
-    <dependency>
-     <groupId>io.quarkiverse.cxf</groupId>
-     <artifactId>quarkus-cxf-rt-features-logging</artifactId>
- </dependency>	
 
   </dependencies>
   
@@ -517,10 +506,10 @@ SPDX-License-Identifier: EUPL-1.2-or-later
 		<version>2.1.6</version>
 		<configuration>
 			<resourcePackages>
-				<resourcePackage>it.csi.silap.colmirsrv.api</resourcePackage>
+				<resourcePackage>it.csi.silap.colmirbff.api</resourcePackage>
 			</resourcePackages>
 			<outputDirectory>${basedir}/src/main/resources/yaml/</outputDirectory>
-			<outputFilename>colmirsrv</outputFilename>
+			<outputFilename>colmirbff</outputFilename>
 			<outputFormats>YAML</outputFormats>
 			<prettyPrint>true</prettyPrint>
 		</configuration>
@@ -534,39 +523,293 @@ SPDX-License-Identifier: EUPL-1.2-or-later
 			</execution>
 		</executions>
 	</plugin>
-    
-    <plugin>
-			    <groupId>org.apache.cxf</groupId>
-			    <artifactId>cxf-codegen-plugin</artifactId>
-			    <version>3.5.3</version>
-			    <executions>
-			        <execution>
-			            <id>generate-sources</id>
-			            <phase>generate-sources</phase>
-			            <configuration>
-			                <!--<sourceRoot>${project.basedir}/src/main/java</sourceRoot>-->
-			                <wsdlOptions>
-			                    <wsdlOption>
-			                         <wsdl>src/main/resources/wsdl/epay.wsdl</wsdl>
-			                         <extraargs>
-			                            <extraarg>-verbose</extraarg>
-			                            <extraarg>-p</extraarg>
-			                            <extraarg>http://www.csi.it/epay/epaywso/epaywso2entisrv=it.csi.silap.colmirsrv.api.cxf.interf.epaywso2entisrv</extraarg>
-			                            <extraarg>-p</extraarg>
-			                            <extraarg>http://www.csi.it/epay/epaywso/epaywso2enti/types=it.csi.silap.colmirsrv.api.cxf.dto.epaywso2enti</extraarg>
-			                            <extraarg>-p</extraarg>
-			                            <extraarg>http://www.csi.it/epay/epaywso/types=it.csi.silap.colmirsrv.api.cxf.dto.epaytypes</extraarg>
-			                        </extraargs>
-			                    </wsdlOption>
-			                </wsdlOptions>
-			            </configuration>
-			            <goals>
-			                <goal>wsdl2java</goal>
-			            </goals>
-			        </execution>
-			    </executions>
-			</plugin> 
-    
+
+
+	 <plugin>
+        <groupId>io.swagger.codegen.v3</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin-version}</version>
+        <executions>
+			
+			 <!-- ================================================================ -->
+	  		 <!-- GENERAZIONE ANGULAR WLC DI RIFERIMENTO AL BFF -->
+           <execution>
+        	<id>colmirbff</id>
+        	<phase>process-classes</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/yaml/colmirbff.yaml</inputSpec>
+              <language>typescript-angular</language>
+			  <output>${project.basedir}/../colmirwcl/src/app/modules/silapapi</output>
+			  <templateDirectory>${project.basedir}/src/main/resources/codegen</templateDirectory>
+              <configOptions>
+                <sortParamsByRequiredFlag>true</sortParamsByRequiredFlag>
+                <ensureUniqueParams>true</ensureUniqueParams>
+                <allowUnicodeIdentifiers>false</allowUnicodeIdentifiers>
+                <modelPropertyNaming>original</modelPropertyNaming>
+                <supportsES6>false</supportsES6>
+                <npmName>colmirapi</npmName>
+                <npmVersion>1.0.0</npmVersion>
+                <withInterfaces>false</withInterfaces>
+                <taggedUnions>false</taggedUnions>
+                <providedInRoot>false</providedInRoot>
+                <ngVersion>8.0.0</ngVersion>    
+                <useNgPackage>false</useNgPackage>
+              </configOptions>
+            </configuration>
+          </execution>
+          
+        <!-- ================================================================ -->
+	
+		 </executions>
+        <dependencies>
+          <dependency>
+            <groupId>it.csi.apitools</groupId>
+            <artifactId>csi-java-swagger3-codegen</artifactId>
+            <version>1.0.0.003</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      
+      
+      
+      <!-- ================================================================ -->
+	  <!-- GENERAZIONE COMONLSRV -->
+      
+      <plugin>
+        <groupId>io.swagger.codegen.v3</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin-version}</version>
+        <executions>
+           <execution>
+        	<id>comonlsrc</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/yaml/comonlsrv.yaml</inputSpec>
+              <language>csi-jaxrs-resteasy</language>
+              <output>${project.basedir}</output>
+              <apiPackage>${default.package}.handler</apiPackage>
+              <modelPackage>${default.package}.model</modelPackage>
+              <invokerPackage>${default.package}.handler</invokerPackage>
+              <configOptions>
+                <java8>false</java8>
+                <useBeanValidation>true</useBeanValidation>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <apiPackage>it.csi.silap.colmirbff.integration.comonl.api</apiPackage>
+                <modelPackage>it.csi.silap.colmirbff.integration.comonl.dto</modelPackage>
+                <invokerPackage>it.csi.silap.colmirbff.integration.comonl</invokerPackage>
+                <implFolder>implfolder</implFolder>
+                <sourceFolder>target/generated-sources/annotations</sourceFolder>
+                <generateJbossDeploymentDescriptor>false</generateJbossDeploymentDescriptor>
+                <generateImplArtifacts>false</generateImplArtifacts>
+                <generateSwaggerMetadata>false</generateSwaggerMetadata>
+                <attributeSerializationStrategy>explicit-as-modeled</attributeSerializationStrategy>
+                <accessHttpHeaders>true</accessHttpHeaders>
+                <accessHttpRequest>true</accessHttpRequest>
+                <jsonLibrary>fasterxml-jackson</jsonLibrary>
+              </configOptions>
+            </configuration>
+          </execution>
+         
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>it.csi.apitools</groupId>
+            <artifactId>csi-java-swagger3-codegen</artifactId>
+            <version>1.0.0.001</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      
+      
+      
+      <!-- ================================================================ -->
+	  <!-- GENERAZIONE PRODIS -->
+      
+      <plugin>
+        <groupId>io.swagger.codegen.v3</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin-version}</version>
+        <executions>
+           <execution>
+        	<id>prodissrc</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/yaml/prodis.yaml</inputSpec>
+              <language>csi-jaxrs-resteasy</language>
+              <output>${project.basedir}</output>
+              <apiPackage>${default.package}.handler</apiPackage>
+              <modelPackage>${default.package}.model</modelPackage>
+              <invokerPackage>${default.package}.handler</invokerPackage>
+              <configOptions>
+                <java8>false</java8>
+                <useBeanValidation>true</useBeanValidation>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <apiPackage>it.csi.silap.colmirbff.integration.prodis.api</apiPackage>
+                <modelPackage>it.csi.silap.colmirbff.integration.prodis.dto</modelPackage>
+                <invokerPackage>it.csi.silap.colmirbff.integration.prodis</invokerPackage>
+                <implFolder>implfolder</implFolder>
+                <sourceFolder>target/generated-sources/annotations</sourceFolder>
+                <generateJbossDeploymentDescriptor>false</generateJbossDeploymentDescriptor>
+                <generateImplArtifacts>false</generateImplArtifacts>
+                <generateSwaggerMetadata>false</generateSwaggerMetadata>
+                <attributeSerializationStrategy>explicit-as-modeled</attributeSerializationStrategy>
+                <accessHttpHeaders>true</accessHttpHeaders>
+                <accessHttpRequest>true</accessHttpRequest>
+                <jsonLibrary>fasterxml-jackson</jsonLibrary>
+              </configOptions>
+            </configuration>
+          </execution>
+         
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>it.csi.apitools</groupId>
+            <artifactId>csi-java-swagger3-codegen</artifactId>
+            <version>1.0.0.001</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      
+      
+       <!-- ================================================================ -->
+	  <!-- GENERAZIONE SILPREST -->
+      
+      <plugin>
+        <groupId>io.swagger.codegen.v3</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin-version}</version>
+        <executions>
+           <execution>
+        	<id>silprest</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/yaml/silprest.yaml</inputSpec>
+              <language>csi-jaxrs-resteasy</language>
+              <output>${project.basedir}</output>
+              <apiPackage>${default.package}.handler</apiPackage>
+              <modelPackage>${default.package}.model</modelPackage>
+              <invokerPackage>${default.package}.handler</invokerPackage>
+              <configOptions>
+                <java8>false</java8>
+                <useBeanValidation>true</useBeanValidation>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <apiPackage>it.csi.silap.colmirbff.integration.silprest.api</apiPackage>
+                <modelPackage>it.csi.silap.colmirbff.integration.silprest.dto</modelPackage>
+                <invokerPackage>it.csi.silap.colmirbff.integration.silprest</invokerPackage>
+                <implFolder>implfolder</implFolder>
+                <sourceFolder>target/generated-sources/annotations</sourceFolder>
+                <generateJbossDeploymentDescriptor>false</generateJbossDeploymentDescriptor>
+                <generateImplArtifacts>false</generateImplArtifacts>
+                <generateSwaggerMetadata>false</generateSwaggerMetadata>
+                <attributeSerializationStrategy>explicit-as-modeled</attributeSerializationStrategy>
+                <accessHttpHeaders>true</accessHttpHeaders>
+                <accessHttpRequest>true</accessHttpRequest>
+                <jsonLibrary>fasterxml-jackson</jsonLibrary>
+              </configOptions>
+            </configuration>
+          </execution>
+         
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>it.csi.apitools</groupId>
+            <artifactId>csi-java-swagger3-codegen</artifactId>
+            <version>1.0.0.001</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      
+      
+      
+      
+         <!-- ================================================================ -->
+	  <!-- GENERAZIONE epayapi_v1-03 -->
+      
+      <plugin>
+        <groupId>io.swagger.codegen.v3</groupId>
+        <artifactId>swagger-codegen-maven-plugin</artifactId>
+        <version>${swagger-codegen-maven-plugin-version}</version>
+        <executions>
+           <execution>
+        	<id>epayapi_v1-03</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/yaml/epayapi_v1-03.yaml</inputSpec>
+              <language>csi-jaxrs-resteasy</language>
+              <output>${project.basedir}</output>
+              <apiPackage>${default.package}.handler</apiPackage>
+              <modelPackage>${default.package}.model</modelPackage>
+              <invokerPackage>${default.package}.handler</invokerPackage>
+              <configOptions>
+                <java8>false</java8>
+                <useBeanValidation>true</useBeanValidation>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <apiPackage>it.csi.silap.colmirbff.integration.epayapi.api</apiPackage>
+                <modelPackage>it.csi.silap.colmirbff.integration.epayapi.dto</modelPackage>
+                <invokerPackage>it.csi.silap.colmirbff.integration.epayapi</invokerPackage>
+                <implFolder>implfolder</implFolder>
+                <sourceFolder>target/generated-sources/annotations</sourceFolder>
+                <generateJbossDeploymentDescriptor>false</generateJbossDeploymentDescriptor>
+                <generateImplArtifacts>false</generateImplArtifacts>
+                <generateSwaggerMetadata>false</generateSwaggerMetadata>
+                <attributeSerializationStrategy>explicit-as-modeled</attributeSerializationStrategy>
+                <accessHttpHeaders>true</accessHttpHeaders>
+                <accessHttpRequest>true</accessHttpRequest>
+                <jsonLibrary>fasterxml-jackson</jsonLibrary>
+              </configOptions>
+            </configuration>
+          </execution>
+         
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>it.csi.apitools</groupId>
+            <artifactId>csi-java-swagger3-codegen</artifactId>
+            <version>1.0.0.001</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      
+      
+	     <!-- Generazione dei DTO IUP 
+		<plugin>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-codegen-plugin</artifactId>
+		    <version>3.6.3</version>
+		    <executions>
+		        <execution>
+		            <id>generate-sources</id>
+		            <phase>generate-sources</phase>
+		            <configuration>
+		                <sourceRoot>target/generated-sources/annotations</sourceRoot>
+		                <wsdlOptions>
+		                    <wsdlOption>
+		                        <wsdl>${project.basedir}/src/main/resources/wsdl/iup.wsdl</wsdl>
+		                        <packagenames>
+								    <packagename>it.csi.silap.colmirbff.cxf.iupsv.duplicato</packagename>
+								</packagenames>
+		                    </wsdlOption>
+		                </wsdlOptions>
+		            </configuration>
+		            <goals>
+		                <goal>wsdl2java</goal>
+		            </goals>
+		        </execution>
+		    </executions>
+		</plugin>
+		-->
+	      
 	</plugins>
 	
   </build>
@@ -705,7 +948,6 @@ SPDX-License-Identifier: EUPL-1.2-or-later
         </plugins>
       </build>
     </profile>
-    
     
   </profiles>
   

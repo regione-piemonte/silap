@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:iupsv" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:iupsv" xmlns:intf="urn:iupsv" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Nov 13, 2013 (09:13:21 GMT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="urn:iupsv" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <element name="testResources">
+    <complexType/>
+   </element>
+   <element name="testResourcesResponse">
+    <complexType>
+     <sequence>
+      <element name="testResourcesReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="CSIException">
+    <sequence>
+     <element name="nestedExcClassName" nillable="true" type="xsd:string"/>
+     <element name="nestedExcMsg" nillable="true" type="xsd:string"/>
+     <element name="stackTraceMessage" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="fault" type="impl:CSIException"/>
+   <element name="selfCheck">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="in0" type="impl:CalledResource"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ResourceType">
+    <sequence>
+     <element name="cod" nillable="true" type="xsd:string"/>
+     <element name="descr" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CalledResource">
+    <sequence>
+     <element name="codRisorsa" nillable="true" type="xsd:string"/>
+     <element name="codSistema" nillable="true" type="xsd:string"/>
+     <element name="tipoRisorsa" nillable="true" type="impl:ResourceType"/>
+    </sequence>
+   </complexType>
+   <element name="selfCheckResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="selfCheckReturn" type="impl:InvocationNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOfInvocationNode">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:InvocationNode"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserException">
+    <complexContent>
+     <extension base="impl:CSIException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="IUPException">
+    <complexContent>
+     <extension base="impl:UserException">
+      <sequence>
+       <element name="errCode" type="xsd:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SystemException">
+    <complexContent>
+     <extension base="impl:CSIException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UnrecoverableException">
+    <complexContent>
+     <extension base="impl:CSIException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Outcome">
+    <sequence>
+     <element name="eccezione" nillable="true" type="impl:CSIException"/>
+     <element name="messaggio" nillable="true" type="xsd:string"/>
+     <element name="status" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="InvocationNode">
+    <sequence>
+     <element name="childs" nillable="true" type="impl:ArrayOfInvocationNode"/>
+     <element name="outcome" nillable="true" type="impl:Outcome"/>
+     <element name="resource" nillable="true" type="impl:CalledResource"/>
+     <element name="startTime" type="xsd:long"/>
+     <element name="stopTime" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <element name="hasSelfCheck">
+    <complexType/>
+   </element>
+   <element name="hasSelfCheckResponse">
+    <complexType>
+     <sequence>
+      <element name="hasSelfCheckReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getInfoSistemaProtocollazione">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getInfoSistemaProtocollazioneResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="getInfoSistemaProtocollazioneReturn" type="impl:InfoSistemaProtocollazioneDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="InfoSistemaProtocollazioneDTO">
+    <sequence>
+     <element name="campiRicercaProtocolli" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     <element name="consenteAnnulloProtocolli" type="xsd:boolean"/>
+     <element name="consenteGestioneSoggetti" type="xsd:boolean"/>
+     <element name="consenteModificaProtocolli" type="xsd:boolean"/>
+     <element name="consenteRicercaProtocolli" type="xsd:boolean"/>
+     <element name="provincia" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="fault1" type="impl:SystemException"/>
+   <element name="fault2" type="impl:UnrecoverableException"/>
+   <element name="fault3" type="impl:IUPException"/>
+   <element name="getDatiUtenteProtocollo">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:DatiLoginProtocolloDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DatiLoginProtocolloDTO">
+    <sequence>
+     <element name="codiceFiscaleUtente" nillable="true" type="xsd:string"/>
+     <element name="denominazioneAOO" nillable="true" type="xsd:string"/>
+     <element name="idAOO" nillable="true" type="xsd:string"/>
+     <element name="idApplicativo" nillable="true" type="xsd:string"/>
+     <element name="idEnte" nillable="true" type="xsd:string"/>
+     <element name="idProvincia" nillable="true" type="xsd:string"/>
+     <element name="loginProtocollo" nillable="true" type="xsd:string"/>
+     <element name="passwordProtocollo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getDatiUtenteProtocolloResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="getDatiUtenteProtocolloReturn" type="impl:UtenteProtocolloDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UtenteProtocolloDTO">
+    <sequence>
+     <element name="codiceFiscaleUtente" nillable="true" type="xsd:string"/>
+     <element name="denominazioneAOO" nillable="true" type="xsd:string"/>
+     <element name="descrizioneStruttura" nillable="true" type="xsd:string"/>
+     <element name="idAOO" nillable="true" type="xsd:string"/>
+     <element name="idApplicativo" nillable="true" type="xsd:string"/>
+     <element name="idEnte" nillable="true" type="xsd:string"/>
+     <element name="idNodo" nillable="true" type="xsd:string"/>
+     <element name="idProvincia" nillable="true" type="xsd:string"/>
+     <element name="idRuolo" nillable="true" type="xsd:string"/>
+     <element name="idStruttura" nillable="true" type="xsd:string"/>
+     <element name="loginProtocollo" nillable="true" type="xsd:string"/>
+     <element name="nomeRuolo" nillable="true" type="xsd:string"/>
+     <element name="passwordProtocollo" nillable="true" type="xsd:string"/>
+     <element name="targetFolderKey" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaSoggetti">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:UtenteProtocolloDTO"/>
+      <element minOccurs="0" name="in1" type="impl:FiltroRicercaSoggettiDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FiltroRicercaSoggettiDTO">
+    <sequence>
+     <element name="codFiscale" nillable="true" type="xsd:string"/>
+     <element name="partitaIVA" nillable="true" type="xsd:string"/>
+     <element name="tipoSoggetto" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaSoggettiResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="ricercaSoggettiReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="creaSoggetto">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:UtenteProtocolloDTO"/>
+      <element minOccurs="0" name="in1" type="impl:SoggettoDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="SoggettoDTO">
+    <sequence>
+     <element name="capComune" nillable="true" type="xsd:string"/>
+     <element name="codFiscale" nillable="true" type="xsd:string"/>
+     <element name="codiceIstatComune" nillable="true" type="xsd:string"/>
+     <element name="cognome" nillable="true" type="xsd:string"/>
+     <element name="denominazione" nillable="true" type="xsd:string"/>
+     <element name="denominazioneLuogo" nillable="true" type="xsd:string"/>
+     <element name="descrComune" nillable="true" type="xsd:string"/>
+     <element name="descrNazione" nillable="true" type="xsd:string"/>
+     <element name="descrProvincia" nillable="true" type="xsd:string"/>
+     <element name="descrRegione" nillable="true" type="xsd:string"/>
+     <element name="idLuogo" nillable="true" type="xsd:string"/>
+     <element name="idSoggetto" nillable="true" type="xsd:string"/>
+     <element name="idSoggettoGiuridico" nillable="true" type="xsd:string"/>
+     <element name="indirizzo" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="partitaIVA" nillable="true" type="xsd:string"/>
+     <element name="siglaProvincia" nillable="true" type="xsd:string"/>
+     <element name="tipoSoggetto" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="creaSoggettoResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="creaSoggettoReturn" type="impl:SoggettoDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="protocolla">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:UtenteProtocolloDTO"/>
+      <element minOccurs="0" name="in1" type="impl:DatiProtocollazioneDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DatiProtocollazioneDTO">
+    <sequence>
+     <element name="dataInvio" nillable="true" type="xsd:dateTime"/>
+     <element name="destinatariEsterni" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="indiceClassificazionePrincipale" nillable="true" type="xsd:string"/>
+     <element name="mittenteEsterno" nillable="true" type="impl:SoggettoDTO"/>
+     <element name="numeroAllegati" type="xsd:int"/>
+     <element name="oggetto" nillable="true" type="xsd:string"/>
+     <element name="tipoDestinatarioInterno" nillable="true" type="xsd:string"/>
+     <element name="tipoDocumento" nillable="true" type="xsd:string"/>
+     <element name="tipoMittenteInterno" nillable="true" type="xsd:string"/>
+     <element name="tipoProtocollo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="protocollaResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="protocollaReturn" type="impl:ProtocolloDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="RiferimentoInternoDTO">
+    <sequence>
+     <element name="codice" nillable="true" type="xsd:string"/>
+     <element name="denominazione" nillable="true" type="xsd:string"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ProtocolloDTO">
+    <sequence>
+     <element name="annullato" type="xsd:boolean"/>
+     <element name="dataInvio" nillable="true" type="xsd:dateTime"/>
+     <element name="dataProtocollo" nillable="true" type="xsd:dateTime"/>
+     <element name="destinatariEsterni" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="destinatarioInterno" nillable="true" type="impl:RiferimentoInternoDTO"/>
+     <element name="idProtocollo" nillable="true" type="xsd:string"/>
+     <element name="mittenteEsterno" nillable="true" type="impl:SoggettoDTO"/>
+     <element name="mittenteInterno" nillable="true" type="impl:RiferimentoInternoDTO"/>
+     <element name="numeroAllegati" type="xsd:int"/>
+     <element name="numeroProtocollo" nillable="true" type="xsd:string"/>
+     <element name="oggetto" nillable="true" type="xsd:string"/>
+     <element name="tipoProtocollo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaProtocolli">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:UtenteProtocolloDTO"/>
+      <element minOccurs="0" name="in1" type="impl:FiltroRicercaProtocolliDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FiltroRicercaProtocolliDTO">
+    <sequence>
+     <element name="anno" nillable="true" type="xsd:string"/>
+     <element name="numeroProtocollo" nillable="true" type="xsd:string"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="ricercaProtocolliResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="ricercaProtocolliReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modificaProtocollo">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:UtenteProtocolloDTO"/>
+      <element minOccurs="0" name="in1" type="impl:DatiVariazioneProtocolloDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DatiVariazioneProtocolloDTO">
+    <sequence>
+     <element name="annoProtocollo" nillable="true" type="xsd:string"/>
+     <element name="dataInvio" nillable="true" type="xsd:dateTime"/>
+     <element name="mittenteEsterno" nillable="true" type="impl:SoggettoDTO"/>
+     <element name="numeroAllegati" nillable="true" type="xsd:int"/>
+     <element name="numeroProtocollo" nillable="true" type="xsd:string"/>
+     <element name="oggetto" nillable="true" type="xsd:string"/>
+     <element name="tipoMittenteInterno" nillable="true" type="xsd:string"/>
+     <element name="tipoProtocollo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="modificaProtocolloResponse">
+    <complexType/>
+   </element>
+   <element name="annullaProtocollo">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="in0" type="impl:UtenteProtocolloDTO"/>
+      <element minOccurs="0" name="in1" type="impl:DatiAnnulloProtocolloDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DatiAnnulloProtocolloDTO">
+    <sequence>
+     <element name="annoProtocollo" nillable="true" type="xsd:string"/>
+     <element name="motivoAnnullo" nillable="true" type="xsd:string"/>
+     <element name="numeroProtocollo" nillable="true" type="xsd:string"/>
+     <element name="tipoProtocollo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="annullaProtocolloResponse">
+    <complexType/>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:iupsv"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="modificaProtocolloRequest">
+
+      <wsdl:part element="impl:modificaProtocollo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="annullaProtocolloResponse">
+
+      <wsdl:part element="impl:annullaProtocolloResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="protocollaResponse">
+
+      <wsdl:part element="impl:protocollaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="selfCheckRequest">
+
+      <wsdl:part element="impl:selfCheck" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaSoggettiResponse">
+
+      <wsdl:part element="impl:ricercaSoggettiResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="testResourcesResponse">
+
+      <wsdl:part element="impl:testResourcesResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="hasSelfCheckRequest">
+
+      <wsdl:part element="impl:hasSelfCheck" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaSoggettiRequest">
+
+      <wsdl:part element="impl:ricercaSoggetti" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="annullaProtocolloRequest">
+
+      <wsdl:part element="impl:annullaProtocollo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaProtocolliRequest">
+
+      <wsdl:part element="impl:ricercaProtocolli" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDatiUtenteProtocolloResponse">
+
+      <wsdl:part element="impl:getDatiUtenteProtocolloResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="selfCheckResponse">
+
+      <wsdl:part element="impl:selfCheckResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="IUPException">
+
+      <wsdl:part element="impl:fault3" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getInfoSistemaProtocollazioneRequest">
+
+      <wsdl:part element="impl:getInfoSistemaProtocollazione" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creaSoggettoResponse">
+
+      <wsdl:part element="impl:creaSoggettoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="UnrecoverableException">
+
+      <wsdl:part element="impl:fault2" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificaProtocolloResponse">
+
+      <wsdl:part element="impl:modificaProtocolloResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="CSIException">
+
+      <wsdl:part element="impl:fault" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getInfoSistemaProtocollazioneResponse">
+
+      <wsdl:part element="impl:getInfoSistemaProtocollazioneResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="testResourcesRequest">
+
+      <wsdl:part element="impl:testResources" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="hasSelfCheckResponse">
+
+      <wsdl:part element="impl:hasSelfCheckResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="protocollaRequest">
+
+      <wsdl:part element="impl:protocolla" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDatiUtenteProtocolloRequest">
+
+      <wsdl:part element="impl:getDatiUtenteProtocollo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="SystemException">
+
+      <wsdl:part element="impl:fault1" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ricercaProtocolliResponse">
+
+      <wsdl:part element="impl:ricercaProtocolliResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="creaSoggettoRequest">
+
+      <wsdl:part element="impl:creaSoggetto" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IupsvSrv">
+
+      <wsdl:operation name="testResources">
+
+         <wsdl:input message="impl:testResourcesRequest" name="testResourcesRequest"/>
+
+         <wsdl:output message="impl:testResourcesResponse" name="testResourcesResponse"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="selfCheck">
+
+         <wsdl:input message="impl:selfCheckRequest" name="selfCheckRequest"/>
+
+         <wsdl:output message="impl:selfCheckResponse" name="selfCheckResponse"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hasSelfCheck">
+
+         <wsdl:input message="impl:hasSelfCheckRequest" name="hasSelfCheckRequest"/>
+
+         <wsdl:output message="impl:hasSelfCheckResponse" name="hasSelfCheckResponse"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInfoSistemaProtocollazione">
+
+         <wsdl:input message="impl:getInfoSistemaProtocollazioneRequest" name="getInfoSistemaProtocollazioneRequest"/>
+
+         <wsdl:output message="impl:getInfoSistemaProtocollazioneResponse" name="getInfoSistemaProtocollazioneResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDatiUtenteProtocollo">
+
+         <wsdl:input message="impl:getDatiUtenteProtocolloRequest" name="getDatiUtenteProtocolloRequest"/>
+
+         <wsdl:output message="impl:getDatiUtenteProtocolloResponse" name="getDatiUtenteProtocolloResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ricercaSoggetti">
+
+         <wsdl:input message="impl:ricercaSoggettiRequest" name="ricercaSoggettiRequest"/>
+
+         <wsdl:output message="impl:ricercaSoggettiResponse" name="ricercaSoggettiResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creaSoggetto">
+
+         <wsdl:input message="impl:creaSoggettoRequest" name="creaSoggettoRequest"/>
+
+         <wsdl:output message="impl:creaSoggettoResponse" name="creaSoggettoResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="protocolla">
+
+         <wsdl:input message="impl:protocollaRequest" name="protocollaRequest"/>
+
+         <wsdl:output message="impl:protocollaResponse" name="protocollaResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ricercaProtocolli">
+
+         <wsdl:input message="impl:ricercaProtocolliRequest" name="ricercaProtocolliRequest"/>
+
+         <wsdl:output message="impl:ricercaProtocolliResponse" name="ricercaProtocolliResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificaProtocollo">
+
+         <wsdl:input message="impl:modificaProtocolloRequest" name="modificaProtocolloRequest"/>
+
+         <wsdl:output message="impl:modificaProtocolloResponse" name="modificaProtocolloResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="annullaProtocollo">
+
+         <wsdl:input message="impl:annullaProtocolloRequest" name="annullaProtocolloRequest"/>
+
+         <wsdl:output message="impl:annullaProtocolloResponse" name="annullaProtocolloResponse"/>
+
+         <wsdl:fault message="impl:IUPException" name="IUPException"/>
+
+         <wsdl:fault message="impl:SystemException" name="SystemException"/>
+
+         <wsdl:fault message="impl:CSIException" name="CSIException"/>
+
+         <wsdl:fault message="impl:UnrecoverableException" name="UnrecoverableException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="iupsvSoapBinding" type="impl:IupsvSrv">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="testResources">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testResourcesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testResourcesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="selfCheck">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="selfCheckRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="selfCheckResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hasSelfCheck">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="hasSelfCheckRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="hasSelfCheckResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInfoSistemaProtocollazione">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getInfoSistemaProtocollazioneRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getInfoSistemaProtocollazioneResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDatiUtenteProtocollo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDatiUtenteProtocolloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDatiUtenteProtocolloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ricercaSoggetti">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ricercaSoggettiRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ricercaSoggettiResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creaSoggetto">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creaSoggettoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creaSoggettoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="protocolla">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="protocollaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="protocollaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ricercaProtocolli">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ricercaProtocolliRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ricercaProtocolliResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificaProtocollo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modificaProtocolloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modificaProtocolloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="annullaProtocollo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="annullaProtocolloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="annullaProtocolloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="IUPException">
+
+            <wsdlsoap:fault name="IUPException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="SystemException">
+
+            <wsdlsoap:fault name="SystemException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CSIException">
+
+            <wsdlsoap:fault name="CSIException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UnrecoverableException">
+
+            <wsdlsoap:fault name="UnrecoverableException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="IupsvSrvService">
+
+      <wsdl:port binding="impl:iupsvSoapBinding" name="iupsv">
+
+         <wsdlsoap:address location=""/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

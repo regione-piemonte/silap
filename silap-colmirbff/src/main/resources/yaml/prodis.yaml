@@ -1,0 +1,1656 @@
+---
+swagger: "2.0"
+info:
+  description: "API per ProdisSrv"
+  version: "1.0.0"
+  title: "ProdisSrv"
+host: "localhost:8080"
+basePath: "/prodissrv/api/v1"
+tags:
+- name: "Servizi"
+schemes:
+- "http"
+paths:
+  /servizi/getDettaglioProspettoCompleto:
+    post:
+      tags:
+      - "Servizi"
+      summary: "Dettaglio Prospetto"
+      description: ""
+      operationId: "getDettaglioProspettoCompleto_1"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/FilterServiziProdis"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Prospetto"
+        500:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiError"
+  /servizi/findByPkPdfProspetto:
+    post:
+      tags:
+      - "Servizi"
+      summary: "PDF Prospetto"
+      description: ""
+      operationId: "findByPkPdfProspetto_1"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/FilterServiziProdis"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/PdfProspetto"
+        500:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiError"
+  /servizi/findByFilterTestataProspetto:
+    post:
+      tags:
+      - "Servizi"
+      summary: "Ricerca prospetti"
+      description: ""
+      operationId: "findByFilterTestataProspetto_1"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/FilterServiziProdis"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TestataProspetto"
+        500:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiError"
+definitions:
+  AssPubbliche:
+    type: "object"
+    properties:
+      id:
+        $ref: "#/definitions/AssPubblichePK"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      dsNote:
+        type: "string"
+      saldoDisabili:
+        type: "number"
+      saldoExArt18:
+        type: "number"
+      prospetto:
+        $ref: "#/definitions/Prospetto"
+      regione:
+        $ref: "#/definitions/Regione"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  AssPubblichePK:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      idProspetto:
+        type: "integer"
+        format: "int64"
+      idTRegione:
+        type: "integer"
+        format: "int64"
+  AssunzioneProtetta:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codAssunzioneProtetta:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      descAssunzioneProtetta:
+        type: "string"
+      flgConvensione:
+        type: "string"
+      lavoratoriInForzas:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriInForza"
+      lavoratoriSilps:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriSilp"
+      provConvenziones:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvConvenzione"
+  Atecofin:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codAtecofinMin:
+        type: "string"
+      dsProTAtecofin:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      idNewAtecofin:
+        type: "number"
+      datiAziendas:
+        type: "array"
+        items:
+          $ref: "#/definitions/DatiAzienda"
+  CategoriaAzienda:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codCategoriaAzienda:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      desCategoriaAzienda:
+        type: "string"
+      prospettos:
+        type: "array"
+        items:
+          $ref: "#/definitions/Prospetto"
+  CategoriaEscluse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      ambitoCategoria:
+        type: "string"
+      codCategoriaEscluse:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      desCategoriaEscluse:
+        type: "string"
+      categorieEscluses:
+        type: "array"
+        items:
+          $ref: "#/definitions/CategorieEscluse"
+  CategorieEscluse:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      getnLavAppartartCategoria:
+        type: "number"
+      idProspettoProv:
+        type: "integer"
+        format: "int64"
+      categoriaEscluse:
+        $ref: "#/definitions/CategoriaEscluse"
+  CausaSospensione:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codCausaSospensione:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      desCausaSospensione:
+        type: "string"
+      provSospensiones:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvSospensione"
+  Ccnl:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codCcnlMin:
+        type: "string"
+      dsCcnl:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      idNewCcnl:
+        type: "number"
+      settore:
+        type: "string"
+      datiAziendas:
+        type: "array"
+        items:
+          $ref: "#/definitions/DatiAzienda"
+      ccnl:
+        $ref: "#/definitions/Ccnl"
+      ccnls:
+        type: "array"
+        items:
+          $ref: "#/definitions/Ccnl"
+  Comune:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codCap:
+        type: "string"
+      codComuneMin:
+        type: "string"
+      codInps:
+        type: "string"
+      codIstat:
+        type: "string"
+      codPrefisso:
+        type: "string"
+      dsProTComune:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      idTCpi:
+        type: "number"
+      provincia:
+        $ref: "#/definitions/Provincia"
+  Comunicazione:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codComunicazione:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      descComunicazione:
+        type: "string"
+      prospettos:
+        type: "array"
+        items:
+          $ref: "#/definitions/Prospetto"
+  Contratti:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codTipoContrattoMin:
+        type: "string"
+      dsContratto:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      flgForma:
+        type: "string"
+      status:
+        type: "string"
+      tipo:
+        type: "string"
+      tipologiaRapporto:
+        type: "string"
+      lavoratoriInForzas:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriInForza"
+      lavoratoriSilps:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriSilp"
+  DatiAzienda:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      capReferente:
+        type: "string"
+      cfAzienda:
+        type: "string"
+      cfCapogruppo:
+        type: "string"
+      cfReferente:
+        type: "string"
+      cognomeReferente:
+        type: "string"
+      denominazioneDatoreLavoro:
+        type: "string"
+      emailReferente:
+        type: "string"
+      faxReferente:
+        type: "string"
+      flgCapogruppoEstero:
+        type: "string"
+      flgProspettoDaCapogruppo:
+        type: "string"
+      indirizzoReferente:
+        type: "string"
+      nomeReferente:
+        type: "string"
+      telefonoReferente:
+        type: "string"
+      prospetto:
+        $ref: "#/definitions/Prospetto"
+      atecofin:
+        $ref: "#/definitions/Atecofin"
+      ccnl:
+        $ref: "#/definitions/Ccnl"
+      comune:
+        $ref: "#/definitions/Comune"
+      dichiarante:
+        $ref: "#/definitions/Dichiarante"
+      statiEsteri:
+        $ref: "#/definitions/StatiEsteri"
+      sedeLegale:
+        $ref: "#/definitions/SedeLegale"
+      elencoSedi:
+        type: "array"
+        items:
+          $ref: "#/definitions/SedeLegale"
+      idAziendaSilp:
+        type: "string"
+  DatiProvinciali:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      baseComputo:
+        type: "number"
+      flgAziConConvenzione:
+        type: "string"
+      flgAziEsoneroParziale:
+        type: "string"
+      flgAziGradu:
+        type: "string"
+      flgAziSosp:
+        type: "string"
+      flgCategorieEscluseCompute:
+        type: "string"
+      flgCompensazioniTerritorial:
+        type: "string"
+      flgDettaglioIntermittenti:
+        type: "string"
+      flgDettaglioPartime:
+        type: "string"
+      flgLavoratoriInForza:
+        type: "string"
+      flgPostiLavoroDisponibili:
+        type: "string"
+      getnCateProtForza:
+        type: "number"
+      getnCateProtForzaA17012000:
+        type: "number"
+      getnCentralTelefoNonvedenti:
+        type: "number"
+      getnConvenzioni12bis14Ft:
+        type: "number"
+      getnDisabiliInForza:
+        type: "number"
+      getnIntermittentiRiproporziona:
+        type: "number"
+      getnPartimeRiproporzionati:
+        type: "number"
+      getnPostiPrevCentraliNonved:
+        type: "number"
+      getnPostiPrevMassofisNonved:
+        type: "number"
+      getnSomministratiFt:
+        type: "number"
+      getnTelelavoroFt:
+        type: "number"
+      getnTerariabMassofisNonved:
+        type: "number"
+      getnTotaleLavoratDipendenti:
+        type: "number"
+      note:
+        type: "string"
+      categorieEscluses:
+        type: "array"
+        items:
+          $ref: "#/definitions/CategorieEscluse"
+      prospettoProvincia:
+        $ref: "#/definitions/ProspettoProvincia"
+      lavoratoriInForzas:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriInForza"
+      partTimes:
+        type: "array"
+        items:
+          $ref: "#/definitions/PartTime"
+      postiLavoroDisps:
+        type: "array"
+        items:
+          $ref: "#/definitions/PostiLavoroDisp"
+      prospettoProvSede:
+        $ref: "#/definitions/ProspettoProvSede"
+      provCompensazionis:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvCompensazioni"
+      provConvenzione:
+        $ref: "#/definitions/ProvConvenzione"
+      provEsonero:
+        $ref: "#/definitions/ProvEsonero"
+      provEsoneroAutocert:
+        $ref: "#/definitions/ProvEsoneroAutocert"
+      provGradualita:
+        $ref: "#/definitions/ProvGradualita"
+      provIntermittentis:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvIntermittenti"
+      provSospensione:
+        $ref: "#/definitions/ProvSospensione"
+      flgAutocompensazioni:
+        type: "string"
+      ncateProtForzaCntDis:
+        type: "string"
+      ncateProtForzaEsubero:
+        type: "string"
+  Dichiarante:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codDichiarante:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      descDichiarante:
+        type: "string"
+      datiAziendas:
+        type: "array"
+        items:
+          $ref: "#/definitions/DatiAzienda"
+  Istat2001livello5:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codIstat2001livello5Min:
+        type: "string"
+      dsComIstat2001livello5:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      flgVldUd:
+        type: "string"
+      idNewIstat:
+        type: "number"
+      lavoratoriInForzas:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriInForza"
+      lavoratoriSilps:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriSilp"
+      postiLavoroDisps:
+        type: "array"
+        items:
+          $ref: "#/definitions/PostiLavoroDisp"
+  LavoratoriInForza:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      categoriaAssunzione:
+        type: "string"
+      categoriaSoggetto:
+        type: "string"
+      codiceFiscale:
+        type: "string"
+      cognome:
+        type: "string"
+      dataFineRapporto:
+        type: "string"
+        format: "date-time"
+      dataInizioRapporto:
+        type: "string"
+        format: "date-time"
+      dataNascita:
+        type: "string"
+        format: "date-time"
+      flgCompletato:
+        type: "string"
+      idTStatoEsteroNascita:
+        type: "integer"
+        format: "int64"
+      nome:
+        type: "string"
+      orarioSettContrattualeMin:
+        type: "number"
+      orarioSettPartTimeMin:
+        type: "number"
+      percentualeDisabilita:
+        type: "number"
+      sesso:
+        type: "string"
+      idProspettoProv:
+        type: "integer"
+        format: "int64"
+      assunzioneProtetta:
+        $ref: "#/definitions/AssunzioneProtetta"
+      comune:
+        $ref: "#/definitions/Comune"
+      contratti:
+        $ref: "#/definitions/Contratti"
+      istat2001livello5:
+        $ref: "#/definitions/Istat2001livello5"
+  LavoratoriSilp:
+    type: "object"
+    properties:
+      id:
+        $ref: "#/definitions/LavoratoriSilpPK"
+      categoriaAssunzione:
+        type: "string"
+      categoriaSoggetto:
+        type: "string"
+      cognome:
+        type: "string"
+      dataFineRapporto:
+        type: "string"
+        format: "date-time"
+      dataInizioRapporto:
+        type: "string"
+        format: "date-time"
+      dataNascita:
+        type: "string"
+        format: "date-time"
+      flgImportOnline:
+        type: "string"
+      nome:
+        type: "string"
+      orarioSettContrattualeMin:
+        type: "number"
+      orarioSettPartTimeMin:
+        type: "number"
+      sesso:
+        type: "string"
+      assunzioneProtetta:
+        $ref: "#/definitions/AssunzioneProtetta"
+      comune:
+        $ref: "#/definitions/Comune"
+      contratti:
+        $ref: "#/definitions/Contratti"
+      istat2001livello5:
+        $ref: "#/definitions/Istat2001livello5"
+      provincia:
+        $ref: "#/definitions/Provincia"
+      statiEsteri:
+        $ref: "#/definitions/StatiEsteri"
+  LavoratoriSilpPK:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      cfImpresa:
+        type: "string"
+      idTProvincia:
+        type: "integer"
+        format: "int64"
+      codiceFiscale:
+        type: "string"
+  PartTime:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      getnPartTime:
+        type: "number"
+      orarioSettContrattualeMin:
+        type: "number"
+      orarioSettPartTimeMin:
+        type: "number"
+      idProspettoProv:
+        type: "integer"
+        format: "int64"
+      tipoRipropPt:
+        $ref: "#/definitions/TipoRipropPt"
+  PostiLavoroDisp:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      categoriaAssunzione:
+        type: "string"
+      categoriaSoggetto:
+        type: "string"
+      descCapacitaRichiesteContr:
+        type: "string"
+      descMansione:
+        type: "string"
+      flgPresenzaBarriereArchite:
+        type: "string"
+      flgRaggiungibMezziPubblici:
+        type: "string"
+      flgTurniNotturni:
+        type: "string"
+      getnPosti:
+        type: "number"
+      idProspettoProv:
+        type: "integer"
+        format: "int64"
+      comune:
+        $ref: "#/definitions/Comune"
+      istat2001livello5:
+        $ref: "#/definitions/Istat2001livello5"
+      statiEsteri:
+        $ref: "#/definitions/StatiEsteri"
+  Prospetto:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      annoProtocollo:
+        type: "number"
+      cfComunicazione:
+        type: "string"
+      cfStudioProfessionale:
+        type: "string"
+      codiceComunicazione:
+        type: "string"
+      codiceComunicazionePreced:
+        type: "string"
+      dataInvio:
+        type: "string"
+        format: "date-time"
+      dataPrimaAssunzione:
+        type: "string"
+        format: "date-time"
+      dataProtocollo:
+        type: "string"
+        format: "date-time"
+      dataRiferimentoProspetto:
+        type: "string"
+        format: "date-time"
+      dataSecondaAssunzione:
+        type: "string"
+        format: "date-time"
+      dataTimbroPostale:
+        type: "string"
+        format: "date-time"
+      emailNotifica:
+        type: "string"
+      emailSoggettoComunicazione:
+        type: "string"
+      flgAssunzioniPubbSelezione:
+        type: "string"
+      flgConfermatoQ1:
+        type: "string"
+      flgGradualita:
+        type: "string"
+      flgInvioMinistero:
+        type: "string"
+      flgNessunaAssunzioneAggiun:
+        type: "string"
+      flgSospensionePerMobilita:
+        type: "string"
+      flgVisitaIspettiva:
+        type: "string"
+      note:
+        type: "string"
+      numLavorInForzaNazionale:
+        type: "number"
+      numeroProtocollo:
+        type: "number"
+      tipoProvenienza:
+        type: "string"
+      datiAzienda:
+        $ref: "#/definitions/DatiAzienda"
+      prospetto:
+        $ref: "#/definitions/Prospetto"
+      categoriaAzienda:
+        $ref: "#/definitions/CategoriaAzienda"
+      comunicazione:
+        $ref: "#/definitions/Comunicazione"
+      soggetti:
+        $ref: "#/definitions/Soggetti"
+      statoProspetto:
+        $ref: "#/definitions/StatoProspetto"
+      statoVerifica:
+        $ref: "#/definitions/StatoVerifica"
+      prospettoGradualita:
+        $ref: "#/definitions/ProspettoGradualita"
+      riepilogoNazionale:
+        $ref: "#/definitions/RiepilogoNazionale"
+      prospettoProvincias:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProspettoProvincia"
+      assPubbliche:
+        type: "array"
+        items:
+          $ref: "#/definitions/AssPubbliche"
+      dfineSospensioneQ1:
+        type: "string"
+        format: "date-time"
+  ProspettoGradualita:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      dataAtto:
+        type: "string"
+        format: "date-time"
+      dataTrasformazione:
+        type: "string"
+        format: "date-time"
+      estremiAtto:
+        type: "string"
+      getnAssunzioniLavPreTrasf:
+        type: "number"
+      percentuale:
+        type: "number"
+      prospetto:
+        $ref: "#/definitions/Prospetto"
+  ProspettoProvSede:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      cap:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      cognomeReferente:
+        type: "string"
+      email:
+        type: "string"
+      fax:
+        type: "string"
+      indirizzo:
+        type: "string"
+      nomeReferente:
+        type: "string"
+      telefono:
+        type: "string"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+      comune:
+        $ref: "#/definitions/Comune"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  ProspettoProvincia:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      flgConfermatoQ2:
+        type: "string"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+      riepilogoProvinciale:
+        $ref: "#/definitions/RiepilogoProvinciale"
+      idProspetto:
+        type: "integer"
+        format: "int64"
+      provincia:
+        $ref: "#/definitions/Provincia"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  ProvCompensazioni:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      categoriaCompensazione:
+        type: "string"
+      categoriaSoggetto:
+        type: "string"
+      cfAziendaAppartenAlGruppo:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      dataAtto:
+        type: "string"
+        format: "date-time"
+      estremiAtto:
+        type: "string"
+      flgAutocompensazione:
+        type: "string"
+      getnLavoratori:
+        type: "number"
+      idProspettoProv:
+        type: "integer"
+        format: "int64"
+      provincia:
+        $ref: "#/definitions/Provincia"
+      statoConcessione:
+        $ref: "#/definitions/StatoConcessione"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  ProvConvenzione:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      dataAtto:
+        type: "string"
+        format: "date-time"
+      dataScadenza:
+        type: "string"
+        format: "date-time"
+      dataStipula:
+        type: "string"
+        format: "date-time"
+      estremiAtto:
+        type: "string"
+      numLavPrevConvQ2:
+        type: "number"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+      assunzioneProtetta:
+        $ref: "#/definitions/AssunzioneProtetta"
+      statoConcessione:
+        $ref: "#/definitions/StatoConcessione"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  ProvEsonero:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      dataAtto:
+        type: "string"
+        format: "date-time"
+      dataAttoFinoAl:
+        type: "string"
+        format: "date-time"
+      estremiAtto:
+        type: "string"
+      getnLavoratoriEsonero:
+        type: "number"
+      percentuale:
+        type: "number"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+      statoConcessione:
+        $ref: "#/definitions/StatoConcessione"
+  ProvEsoneroAutocert:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      dataAutocert:
+        type: "string"
+        format: "date-time"
+      numLav60x1000:
+        type: "number"
+      numLavEsoneroAutocert:
+        type: "number"
+      percentualeEsAutocert:
+        type: "number"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+  ProvGradualita:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      getnAssunzioniEffDopoTrasf:
+        type: "number"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+  ProvIntermittenti:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      getnIntermittenti:
+        type: "number"
+      orarioSettimanaleContrattual:
+        type: "number"
+      orarioSettimanaleSvolto:
+        type: "number"
+      idProspettoProv:
+        type: "integer"
+        format: "int64"
+  ProvSospensione:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      getdInserim:
+        type: "string"
+        format: "date-time"
+      getdAggiorn:
+        type: "string"
+        format: "date-time"
+      codUserInserim:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      getnLavoratori:
+        type: "number"
+      datiProvinciali:
+        $ref: "#/definitions/DatiProvinciali"
+      causaSospensione:
+        $ref: "#/definitions/CausaSospensione"
+      statoConcessione:
+        $ref: "#/definitions/StatoConcessione"
+      dfineSospensioneQ2:
+        type: "string"
+        format: "date-time"
+  Provincia:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codProvinciaMin:
+        type: "string"
+      dsProTProvincia:
+        type: "string"
+      dsTarga:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      comunes:
+        type: "array"
+        items:
+          $ref: "#/definitions/Comune"
+      regione:
+        $ref: "#/definitions/Regione"
+  Regione:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codAmbitoDiffusione:
+        type: "string"
+      codMobilitageog:
+        type: "string"
+      codRegioneMin:
+        type: "string"
+      dsAmbitoDiffusione:
+        type: "string"
+      dsProTRegione:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      provincias:
+        type: "array"
+        items:
+          $ref: "#/definitions/Provincia"
+  RiepilogoNazionale:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      baseComputoArt18:
+        type: "number"
+      baseComputoArt3:
+        type: "number"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      flgSospensioniInCorso:
+        type: "string"
+      numCatProtInForza:
+        type: "number"
+      numCatProtInForzaCntDis:
+        type: "number"
+      numDisabiliInForza:
+        type: "number"
+      numLavoratoriBaseComputo:
+        type: "number"
+      numLavoratoriSospensione:
+        type: "number"
+      numPosizioniEsonerate:
+        type: "number"
+      numScopertCatProtReali:
+        type: "number"
+      numScopertCategorieProtette:
+        type: "number"
+      numScopertDisabili:
+        type: "number"
+      numScopertDisabiliReali:
+        type: "number"
+      quotaEsuberiArt18:
+        type: "number"
+      quotaRiservaArt18:
+        type: "number"
+      quotaRiservaDisabili:
+        type: "number"
+      prospetto:
+        $ref: "#/definitions/Prospetto"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  RiepilogoProvinciale:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      baseComputoArt18:
+        type: "number"
+      baseComputoArt3:
+        type: "number"
+      catCompensazioneCateProt:
+        type: "string"
+      catCompensazioneDisabili:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      flgSospensioniInCorso:
+        type: "string"
+      numCatProtInForza:
+        type: "number"
+      numCatProtInForzaContDis:
+        type: "number"
+      numCompensazioneDisabili:
+        type: "number"
+      numCompensazioniCateProt:
+        type: "number"
+      numDisabiliInForza:
+        type: "number"
+      numLavoratoriBaseComputo:
+        type: "number"
+      numLavoratoriSospensione:
+        type: "number"
+      numPosizioniEsonerate:
+        type: "number"
+      numScopertureCatProt:
+        type: "number"
+      numScopertureCatProtReali:
+        type: "number"
+      numScopertureDisabili:
+        type: "number"
+      numScopertureDisabiliReali:
+        type: "number"
+      quotaRiservaArt18:
+        type: "number"
+      quotaRiservaDisabili:
+        type: "number"
+      prospettoProvincia:
+        $ref: "#/definitions/ProspettoProvincia"
+      numMinOrarioSettimanaleContrattualeLav:
+        type: "number"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  SedeLegale:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      capSede:
+        type: "string"
+      codUserAggiorn:
+        type: "string"
+      codUserInserim:
+        type: "string"
+      email:
+        type: "string"
+      fax:
+        type: "string"
+      indirizzo:
+        type: "string"
+      telefono:
+        type: "string"
+      datiAzienda:
+        $ref: "#/definitions/DatiAzienda"
+      comune:
+        $ref: "#/definitions/Comune"
+      statiEsteri:
+        $ref: "#/definitions/StatiEsteri"
+      daggiorn:
+        type: "string"
+        format: "date-time"
+      dinserim:
+        type: "string"
+        format: "date-time"
+  Soggetti:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codSoggetti:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      descSoggetti:
+        type: "string"
+      prospettos:
+        type: "array"
+        items:
+          $ref: "#/definitions/Prospetto"
+  StatiEsteri:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codNazioneMin:
+        type: "string"
+      dsStatiEsteri:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      dtTmst:
+        type: "string"
+        format: "date-time"
+      flgUe:
+        type: "string"
+      siglaNazione:
+        type: "string"
+      datiAziendas:
+        type: "array"
+        items:
+          $ref: "#/definitions/DatiAzienda"
+      lavoratoriSilps:
+        type: "array"
+        items:
+          $ref: "#/definitions/LavoratoriSilp"
+      postiLavoroDisps:
+        type: "array"
+        items:
+          $ref: "#/definitions/PostiLavoroDisp"
+      sedeLegales:
+        type: "array"
+        items:
+          $ref: "#/definitions/SedeLegale"
+  StatoConcessione:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codStatoConcessione:
+        type: "string"
+      dataFine:
+        type: "string"
+        format: "date-time"
+      dataInizio:
+        type: "string"
+        format: "date-time"
+      dataTmst:
+        type: "string"
+        format: "date-time"
+      descStatoConcessione:
+        type: "string"
+      provCompensazionis:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvCompensazioni"
+      provConvenziones:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvConvenzione"
+      provEsoneros:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvEsonero"
+      provSospensiones:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProvSospensione"
+  StatoProspetto:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      descrizione:
+        type: "string"
+      prospettos:
+        type: "array"
+        items:
+          $ref: "#/definitions/Prospetto"
+  StatoVerifica:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      descrizione:
+        type: "string"
+      prospettos:
+        type: "array"
+        items:
+          $ref: "#/definitions/Prospetto"
+  TipoRipropPt:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      ambitoRiprop:
+        type: "string"
+      ambitoRipropBc:
+        type: "string"
+      dsMin:
+        type: "string"
+      dsTipoRipropPt:
+        type: "string"
+      dtFine:
+        type: "string"
+        format: "date-time"
+      dtInizio:
+        type: "string"
+        format: "date-time"
+      partTimes:
+        type: "array"
+        items:
+          $ref: "#/definitions/PartTime"
+  ApiError:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+      group:
+        type: "string"
+      errorMessage:
+        type: "string"
+      params:
+        type: "object"
+      groupParams:
+        type: "object"
+      type:
+        type: "string"
+      fullErrorMessage:
+        type: "string"
+  FilterServiziProdis:
+    type: "object"
+    properties:
+      caller:
+        type: "string"
+      codiceRegionale:
+        type: "string"
+      dataRiferimentoDa:
+        type: "string"
+        format: "date-time"
+      dataRiferimentoA:
+        type: "string"
+        format: "date-time"
+      denominazioneAzienda:
+        type: "string"
+      listCodiceFiscaleAzienda:
+        type: "array"
+        items:
+          type: "string"
+      codProvinciaMin:
+        type: "string"
+      tipoComunicazione:
+        type: "string"
+      idProspetto:
+        type: "integer"
+        format: "int64"
+  PdfProspetto:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      pdfProspettoDaFirmare:
+        type: "array"
+        items:
+          type: "string"
+          format: "byte"
+      pdfProspettoFirmato:
+        type: "array"
+        items:
+          type: "string"
+          format: "byte"
+      prospetto:
+        $ref: "#/definitions/Prospetto"
+  TestataProspetto:
+    type: "object"
+    properties:
+      cfAzienda:
+        type: "string"
+      pivaAzienda:
+        type: "string"
+      denominazioneDatoreDiLavoro:
+        type: "string"
+      codiceRegionale:
+        type: "string"
+      idProspetto:
+        type: "integer"
+        format: "int64"
+      dataRiferimentoProspetto:
+        type: "string"
+        format: "date-time"
+      descrizioneComunicazione:
+        type: "string"
+      elencoCodProvince:
+        type: "array"
+        items:
+          type: "string"
+      tipoComunicazione:
+        type: "string"
+      tipoProvenienza:
+        type: "string"
+      dataTimbroPostale:
+        type: "string"
+        format: "date-time"
+      dataProtocollo:
+        type: "string"
+        format: "date-time"
+      annoProtocollo:
+        type: "integer"
+        format: "int64"
+      numeroProtocolloRiferimento:
+        type: "string"
+      statoProspettoId:
+        type: "integer"
+        format: "int64"
+      statoProspettoDescrizione:
+        type: "string"
