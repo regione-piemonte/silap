@@ -2,7 +2,7 @@
 LICENSING BIBLE 
 
 Project: silap/colmirsrv 
-Branch: mainline (85172a1d00b03e656263ae23b000b0576c334dc7) 
+Branch: mainline 
 
 Created on 2024-06-11 16:41 UTC 
 
@@ -11,62 +11,62 @@ Bill of components
 Libraries (java)
 
  it.csi.silap:colmirsrv 1.0.0 (root) mitigated - Libreria di prodotto 
-(registry)
+ 
 
  antlr:antlr 2.7.7 (compile) (transitive) 
-PUBDOM BSD (registry)
+PUBDOM BSD  
 
  com.aayushatharva.brotli4j:brotli4j 1.8.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.aayushatharva.brotli4j:native-linux-x86_64 1.8.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.core:jackson-annotations 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.core:jackson-core 2.14.2 (compile) (transitive) Apache-2.0 
 Copyright (c) 2007 Tatu Saloranta, tatu.salorantaiki.fi/ 
-(registry)
+ 
 
  com.fasterxml.jackson.core:jackson-databind 2.14.2 (compile) (transitive) 
 Apache-2.0 
 Copyright 2011 Google Inc. All Rights Reserved. 
-(registry)
+ 
 
  com.fasterxml.jackson.dataformat:jackson-dataformat-yaml 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.datatype:jackson-datatype-jdk8 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.datatype:jackson-datatype-jsr310 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  com.fasterxml.jackson.jaxrs:jackson-jaxrs-base 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.module:jackson-module-jaxb-annotations 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.jackson.module:jackson-module-parameter-names 2.14.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.fasterxml.woodstox:woodstox-core 6.4.0 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2004 Tatu Saloranta, tatu.salorantaiki.fi 
-(registry)
+ 
 
  com.fasterxml:classmate 1.5.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.github.ben-manes.caffeine:caffeine 3.1.1 (compile) (transitive) 
 Apache-2.0 
 Copyright L Ben Manes. All Rights Reserved. 
-(registry)
+ 
 
  com.github.java-json-tools:btf 1.3 (compile) (transitive) 
 Apache-2.0 
@@ -75,7 +75,7 @@ LGPL-3.0-only
 
 
 Copyright (c) 2014, Francis Galiegue (fgalieguegmail.com) 
-(registry)
+ 
 
  com.github.java-json-tools:jackson-coreutils 2.0 (compile) (transitive) 
 Apache-2.0 
@@ -84,7 +84,7 @@ LGPL-3.0-only
 
 
 Copyright (c) 2014, Francis Galiegue (fgalieguegmail.com) 
-(registry)
+ 
 
  com.github.java-json-tools:json-patch 1.13 (compile) (transitive) 
 Apache-2.0 
@@ -93,7 +93,7 @@ LGPL-3.0-only
 
 
 Copyright (c) 2014, Francis Galiegue (fgalieguegmail.com) 
-(registry) 
+  
 
  com.github.java-json-tools:msg-simple 1.2 (compile) (transitive) 
 Apache-2.0 
@@ -102,69 +102,69 @@ LGPL-3.0-only
 
 
 Copyright (c) 2014, Francis Galiegue (fgalieguegmail.com) 
-(registry)
+ 
 
  com.github.virtuald:curvesapi 1.06 (compile) (transitive) 
 BSD 
 Copyright (c) 2005, Graph Builder 
-(registry)
+ 
 
  com.google.api.grpc:proto-google-common-protos 2.11.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.code.findbugs:jsr305 3.0.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.code.gson:gson 2.10 (runtime) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.errorprone:error_prone_annotations 2.17.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.guava:failureaccess 1.0.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.guava:guava 31.1-jre (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.j2objc:j2objc-annotations 1.3 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.google.protobuf:protobuf-java 3.21.9 (compile) (transitive) 
-BSD-3-Clause (registry)
+BSD-3-Clause  
 
  com.ibm.async:asyncutil 0.1.0 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  com.ibm.icu:icu4j 59.1 (compile) (transitive) 
-ICU (registry)
+ICU  
 
  com.openhtmltopdf:openhtmltopdf-core 1.0.9 (compile) 
-LGPL-2.1-only (registry)
+LGPL-2.1-only  
 
  com.openhtmltopdf:openhtmltopdf-java2d 1.0.9 (compile) 
-LGPL-2.1-only (registry)
+LGPL-2.1-only  
 
  com.openhtmltopdf:openhtmltopdf-pdfbox 1.0.9 (compile) 
-LGPL-2.1-only (registry)
+LGPL-2.1-only  
 
  com.openhtmltopdf:openhtmltopdf-rtl-support 1.0.9 (compile) 
-LGPL-2.1-only (registry)
+LGPL-2.1-only  
 
  com.openhtmltopdf:openhtmltopdf-slf4j 1.0.9 (compile) 
-LGPL-2.1-only (registry)
+LGPL-2.1-only  
 
  com.squareup.okhttp3:okhttp 3.14.9 (runtime) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.squareup.okio:okio 1.17.2 (runtime) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  com.sun.activation:jakarta.activation 1.2.1 (compile) (transitive) 
-EDL-1.0 (registry)
+EDL-1.0  
 
  com.sun.istack:istack-commons-runtime 3.0.10 (compile) (transitive) 
-EDL-1.0 CDDL-1.1 (registry)
+EDL-1.0 CDDL-1.1  
 
  com.sun.mail:jakarta.mail 1.6.7 (compile) (transitive) 
 EDL-1.0 
@@ -174,33 +174,33 @@ EPL-2.0
 GPLV2+CE 
 
 
-(registry) 
+  
 
  com.sun.mail:javax.mail 1.6.2 (compile) (transitive) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  com.sun.xml.messaging.saaj:saaj-impl 1.5.3 (compile) (transitive) 
-CDDL-1.1 EDL-1.0 (registry)
+CDDL-1.1 EDL-1.0  
 
  com.zaxxer:SparseBitSet 1.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  commons-beanutils:commons-beanutils 1.9.4 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  commons-codec:commons-codec 1.15 (compile) (transitive) 
 Apache-2.0 
 Copyright 2002-2024 The Apache Software Foundation 
-(registry)
+ 
 
  commons-collections:commons-collections 3.2.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  commons-io:commons-io 2.11.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  commons-logging:commons-logging 1.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  csipiemonte:aaepsv-client 3.7.0 (compile) 
 Apache-2.0 
@@ -209,557 +209,557 @@ MIT
 
 
 CSI Piemonte 
-(registry)
+ 
 
  de.rototor.pdfbox:graphics2d 0.32 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.agroal:agroal-api 1.16 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.agroal:agroal-narayana 1.16 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.agroal:agroal-pool 1.16 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.dropwizard.metrics:metrics-core 4.0.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.github.classgraph:classgraph 4.8.150 (compile) (transitive) 
 MIT 
 Copyright (c) 2022 Luke Hutchison 
-(registry)
+ 
 
  io.github.crac:org-crac 0.1.3 (compile) (transitive) 
 BSD-2-Clause 
 Copyright 20172022 Azul Systems, Inc. 
-(registry)
+ 
 
  io.grpc:grpc-api 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry)
+ 
 
  io.grpc:grpc-context 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry)
+ 
 
  io.grpc:grpc-core 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry)
+ 
 
  io.grpc:grpc-netty 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry)
+ 
 
  io.grpc:grpc-protobuf 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry) 
+  
 
  io.grpc:grpc-protobuf-lite 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry)
+ 
 
  io.grpc:grpc-stub 1.51.1 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014 The gRPC Authors 
-(registry)
+ 
 
  io.micrometer:micrometer-commons 1.10.2 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2017-Present VMware, Inc. All Rights Reserved. 
-(registry)
+ 
 
  io.micrometer:micrometer-core 1.10.2 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2017-Present VMware, Inc. All Rights Reserved. 
-(registry)
+ 
 
  io.micrometer:micrometer-observation 1.10.2 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2017-Present VMware, Inc. All Rights Reserved. 
-(registry)
+ 
 
  io.micrometer:micrometer-registry-prometheus 1.10.2 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2017-Present VMware, Inc. All Rights Reserved. 
-(registry)
+ 
 
  io.netty:netty-buffer 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-codec 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-codec-dns 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-codec-haproxy 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.netty:netty-codec-http 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-codec-http2 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-codec-socks 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-common 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-handler 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-handler-proxy 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-resolver 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-resolver-dns 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-transport 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.netty:netty-transport-native-unix-common 4.1.86.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 20042022 QOS.ch Sarl (Switzerland)All rights reserved. 
-(registry) 
+  
 
  io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations-support 1.21.0-alpha (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 20042022 QOS.ch Sarl (Switzerland)All rights reserved. 
-(registry)
+ 
 
  io.opentelemetry.instrumentation:opentelemetry-instrumentation-api 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 20042022 QOS.ch Sarl (Switzerland)All rights reserved. 
-(registry)
+ 
 
  io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-semconv 1.21.0-alpha (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 20042022 QOS.ch Sarl (Switzerland)All rights reserved. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-api 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-api-logs 1.21.0-alpha (runtime) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-context 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-exporter-common 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-exporter-otlp 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-exporter-otlp-common 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry) 
+  
 
  io.opentelemetry:opentelemetry-extension-annotations 1.18.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-sdk 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-sdk-common 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-sdk-logs 1.21.0-alpha (runtime) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-sdk-metrics 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-sdk-trace 1.21.0 (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.opentelemetry:opentelemetry-semconv 1.21.0-alpha (compile) (transitive) 
 Apache-2.0 
 Copyright 20002021 JetBrains s.r.o. 
-(registry)
+ 
 
  io.perfmark:perfmark-api 0.26.0 (runtime) (transitive) 
 Apache-2.0 
 Copyright 2019 Google LLC 
-(registry) 
+  
 
  io.prometheus:simpleclient 0.16.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.prometheus:simpleclient_common 0.16.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.prometheus:simpleclient_tracer_common 0.16.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.prometheus:simpleclient_tracer_otel 0.16.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.prometheus:simpleclient_tracer_otel_agent 0.16.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkiverse.cxf:quarkus-cxf 1.7.3 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkiverse.cxf:quarkus-cxf-rt-features-logging 1.7.3 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkiverse.cxf:quarkus-cxf-rt-ws-security 1.7.3 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkiverse.cxf:quarkus-cxf-saaj 1.7.3 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkiverse.cxf:quarkus-cxf-woodstox 1.7.3 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkiverse.xmlsec:quarkus-xmlsec 1.1.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus.arc:arc 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.quarkus.http:quarkus-http-core 4.2.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus.http:quarkus-http-http-core 4.2.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus.http:quarkus-http-servlet 4.2.1 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus.http:quarkus-http-vertx-backend 4.2.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus.security:quarkus-security 1.1.4.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-agroal 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-apache-httpclient 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-arc 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-bootstrap-runner 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-caffeine 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-core 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-credentials 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.quarkus:quarkus-datasource 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-datasource-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-development-mode-spi 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-elytron-security 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-elytron-security-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-elytron-security-properties-file 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-fs-util 0.0.9 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-grpc-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-hibernate-orm 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-hibernate-orm-panache 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-hibernate-orm-panache-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-ide-launcher 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.quarkus:quarkus-jackson 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-jaxb 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-jaxp 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-jdbc-postgresql 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-jsonb 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-jsonp 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-micrometer 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-micrometer-registry-prometheus 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-mutiny 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-narayana-jta 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-netty 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-opentelemetry 2.16.2.Final (compile) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.quarkus:quarkus-panache-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-panache-hibernate-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-rest-client 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-rest-client-config 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-rest-client-jackson 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-resteasy 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-resteasy-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-resteasy-jackson 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-resteasy-jsonb 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-resteasy-multipart 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-resteasy-server-common 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-security 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.quarkus:quarkus-security-runtime-spi 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-smallrye-context-propagation 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-smallrye-health 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-smallrye-openapi 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-swagger-ui 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-transaction-annotations 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-undertow 2.16.2.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-vertx 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-vertx-http 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-vertx-http-dev-console-runtime-spi 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.quarkus:quarkus-vertx-latebound-mdc-provider 2.16.2.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.common:smallrye-common-annotation 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.smallrye.common:smallrye-common-classloader 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.common:smallrye-common-constraint 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.common:smallrye-common-expression 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.common:smallrye-common-function 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.common:smallrye-common-io 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.common:smallrye-common-vertx-context 1.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.config:smallrye-config 2.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.config:smallrye-config-common 2.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.config:smallrye-config-core 2.13.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:mutiny 1.9.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:mutiny-smallrye-context-propagation 1.9.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-mutiny-vertx-auth-common 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.smallrye.reactive:smallrye-mutiny-vertx-bridge-common 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-mutiny-vertx-core 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-mutiny-vertx-runtime 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-mutiny-vertx-uri-template 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-mutiny-vertx-web 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-mutiny-vertx-web-common 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-reactive-converter-api 2.7.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:smallrye-reactive-converter-mutiny 2.7.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye.reactive:vertx-mutiny-generator 2.30.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:jandex 3.0.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-context-propagation 1.2.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-context-propagation-api 1.2.2 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.smallrye:smallrye-context-propagation-jta 1.2.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-context-propagation-storage 1.2.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-fault-tolerance-vertx 5.6.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-health 3.3.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-health-api 3.3.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-health-provided-checks 3.3.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.smallrye:smallrye-open-api-core 3.1.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.swagger.core.v3:swagger-annotations 2.2.8 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.swagger.core.v3:swagger-core 2.2.8 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.swagger.core.v3:swagger-integration 2.2.8 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.swagger.core.v3:swagger-jaxrs2 2.2.8 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  io.swagger.core.v3:swagger-models 2.2.8 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  io.vertx:vertx-auth-common 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  io.vertx:vertx-bridge-common 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  io.vertx:vertx-codegen 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  io.vertx:vertx-core 4.3.7 (compile) (transitive) 
 Apache-2.0 
@@ -768,29 +768,29 @@ EPL-2.0
 
 
 Copyright (c) 20112023 Contributors to the Eclipse Foundation 
-(registry)
+ 
 
  io.vertx:vertx-grpc 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
 
  io.vertx:vertx-grpc-client 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  io.vertx:vertx-grpc-common 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  io.vertx:vertx-grpc-server 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  io.vertx:vertx-uri-template 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry) 
+Apache-2.0 EPL-1.0   
 
  io.vertx:vertx-web 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-2.0 (registry)
+Apache-2.0 EPL-2.0  
 
  io.vertx:vertx-web-common 4.3.7 (compile) (transitive) 
-Apache-2.0 EPL-1.0 (registry)
+Apache-2.0 EPL-1.0  
 
  it.csi.comonl:comprof-cxfclient 2.1.0 (compile) 
 Apache-2.0 
@@ -799,7 +799,7 @@ MIT
 
 
 CSI Piemonte (rilasciata su richiesta) 
-(registry)
+ 
 
  it.csi.csi:csi-apachesoap 1.4.6 (compile) 
 Apache-2.0 
@@ -808,7 +808,7 @@ MIT
 
 
 CSI Piemonte (codice sorgente rilasciato su richiesta) 
-(registry)
+ 
 
  it.csi.csi:csi-core 1.4.6 (compile) 
 Apache-2.0 
@@ -817,7 +817,7 @@ MIT
 
 
 CSI Piemonte (codice sorgente rilasciato su richiesta) 
-(registry)
+ 
 
  it.csi.csi:csi-stadapter 1.4.6 (compile) 
 Apache-2.0 
@@ -826,7 +826,7 @@ MIT
 
 
 CSI Piemonte (codice sorgente rilasciato su richiesta) 
-(registry)
+ 
 
  it.csi.iridev2:iridev2-pep-intf 2.0.0 (compile) 
 Apache-2.0 
@@ -835,7 +835,7 @@ MIT
 
 
 CSI Piemonte (rilasciata con licenza su richiesta) 
-(registry)
+ 
 
  it.csi.util:util-perf 1.0.1 (compile) 
 Apache-2.0 
@@ -844,10 +844,10 @@ MIT
 
 
 CSI Piemonte (codice sorgente rilasciato su richiesta) 
-(registry) 
+  
 
  jakarta.activation:jakarta.activation-api 1.2.1 (compile) (transitive) 
-EDL-1.0 (registry)
+EDL-1.0  
 
  jakarta.annotation:jakarta.annotation-api 1.3.5 (compile) (transitive) 
 EPL-2.0 
@@ -856,37 +856,37 @@ GPLV2+CE
 
 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.el:jakarta.el-api 3.0.3 (compile) (transitive) 
 EPL-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.enterprise:jakarta.enterprise.cdi-api 2.0.2 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2011 Red Hat, Inc. and others This program and the accompanying materials are made available under the Apache Software License 2.0 which is available at: https://www.apache.org/licenses/LICENSE2.0 
-(registry)
+ 
 
  jakarta.inject:jakarta.inject-api 1.0 (compile) (transitive) 
 Apache-2.0 
 Copyright (C) 2009 The JSR330 Expert Group 
-(registry)
+ 
 
  jakarta.interceptor:jakarta.interceptor-api 1.2.5 (compile) (transitive) 
 EPL-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.json.bind:jakarta.json.bind-api 1.0.2 (compile) (transitive) 
 EPL-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.jws:jakarta.jws-api 2.1.0 (compile) (transitive) 
 EDL-1.0 
 Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved. 
-(registry)
+ 
 
  jakarta.persistence:jakarta.persistence-api 2.2.3 (compile) (transitive) 
 EDL-1.0 
@@ -895,17 +895,17 @@ EPL-1.0
 
 
 Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors. 
-(registry) 
+  
 
  jakarta.security.auth.message:jakarta.security.auth.message-api 1.1.3 (compile) (transitive) 
 EPL-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.security.jacc:jakarta.security.jacc-api 1.6.1 (compile) (transitive) 
 EPL-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.servlet:jakarta.servlet-api 4.0.3 (compile) (transitive) 
 EPL-2.0 
@@ -914,7 +914,7 @@ GPLV2+CE
 
 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  jakarta.transaction:jakarta.transaction-api 1.3.3 (compile) (transitive) 
 EPL-2.0 
@@ -923,30 +923,30 @@ GPLV2+CE
 
 
 copyright line and a pointer to where the full notice is found. 
-(registry)
+ 
 
  jakarta.validation:jakarta.validation-api 2.0.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  jakarta.xml.bind:jakarta.xml.bind-api 2.3.3 (compile) (transitive) 
-EDL-1.0 (registry)
+EDL-1.0  
 
  jakarta.xml.soap:jakarta.xml.soap-api 1.4.2 (compile) (transitive) 
 EDL-1.0 
 Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.Redistribution and use in source and binary forms, with or withoutmodification, are permitted provided that the following conditionsare met: - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - Redistributions in binary form must reproduce the above copyright   notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  -Neither the name of the Eclipse Foundation, Inc. nor the names of its contributors may be used to endorse or promote products derived   from this software without specific prior written permission.THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "ASIS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULARPURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER ORCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, ORPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OFLIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDINGNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 OF THISSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-(registry)
+ 
 
  jakarta.xml.ws:jakarta.xml.ws-api 2.3.3 (compile) (transitive) 
 EDL-1.0 
 Copyright (c) 2017, 2018 Oracle and/or its affiliates. All rights reserved. 
-(registry)
+ 
 
  javax.activation:activation 1.1 (compile) (transitive) 
-CDDL-1.0 (registry) 
+CDDL-1.0   
 
  javax.activation:javax.activation-api 1.2.0 (compile) (transitive) 
-CDDL-1.1 (registry) 
+CDDL-1.1   
 
  javax.annotation:javax.annotation-api 1.3.2 (compile) (transitive) 
 CDDL-1.1 
@@ -955,29 +955,29 @@ Apache-2.0
 
 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  javax.cache:cache-api 1.1.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  javax.jws:javax.jws-api 1.1 (compile) 
 CDDL-1.1 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  javax.mail:mail 1.4 (compile) 
-CDDL-1.0 CDDL-1.1 (registry)
+CDDL-1.0 CDDL-1.1  
 
  javax.ws.rs:javax.ws.rs-api 2.0.1 (compile) (transitive) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  javax.xml.bind:jaxb-api 2.3.1 (compile) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  javax.xml.soap:javax.xml.soap-api 1.4.0 (compile) (transitive) 
 Apache-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  javax.xml.ws:jaxws-api 2.3.1 (compile) 
 CDDL 
@@ -988,232 +988,232 @@ Apache-2.0
 
 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  javax:javaee-api 8.0.1 (compile) 
 CDDL-1.1 
 Copyright (c) 20102017 Oracle and/or its affiliates. All rights reserved. 
-(registry) 
+  
 
  joda-time:joda-time 2.10.6 (compile) (transitive) 
 Apache-2.0 
 Copyright 20012010 Stephen Colebourne 
-(registry)
+ 
 
  log4j:log4j 1.2.14 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  net.bytebuddy:byte-buddy 1.12.18 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  net.shibboleth.utilities:java-support 7.5.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel.quarkus:camel-quarkus-core 2.16.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel.quarkus:camel-quarkus-vertx-websocket 2.16.0 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-api 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-base 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-base-engine 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-componentdsl 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-core-catalog 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-core-engine 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.apache.camel:camel-core-languages 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-core-model 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-core-processor 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-core-reifier 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-endpointdsl 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-main 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-management-api 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-microprofile-config 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-support 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-tooling-model 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-util 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-util-json 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.apache.camel:camel-vertx-common 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.camel:camel-vertx-websocket 3.20.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.commons:commons-collections4 4.4 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.commons:commons-compress 1.22 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.commons:commons-lang3 3.12.0 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.commons:commons-math3 3.6.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-core 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-bindings-soap 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-bindings-xml 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-databinding-jaxb 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-features-logging 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-frontend-jaxws 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.apache.cxf:cxf-rt-frontend-simple 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-security 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-security-saml 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-transports-http 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-ws-addr 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-ws-mex 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-ws-policy 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-ws-security 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.cxf:cxf-rt-wsdl 3.5.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.httpcomponents:httpasyncclient 4.1.5 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.httpcomponents:httpclient 4.5.14 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.httpcomponents:httpcore 4.4.16 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.apache.httpcomponents:httpcore-nio 4.4.16 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.james:apache-mime4j-core 0.8.3 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.james:apache-mime4j-dom 0.8.3 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.james:apache-mime4j-storage 0.8.3 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.neethi:neethi 3.2.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.pdfbox:fontbox 2.0.24 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.pdfbox:pdfbox 2.0.24 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.pdfbox:xmpbox 2.0.24 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.poi:poi 4.1.2 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.poi:poi-ooxml 4.1.2 (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.poi:poi-ooxml-schemas 4.1.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.santuario:xmlsec 2.3.2 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.apache.sshd:sshd-common 2.9.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.ws.xmlschema:xmlschema-core 2.3.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.wss4j:wss4j-bindings 2.4.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.wss4j:wss4j-policy 2.4.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.wss4j:wss4j-ws-security-common 2.4.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.wss4j:wss4j-ws-security-dom 2.4.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.wss4j:wss4j-ws-security-policy-stax 2.4.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.wss4j:wss4j-ws-security-stax 2.4.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.apache.xmlbeans:xmlbeans 3.1.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.bouncycastle:bcprov-jdk15on 1.70 (compile) (transitive) 
 CDDL+GPL 
 Copyright (c) 2000-2024 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org).Permission is hereby granted, free of charge, to any person obtaining a copy of this software andassociated documentation files (the "Software"), to deal in the Software without restriction,including without limitation the rights to use, copy, modify, merge, publish, distribute,sub license, and/or sell copies of the Software, and to permit persons to whom the Software isfurnished to do so, subject to the following conditions: The above copyright notice 
 and thispermission notice shall be included in all copies or substantial portions of the Software. 
-(registry)
+ 
 
  org.codehaus.woodstox:stax2-api 4.2 (compile) (transitive) 
 BSD 
 Copyright (c) 2008+, FasterXML, LLCAll rights reserved. 
-(registry) 
+  
 
  org.cryptacular:cryptacular 1.2.4 (compile) (transitive) 
 Apache-2.0 
@@ -1222,22 +1222,22 @@ LGPL-2.0-only
 
 
 Copyright (C) 2007 Free Software Foundation, Inc.Everyone is permitted to copy and distribute verbatim copiesof this license document, but changing it is not allowed. 
-(registry)
+ 
 
  org.eclipse.microprofile.config:microprofile-config-api 2.0.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.eclipse.microprofile.context-propagation:microprofile-context-propagation-api 1.2 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.eclipse.microprofile.health:microprofile-health-api 3.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.eclipse.microprofile.openapi:microprofile-openapi-api 2.0.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.eclipse.microprofile.rest.client:microprofile-rest-client-api 2.0 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.eclipse:yasson 1.0.11 (compile) (transitive) 
 BSD-3-Clause 
@@ -1246,27 +1246,27 @@ EPL-2.0
 
 
 Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors. 
-(registry)
+ 
 
  org.ehcache:ehcache 3.10.8 (compile) (transitive) 
 Apache-2.0 
 Copyright 2014-2023 Terracotta, Inc. 
-(registry)
+ 
 
  org.glassfish.hk2.external:aopalliance-repackaged 2.5.0-b32 (compile) (transitive) 
-GPLV2+CE CDDL-1.1 (registry)
+GPLV2+CE CDDL-1.1  
 
  org.glassfish.hk2.external:javax.inject 2.5.0-b32 (compile) (transitive) 
-CDDL-1.1 (registry) 
+CDDL-1.1   
 
  org.glassfish.hk2:hk2-api 2.5.0-b32 (compile) (transitive) 
-GPLV2+CE CDDL-1.1 (registry)
+GPLV2+CE CDDL-1.1  
 
  org.glassfish.hk2:hk2-locator 2.5.0-b32 (compile) (transitive) 
-GPLV2+CE CDDL-1.1 (registry)
+GPLV2+CE CDDL-1.1  
 
  org.glassfish.hk2:hk2-utils 2.5.0-b32 (compile) (transitive) 
-GPLV2+CE CDDL-1.1 (registry)
+GPLV2+CE CDDL-1.1  
 
  org.glassfish.hk2:osgi-resource-locator 1.0.1 (compile) (transitive) 
 CDDL-1.1 
@@ -1276,7 +1276,7 @@ EPL-2.0
 GPLV2+CE 
 
 
-(registry)
+ 
 
  org.glassfish.jaxb:jaxb-runtime 2.3.3-b02 (compile) (transitive) 
 CDDL-1.1 
@@ -1286,7 +1286,7 @@ GPL-3.0-with-GCC-exception
 EDL-1.0 
 
 
-(registry)
+ 
 
  org.glassfish.jaxb:txw2 2.3.3-b02 (compile) (transitive) 
 CDDL-1.1 
@@ -1296,30 +1296,30 @@ GPL-2.0-with-GCC-exception
 EDL-1.0 
 
 
-(registry)
+ 
 
  org.glassfish.jersey.bundles.repackaged:jersey-guava 2.25.1 (compile) (transitive) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  org.glassfish.jersey.core:jersey-client 2.25.1 (compile) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  org.glassfish.jersey.core:jersey-common 2.25.1 (compile) (transitive) 
-CDDL-1.1 (registry) 
+CDDL-1.1   
 
  org.glassfish.jersey.ext:jersey-entity-filtering 2.25.1 (provided) (transitive) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  org.glassfish.jersey.media:jersey-media-json-jackson 2.25.1 (provided) 
-CDDL-1.1 (registry)
+CDDL-1.1  
 
  org.glassfish:jakarta.json 1.1.6 (compile) (transitive) 
-EPL-2.0 (registry)
+EPL-2.0  
 
  org.graalvm.sdk:graal-sdk 22.3.0 (compile) (transitive) 
 UPL-1.0 
 Copyright (C) <year> <name of author> 
-(registry)
+ 
 
  org.hdrhistogram:HdrHistogram 2.1.12 (runtime) (transitive) 
 BSD-2-Clause 
@@ -1328,28 +1328,28 @@ CPL-1.0
 
 
 Copyright (c) 2012, 2013, 2014, 2015, 2016 Gil TeneCopyright (c) 2014 Michael BarkerCopyright (c) 2014 Matt WarrenAll rights reserved. 
-(registry)
+ 
 
  org.hibernate.common:hibernate-commons-annotations 5.1.2.Final (compile) (transitive) 
-LGPL-2.1-or-later (registry)
+LGPL-2.1-or-later  
 
  org.hibernate:hibernate-core 5.6.15.Final (compile) (transitive) 
 LGPL-2.1 
 Copyright 2004present by the Checker Framework developers 
-(registry)
+ 
 
  org.hibernate:hibernate-graalvm 5.6.15.Final (compile) (transitive) 
 LGPL-2.1 
 Copyright 2004present by the Checker Framework developers 
-(registry)
+ 
 
  org.hibernate:quarkus-local-cache 0.1.1 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jasypt:jasypt 1.9.3 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 20072010, The JASYPT team (http://www.jasypt.org) 
-(registry) 
+  
 
  org.javassist:javassist 3.26.0-GA (compile) (transitive) 
 Apache-2.0 
@@ -1358,90 +1358,90 @@ LGPL-2.1
 
 
 Copyright (C) 1999-2023 by Shigeru Chiba, All rights reserved. 
-(registry)
+ 
 
  org.jboss.logging:commons-logging-jboss-logging 1.0.0.Final (compile) (transitive) 
 Apache-2.0 
 Copyright 2018 Red Hat, Inc., and individual contributorsas indicated by the author tags. 
-(registry)
+ 
 
  org.jboss.logging:jboss-logging 3.5.0.Final (compile) (transitive) 
 Apache-2.0 
 Copyright 2023 Red Hat, Inc. 
-(registry)
+ 
 
  org.jboss.logging:jboss-logging-annotations 2.2.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.logmanager:jboss-logmanager-embedded 1.0.11 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.logmanager:log4j-jboss-logmanager 1.3.0.Final (compile) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.narayana.jta:narayana-jta 5.13.1.Final (compile) (transitive) 
-LGPL-2.1 (registry)
+LGPL-2.1  
 
  org.jboss.narayana.jts:narayana-jts-integration 5.13.1.Final (compile) (transitive) 
-LGPL-2.1 (registry)
+LGPL-2.1  
 
  org.jboss.resteasy:resteasy-cdi 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-client 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-client-api 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.jboss.resteasy:resteasy-client-microprofile 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-client-microprofile-base 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-core 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-core-spi 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-jackson2-provider 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-jaxb-provider 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-json-binding-provider 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-json-p-provider 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.resteasy:resteasy-multipart-provider 4.7.7.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.slf4j:slf4j-jboss-logmanager 1.2.0.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss.spec.javax.resource:jboss-connector-api_1.7_spec 1.0.0.Final (compile) (transitive) 
 CDDL-1.0 
 Copyright (C) <year> <name of author> 
-(registry) 
+  
 
  org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec 2.0.1.Final (compile) (transitive) 
 EPL-2.0 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.51 Franklin Street, Fifth FloorBoston, MA 02110-1335USA 
-(registry)
+ 
 
  org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec 2.0.0.Final (compile) (transitive) 
-EDL-1.0 (registry)
+EDL-1.0  
 
  org.jboss.threads:jboss-threads 3.4.3.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.jboss:jboss-transaction-spi 7.6.0.Final (compile) (transitive) 
-PUBDOM (registry)
+PUBDOM  
 
  org.jvnet.mimepull:mimepull 1.9.14 (compile) (transitive) 
 CDDL-1.1 
@@ -1450,141 +1450,141 @@ EDL-1.0
 
 
 Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved. 
-(registry)
+ 
 
  org.jvnet.staxex:stax-ex 1.8.3 (compile) (transitive) 
 CDDL-1.1 
 EDL-1.0 
 Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.Redistribution and use in source and binary forms, with or withoutmodification, are permitted provided that the following conditionsare met: - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - Redistributions in binary form must reproduce the above copyright   notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  -Neither the name of the Eclipse Foundation, Inc. nor the names of its contributors may be used to endorse or promote products derived   from this software without specific prior written permission.THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "ASIS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULARPURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER ORCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, ORPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OFLIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDINGNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 OF THISSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-(registry)
+ 
 
  org.latencyutils:LatencyUtils 2.0.3 (runtime) (transitive) 
 CPL-1.0 
 Copyright (c) 2012, 2013, 2014 Gil TeneAll rights reserved. 
-(registry)
+ 
 
  org.mapstruct:mapstruct 1.4.2.Final (compile) 
 Apache-2.0 
 Copyright MapStruct Authors. 
-(registry)
+ 
 
  org.opensaml:opensaml-core 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.opensaml:opensaml-profile-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.opensaml:opensaml-saml-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-saml-impl 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-security-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-security-impl 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-soap-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-xacml-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-xacml-impl 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-xacml-saml-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-xacml-saml-impl 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-xmlsec-api 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.opensaml:opensaml-xmlsec-impl 3.4.6 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.postgresql:postgresql 42.5.3 (compile) (transitive) 
 BSD-2-Clause 
 Copyright (c) 1997, PostgreSQL Global Development GroupAll rights reserved. 
-(registry) 
+  
 
  org.projectlombok:lombok 1.18.22 (provided) 
 MIT 
 Copyright (C) 2009-2021 The Project Lombok Authors.Permission is hereby granted, free of charge, to any person obtaining a copyof this software and associated documentation files (the "Software"), to dealin the Software without restriction, including without limitation the rightsto use, copy, modify, merge, publish, distribute, sublicense, and/or sellcopies of the Software, and to permit persons to whom the 
 Software isfurnished to do so, subject to the following conditions: 
-(registry)
+ 
 
  org.reactivestreams:reactive-streams 1.0.3 (compile) (transitive) 
 CC0-1.0 
 Copyright 2014 Reactive Streams 
-(registry)
+ 
 
  org.wildfly.common:wildfly-common 1.5.4.Final-format-001 (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-asn1 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-auth 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-auth-server 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-base 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-credential 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-encryption 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-keystore 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-password-impl 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
  org.wildfly.security:wildfly-elytron-permission 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-provider-util 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-realm 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-util 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-x500 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-x500-cert 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.wildfly.security:wildfly-elytron-x500-cert-util 1.20.1.Final (compile) (transitive) 
-Apache-2.0 (registry)
+Apache-2.0  
 
  org.yaml:snakeyaml 1.33 (compile) (transitive) 
 Apache-2.0 
 Copyright (c) 2008, SnakeYAML 
-(registry)
+ 
 
  soap:soap 2.3.1 (compile) 
-CDDL (registry)
+CDDL  
 
  wsdl4j:wsdl4j 1.6.3 (compile) 
-CPL-1.0 (registry)
+CPL-1.0  
 
  xml-resolver:xml-resolver 1.2 (compile) (transitive) 
-Apache-2.0 (registry) 
+Apache-2.0   
 
 
 
