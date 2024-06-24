@@ -1,11 +1,9 @@
 # List of Contributors of product in
 
 ## Regione Piemonte
-Stefania Ferrarotti
-Roberto Bernocco
-
-## APL
-Enrico Scammacca
+Livio Boiero
+Ornella Lucchetta
+Diego Busso
 
 ## CSI Piemonte
 Giancarlo Cantoni
