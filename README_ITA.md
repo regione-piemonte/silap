@@ -4,9 +4,11 @@ SILAP : Sistema Informativo Lavoro Aziende Piemonte
 
 # Descrizione del prodotto
 Il prodotto SILAP fornisce servizi alle aziende. La prima funzione realizzata è relativa al Portale Esoneri - Versamento Esonero Parziale L.68/99.
+
 Il "portale esoneri" fa parte degli applicativi della Regione Piemonte - Sistema Informativo Lavoro dedicati ai datori di lavoro, e si va ad affiancare, sul Portale Aziende, agli applicativi GECO - Comunicazioni obbligatorie (prodotto COMONL) e Prospetto Disabili L.68/99 (prodotto PRODIS).
 
-Il servizio corrispondente è disponibile all'indirizzo https://servizi.regione.piemonte.it/catalogo/portale-pagamento-esoneri-contributivi-esonero-autorizzato
+Il servizio corrispondente è disponibile all'indirizzo 
+https://servizi.regione.piemonte.it/catalogo/portale-pagamento-esoneri-contributivi-esonero-autorizzato
 
 Il servizio si rivolge a imprese, liberi professionisti, intermediari (consulenti del lavoro).
 
@@ -31,6 +33,7 @@ Il sistema è integrato con il sistema SILP per il recupero delle informazioni r
 Nell’ambito del SILAP si andranno ad inserire servizi applicativi per diversi “adempimenti”: il primo realizzato è quello relativo al Portale Esoneri nell'ambito del “Collocamento Mirato (ColMir)”.
 
 Complessivamente l’applicativo prevede moduli di front-end web che interagiscono, tramite API, con moduli di back-end dove risiede la logica di business e che accedono al DB.
+
 Il prodotto segue quindi il paradigma “SPA – Single Page Application” : la componente di interfaccia Angular ha una corrispondente componente di “BackEnd”, realizzata nel linguaggio Java, e che espone API REST per la componente Angular; il back-end accede al DB.
 
 Il prodotto è strutturato nelle seguenti componenti specifiche:
@@ -69,6 +72,7 @@ I principali linguaggi utilizzati sono:
 
 A seguito di valutazione sull’utilizzo di DBMS open-source si è ritenuto che Postgresql garantisca adeguata robustezza e affidabilità tendo conto delle dimensioni previste per il DB e dei volumi annui gestiti.
 La versione scelta è la 12.4, con possibilità di aggiornamento alla versione 15.
+
 Per quanto riguarda la struttura del DB, si è optato per un “partizionamento” fra entità di carattere trasversale ed entità specifiche per ciascun adempimento. Tale strutturazione è coerente con la progettazione di piattaforme sw orientate ai "micro-servizi".
 
 ## Tecnologie framework e standard individuati
@@ -121,7 +125,6 @@ Per il versionamento del software si usa la tecnica Semantic Versioning (http://
 
 # Copyrights
 © Copyright Regione Piemonte – 2024\
-© Copyright CSI-Piemonte – 2024
 
 
 # License
