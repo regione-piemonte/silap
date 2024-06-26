@@ -1,0 +1,176 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+applicationSuite: Regione Piemonte Sistema Informativo Lavoro
+categories:
+  - business-process-management
+description:
+  it:
+    features:
+      - |-
+        Presentare la dichiarazione annuale ai fini del versamento del 
+        contributo di esonero art.5 L. 68/99
+      - |-
+        Gestione ruoli: legale rappresentante, delegato, consulente lavoro...
+        operatore P.A.
+      - Gestire una Dichiarazione ed i suoi stati
+      - Verificare il riepilogo importi da versare.
+      - Consentire il monitoraggio dei pagamenti.
+    genericName: Sistema Informativo Lavoro Aziende
+    localisedName: SILAP
+    longDescription: |
+      Il prodotto **SILAP **è l’applicativo della **Regione Piemonte**
+      attraverso il quale le **Aziende **inviano in modalità telematica la
+      dichiarazione annuale ai fini del _**versamento del contributo di esonero
+      art.5 L. 68/99**_.
+
+
+      Il servizio corrispondente è disponibile all'indirizzo:
+
+
+      https://servizi.regione.piemonte.it/catalogo/portale-pagamento-esoneri-contributivi-esonero-autorizzato
+
+
+      Il servizio si rivolge a imprese, liberi professionisti, intermediari e
+      Pubblica Amministrazione.
+
+
+      L’esonero parziale è un istituto disciplinato dall’art. 5 comma 3 della
+      Legge 12 marzo 1999 n. 68  “Norme per il diritto al lavoro dei disabili” e
+      dal Decreto del Ministero del Lavoro 7 luglio 2000 n.357: 
+
+
+      “… i datori di lavoro privati e gli enti pubblici economici che, per le
+      speciali condizioni della loro attività, non possono occupare l'intera
+      percentuale dei disabili, possono, a domanda, essere parzialmente
+      esonerati dall'obbligo dell'assunzione, alla condizione che versino al
+      Fondo regionale per l'occupazione dei disabili di cui all'articolo 14 un
+      contributo esonerativo per ciascuna unità non assunta...”.
+
+
+      Per "speciali condizioni di attività" si intende la presenza di almeno una
+      delle seguenti condizioni:
+
+
+      - faticosità della prestazione lavorativa richiesta;
+
+
+      - pericolosità connaturata al tipo di attività, anche derivante da
+      condizioni ambientali nelle quali si svolge l'attività stessa;
+
+
+      - particolare modalità di svolgimento dell'attività lavorativa.
+
+
+      ​
+
+
+      L'esonero parziale può essere concesso fino alla misura percentuale
+      massima del 60% della quota di riserva, in relazione alle caratteristiche
+      dell'attività aziendale. 
+
+
+      L'autorizzazione all'esonero parziale è concessa a tempo determinato e
+      impone il versamento di un contributo di 39,21 euro (Decreto Ministeriale
+      del 30/09/2021) per ogni giorno lavorativo e per ogni persona disabile non
+      occupata.
+
+
+      Da giugno 2017, la Regione Piemonte è l’amministrazione competente del
+      procedimento di concessione dell’esonero parzialedi cui all'art 5 comma 3
+      della Legge 12 marzo 1999 n. 68.
+
+
+      Le principali funzionalità sono le seguenti:
+
+
+      - Presentare la dichiarazione annuale ai fini del versamento del
+      contributo di esonero art.5 L. 68/99:
+
+
+      - Gestione ruoli: legale rappresentante, delegato, consulente lavoro,
+      personale incaricato/autorizzato, operatore P.A.
+
+
+      - Gestire una Dichiarazione ed i suoi stati: : BOZZA, ACCETTATA, MODIFICATA, AUTORIZZATA, NON AUTORIZZATA, ELIMINATA, ANNULLATA.
+
+
+      - Verificare il riepilogo importi da versare.
+
+
+      - Consentire il monitoraggio dei pagamenti.
+
+
+      ​
+
+
+      Il prodotto è strutturato nelle seguenti componenti specifiche:
+
+
+      - [\*\*silapdb\*\*](
+      https://github.com/regione-piemonte/silap/tree/main/silap-silapdb ) : 
+      script per la creazione del DB (istanza DBMS Postgresql);
+
+
+      - [\*\*colmirwcl\*\*](
+      https://github.com/regione-piemonte/silap/tree/main/silap-colmirwcl ) :
+      Client Web (Angular), front-end applicativo;
+
+
+      - [\*\*colmirbff\*\*](
+      https://github.com/regione-piemonte/silap/tree/main/silap-colmirbff ) :
+      Componente SPA con servizi REST di backend per colmirwcl;	
+
+
+      - [\*\*colmirsrv\*\*](
+      https://github.com/regione-piemonte/silap/tree/main/silap-colmirsrv ) :
+      Componente di esposizione servizi (REST API) verso altri applicativi del
+      Sistema Informativo Regionale.
+
+
+      ​
+    shortDescription: |-
+      Sistema Informativo Lavoro Aziende Piemonte - Portale Pagamento Esoneri
+      Contributivi da Esonero Autorizzato
+developmentStatus: stable
+intendedAudience:
+  countries:
+    - it
+  scope:
+    - employment
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: true
+    pagopa: false
+    spid: true
+  riuso:
+    codiceIPA: r_piemon
+legal:
+  authorsFile: 'https://raw.githubusercontent.com/regione-piemonte/silap/master/AUTHORS.txt'
+  license: EUPL-1.2
+  mainCopyrightOwner: Regione Piemonte
+  repoOwner: Regione Piemonte
+localisation:
+  availableLanguages:
+    - it
+  localisationReady: false
+maintenance:
+  contacts:
+    - email: giancarlo.cantoni@csi.it
+      name: Giancarlo Cantoni
+  type: internal
+name: SILAP
+platforms:
+  - web
+releaseDate: '2024-06-24'
+softwareType: standalone/web
+url: 'https://github.com/regione-piemonte/silap'
