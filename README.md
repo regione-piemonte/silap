@@ -40,7 +40,7 @@ Il prodotto è strutturato nelle seguenti componenti specifiche:
 - [silapdb]( https://github.com/regione-piemonte/silap/tree/main/silap-silapdb ) : script per la creazione del DB (istanza DBMS Postgresql);
 - [colmirwcl]( https://github.com/regione-piemonte/comonl/tree/main/comonl-comonlwcl ) : Client Web (Angular13), front-end applicativo;
 - [colmirbff]( https://github.com/regione-piemonte/comonl/tree/main/comonl-comonlweb ) : Componente SPA con servizi REST per colmirwcl;					;
-- [colmirsrv]( https://github.com/regione-piemonte/comonl/tree/main/comonl-comonlweb ) : Componente di esposizione servizi (REST API) verso altri applicativi del Sistema Informativo Regionale.				;
+- [colmirsrv]( https://github.com/regione-piemonte/comonl/tree/main/comonl-comonlweb ) : Componente di esposizione servizi (REST API) verso altri applicativi del Sistema Informativo Regionale.	
 
 
 A ciascuna componente del prodotto elencata sopra corisponde una sotto-directory denominata silap-<nome_componente>.\
